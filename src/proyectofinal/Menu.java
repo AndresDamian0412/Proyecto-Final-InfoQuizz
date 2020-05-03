@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         panelmenu.setBackground(new java.awt.Color(153, 206, 195));
         panelmenu.setToolTipText("");
 
-        botonuser.setBackground(new java.awt.Color(255, 91, 25));
+        botonuser.setBackground(new java.awt.Color(204, 204, 255));
         botonuser.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         botonuser.setText("Usuario");
         botonuser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,12 +58,17 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        nuevouserbtn.setBackground(new java.awt.Color(228, 240, 59));
+        nuevouserbtn.setBackground(new java.awt.Color(204, 204, 255));
         nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nuevouserbtn.setText("Nuevo Usuario");
         nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nuevouserbtnMouseClicked(evt);
+            }
+        });
+        nuevouserbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevouserbtnActionPerformed(evt);
             }
         });
 
@@ -83,11 +88,21 @@ public class Menu extends javax.swing.JFrame {
         lblpswrd.setText("Contraseña: ");
 
         btnlogin.setText("Entrar");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
 
         atrasmenu.setText("Atrás");
         atrasmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 atrasmenuMouseClicked(evt);
+            }
+        });
+        atrasmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasmenuActionPerformed(evt);
             }
         });
 
@@ -233,6 +248,18 @@ Login.setVisible(true);
         a1.setVisible(true);
         a1.setResizable(false);
     }//GEN-LAST:event_nuevouserbtnMouseClicked
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnloginActionPerformed
+
+    private void nuevouserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevouserbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevouserbtnActionPerformed
+
+    private void atrasmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasmenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_atrasmenuActionPerformed
 
     /**
      * @param args the command line arguments

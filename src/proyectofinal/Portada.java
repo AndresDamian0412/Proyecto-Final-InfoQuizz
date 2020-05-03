@@ -49,9 +49,8 @@ public class Portada extends javax.swing.JFrame {
         lema.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 24)); // NOI18N
         lema.setText("\"Programando el presente para ejecutar el futuro\"");
 
-        botonmenu.setBackground(new java.awt.Color(98, 204, 168));
-        botonmenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        botonmenu.setForeground(new java.awt.Color(255, 255, 255));
+        botonmenu.setBackground(new java.awt.Color(153, 206, 153));
+        botonmenu.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
         botonmenu.setText("Menu");
         botonmenu.setToolTipText("");
         botonmenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,7 +148,7 @@ public class Portada extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmenuActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_botonmenuActionPerformed
 
     private void botonmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonmenuMouseClicked
