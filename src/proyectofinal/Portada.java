@@ -53,7 +53,7 @@ public class Portada extends javax.swing.JFrame {
         botonmenu.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
         botonmenu.setText("Menu");
         botonmenu.setToolTipText("");
-        botonmenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        botonmenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonmenuMouseClicked(evt);
