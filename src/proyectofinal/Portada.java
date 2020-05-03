@@ -1,6 +1,5 @@
 package proyectofinal;
 
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -9,13 +8,10 @@ public class Portada extends javax.swing.JFrame {
     public Portada() {
         initComponents();
         Toolkit mipantalla = Toolkit.getDefaultToolkit();
-        Dimension tamañopantalla= mipantalla.getScreenSize();
-        int alturap = tamañopantalla.height;
-        int anchop = tamañopantalla.width;
-        setSize((anchop/2)+(anchop/4),(alturap/2)+(alturap/4));
+        setSize(1070,575);
         setLocationRelativeTo(null);
-        setTitle("Archivero");
-        Image Icono = mipantalla.getImage("src/proyectofinal/imagenes/logotec.png");
+        setTitle("InfoQuizz");
+        Image Icono = mipantalla.getImage("src/proyectofinal/imagenes/logoiq.png");
         setIconImage(Icono);
     }
 
@@ -146,7 +142,7 @@ public class Portada extends javax.swing.JFrame {
                 .addComponent(autor3)
                 .addGap(18, 18, 18)
                 .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();

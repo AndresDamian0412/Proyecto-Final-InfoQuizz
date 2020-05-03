@@ -1,6 +1,5 @@
 package proyectofinal;
 
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -11,13 +10,10 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         Toolkit mipantalla2 = Toolkit.getDefaultToolkit();
-        Dimension tamañopantalla2 = mipantalla2.getScreenSize();
-        int alturap = tamañopantalla2.height;
-        int anchop = tamañopantalla2.width;
-        setSize(anchop/2+(anchop/4),alturap/2+(alturap/4));
+        setSize(1017,575);
         setLocationRelativeTo(null);
-        setTitle("Archivero");
-        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/logotec.png");
+        setTitle("InfoQuizz");
+        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/logoiq.png");
         setIconImage(Icono);
         
         rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/back.png");
@@ -31,7 +27,7 @@ public class Menu extends javax.swing.JFrame {
 
         panelmenu = new javax.swing.JPanel();
         botonuser = new javax.swing.JButton();
-        botonadmi = new javax.swing.JButton();
+        nuevouserbtn = new javax.swing.JButton();
         msj1 = new javax.swing.JLabel();
         bienvenida = new javax.swing.JLabel();
         Login = new javax.swing.JPanel();
@@ -62,12 +58,12 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        botonadmi.setBackground(new java.awt.Color(228, 240, 59));
-        botonadmi.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        botonadmi.setText("Administrador");
-        botonadmi.addMouseListener(new java.awt.event.MouseAdapter() {
+        nuevouserbtn.setBackground(new java.awt.Color(228, 240, 59));
+        nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nuevouserbtn.setText("Nuevo Usuario");
+        nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonadmiMouseClicked(evt);
+                nuevouserbtnMouseClicked(evt);
             }
         });
 
@@ -157,16 +153,16 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(243, 243, 243)
                         .addComponent(bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelmenuLayout.createSequentialGroup()
-                        .addGap(371, 371, 371)
-                        .addComponent(botonadmi))
-                    .addGroup(panelmenuLayout.createSequentialGroup()
-                        .addGap(419, 419, 419)
-                        .addComponent(botonuser))
-                    .addGroup(panelmenuLayout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(msj1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelmenuLayout.createSequentialGroup()
+                        .addGap(403, 403, 403)
+                        .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelmenuLayout.createSequentialGroup()
+                        .addGap(379, 379, 379)
+                        .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
         panelmenuLayout.setVerticalGroup(
@@ -181,13 +177,13 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msj1)
-                .addGap(70, 70, 70)
-                .addComponent(botonadmi)
+                .addGap(44, 44, 44)
+                .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonuser)
-                .addGap(39, 39, 39)
+                .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,15 +204,9 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonuserActionPerformed
 
-    private void botonadmiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonadmiMouseClicked
-botonadmi.setVisible(false);
-botonuser.setVisible(false);
-Login.setVisible(true);
-    }//GEN-LAST:event_botonadmiMouseClicked
-
     private void botonuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonuserMouseClicked
-botonadmi.setVisible(false);
 botonuser.setVisible(false);
+nuevouserbtn.setVisible(false);
 Login.setVisible(true);
         
     }//GEN-LAST:event_botonuserMouseClicked
@@ -237,6 +227,12 @@ Login.setVisible(true);
         dispose();
         
     }//GEN-LAST:event_atrasmenuMouseClicked
+
+    private void nuevouserbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevouserbtnMouseClicked
+        Altauser a1 = new Altauser();
+        a1.setVisible(true);
+        a1.setResizable(false);
+    }//GEN-LAST:event_nuevouserbtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -278,13 +274,13 @@ Login.setVisible(true);
     private javax.swing.JButton atrasmenu;
     private javax.swing.JLabel back;
     private javax.swing.JLabel bienvenida;
-    private javax.swing.JButton botonadmi;
     private javax.swing.JButton botonuser;
     private javax.swing.JButton btnlogin;
     private javax.swing.JLabel lblpswrd;
     private javax.swing.JLabel lbluser;
     private javax.swing.JLabel msj1;
     private javax.swing.JTextField nomUser;
+    private javax.swing.JButton nuevouserbtn;
     private javax.swing.JPanel panelmenu;
     private javax.swing.JPasswordField passwordUser;
     // End of variables declaration//GEN-END:variables
