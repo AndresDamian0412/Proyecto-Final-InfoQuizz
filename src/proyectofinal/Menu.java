@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         panelmenu.setBackground(new java.awt.Color(153, 206, 195));
         panelmenu.setToolTipText("");
 
-        botonuser.setBackground(new java.awt.Color(204, 204, 255));
+        botonuser.setBackground(new java.awt.Color(153, 153, 255));
         botonuser.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         botonuser.setText("Usuario");
         botonuser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        nuevouserbtn.setBackground(new java.awt.Color(204, 204, 255));
+        nuevouserbtn.setBackground(new java.awt.Color(153, 153, 255));
         nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nuevouserbtn.setText("Nuevo Usuario");
         nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
