@@ -7,6 +7,8 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +19,8 @@ public class Altauser extends javax.swing.JFrame {
     /**
      * Creates new form Altauser
      */
+    public static AltaUsuario u = new AltaUsuario();
+    
     public Altauser() {
         initComponents();
         initComponents();
@@ -56,14 +60,11 @@ public class Altauser extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblusername = new javax.swing.JLabel();
         lblpass1 = new javax.swing.JLabel();
-        labelname = new javax.swing.JLabel();
-        lblemail = new javax.swing.JLabel();
         btncreauser = new javax.swing.JButton();
         newUsername = new javax.swing.JTextField();
-        newnomcompleto = new javax.swing.JTextField();
-        newcorreouser = new javax.swing.JTextField();
         newpass = new javax.swing.JPasswordField();
         btncancelar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -86,27 +87,15 @@ public class Altauser extends javax.swing.JFrame {
         lblpass1.setText("Contraseña:");
         lblpass1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        labelname.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
-        labelname.setText("Nombre completo:");
-        labelname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        lblemail.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
-        lblemail.setText("Correo electronico:");
-        lblemail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         btncreauser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btncreauser.setText("Crear Usuario");
-
-        newUsername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        newnomcompleto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        newnomcompleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newnomcompletoActionPerformed(evt);
+        btncreauser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btncreauserMouseClicked(evt);
             }
         });
 
-        newcorreouser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newUsername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         newpass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -118,56 +107,52 @@ public class Altauser extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ingresar ahora");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblpass1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblemail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblusername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newcorreouser)
-                            .addComponent(newnomcompleto)
-                            .addComponent(newUsername)
-                            .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(116, 116, 116))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(53, 53, 53)
+                .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblpass1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblusername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(newUsername)
+                    .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblusername)
-                            .addComponent(newUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
-                        .addComponent(labelname))
-                    .addComponent(newnomcompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblemail)
-                    .addComponent(newcorreouser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addContainerGap(136, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblusername)
+                    .addComponent(newUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblpass1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(newpass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(71, 71, 71))
         );
 
@@ -184,7 +169,7 @@ public class Altauser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -202,10 +187,6 @@ public class Altauser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newnomcompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newnomcompletoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newnomcompletoActionPerformed
-
     private void btncancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMouseClicked
         // TODO add your handling code here:
         Menu m3 = new Menu();
@@ -213,6 +194,49 @@ public class Altauser extends javax.swing.JFrame {
         m3.setResizable(false);
         dispose();
     }//GEN-LAST:event_btncancelarMouseClicked
+
+    private void btncreauserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncreauserMouseClicked
+        // TODO add your handling code here:
+        String nombreusuario, contraseña;
+        nombreusuario = newUsername.getText();
+        contraseña = newpass.getText();
+        
+        try{
+            if(u.write(nombreusuario, contraseña)== true)
+                JOptionPane.showMessageDialog(null, "Se ha registrado el nuevo usuario correctamente! ;)");
+            else
+                JOptionPane.showMessageDialog(null, "No ha registrado el nuevo usuario correctamente:( ");
+        }catch ( IOException e){
+            JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario.");
+        }
+        
+       Menu m4 = new Menu();
+       m4.setVisible(true);
+       m4.setResizable(false);
+       m4.setDefaultCloseOperation(EXIT_ON_CLOSE);
+       this.dispose();
+    }//GEN-LAST:event_btncreauserMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        String usuario, contraseña;
+        usuario = newUsername.getText();
+        contraseña = newpass.getText();
+        
+        try{
+            if(u.buscaUsuario(usuario, contraseña)== true){
+                PantPrincipalUser p1 = new PantPrincipalUser();
+                p1.setVisible(true);
+                p1.setResizable(false);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "¡Usuario o contraseña inválidos!");
+            }
+                
+        } catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Error al comunicarse con el archivo.");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,17 +276,14 @@ public class Altauser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncreauser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel labelname;
-    private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblpass1;
     private javax.swing.JLabel lblusername;
     private javax.swing.JTextField newUsername;
-    private javax.swing.JTextField newcorreouser;
-    private javax.swing.JTextField newnomcompleto;
     private javax.swing.JPasswordField newpass;
     // End of variables declaration//GEN-END:variables
 }

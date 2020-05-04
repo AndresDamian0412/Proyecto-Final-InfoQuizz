@@ -156,6 +156,7 @@ public class Portada extends javax.swing.JFrame {
 Menu m1= new Menu();
 m1.setVisible(true);
 m1.setResizable(false);
+m1.setDefaultCloseOperation(EXIT_ON_CLOSE);
 this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_botonmenuMouseClicked
 

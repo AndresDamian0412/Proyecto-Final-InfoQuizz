@@ -2,10 +2,13 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 
 public class Menu extends javax.swing.JFrame {
-
+    
+    public static AltaUsuario u = new AltaUsuario();
     
     public Menu() {
         initComponents();
@@ -95,6 +98,11 @@ public class Menu extends javax.swing.JFrame {
         lblpswrd.setText("Contraseña: ");
 
         btnlogin.setText("Entrar");
+        btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnloginMouseClicked(evt);
+            }
+        });
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
@@ -268,6 +276,28 @@ Login.setVisible(true);
     private void atrasmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasmenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_atrasmenuActionPerformed
+
+    private void btnloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMouseClicked
+        // TODO add your handling code here:
+        String usuario, contraseña;
+        usuario = nomUser.getText();
+        contraseña = passwordUser.getText();
+        
+        try{
+            if(u.buscaUsuario(usuario, contraseña)== true){
+                PantPrincipalUser p1 = new PantPrincipalUser();
+                p1.setVisible(true);
+                p1.setResizable(false);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "¡Usuario o contraseña inválidos!");
+            }
+                
+        } catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Error al comunicarse con el archivo.");
+        }
+        
+    }//GEN-LAST:event_btnloginMouseClicked
 
     /**
      * @param args the command line arguments

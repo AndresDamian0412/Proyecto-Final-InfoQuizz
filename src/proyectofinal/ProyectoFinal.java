@@ -6,6 +6,7 @@
 package proyectofinal;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +23,7 @@ public class ProyectoFinal {
         p1.setVisible(true);
         p1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         p1.setResizable(false);
+        
         
     }
     

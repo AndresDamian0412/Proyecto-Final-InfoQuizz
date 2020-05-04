@@ -5,6 +5,9 @@
  */
 package proyectofinal;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author andre
@@ -16,6 +19,18 @@ public class PantPrincipalUser extends javax.swing.JFrame {
      */
     public PantPrincipalUser() {
         initComponents();
+        Toolkit mipantalla3 = Toolkit.getDefaultToolkit();
+        setSize(1017,575);
+        setLocationRelativeTo(null);
+        setTitle("InfoQuizz");
+        Image Icono = mipantalla3.getImage("src/proyectofinal/imagenes/preview.jpeg");
+        setIconImage(Icono);
+        
+        //Objeto jPanel con color VistaColor
+        jpColor jpVista3 = new jpColor();
+        jpVista3.setSize(this.getSize());
+        jpVista3.setVistaColor(153,206,195,0,0,0);
+        panelpantprincipal.add(jpVista3);
     }
 
     /**
@@ -27,17 +42,40 @@ public class PantPrincipalUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelpantprincipal = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 3, 48)); // NOI18N
+        jLabel1.setText("Ya entraste weeeeee");
+
+        javax.swing.GroupLayout panelpantprincipalLayout = new javax.swing.GroupLayout(panelpantprincipal);
+        panelpantprincipal.setLayout(panelpantprincipalLayout);
+        panelpantprincipalLayout.setHorizontalGroup(
+            panelpantprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelpantprincipalLayout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(266, Short.MAX_VALUE))
+        );
+        panelpantprincipalLayout.setVerticalGroup(
+            panelpantprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelpantprincipalLayout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(256, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1017, Short.MAX_VALUE)
+            .addComponent(panelpantprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addComponent(panelpantprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +117,7 @@ public class PantPrincipalUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel panelpantprincipal;
     // End of variables declaration//GEN-END:variables
 }
