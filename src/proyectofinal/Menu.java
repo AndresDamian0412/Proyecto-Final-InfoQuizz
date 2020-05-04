@@ -13,13 +13,20 @@ public class Menu extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/logoiq.png");
+        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
         
-        rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/back.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/atrasportada.png");
         Login.setVisible(false);
-        
+       
+        //Objeto jPanel con color VistaColor
+        jpColor jpVista = new jpColor();
+        jpVista.setSize(this.getSize());
+        jpVista.setVistaColor(153,206,195,0,0,0);
+        panelmenu.add(jpVista);
+         
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

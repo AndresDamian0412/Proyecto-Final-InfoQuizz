@@ -11,7 +11,7 @@ public class Portada extends javax.swing.JFrame {
         setSize(1070,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla.getImage("src/proyectofinal/imagenes/logoiq.png");
+        Image Icono = mipantalla.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
     }
 
