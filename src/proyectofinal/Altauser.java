@@ -19,7 +19,6 @@ public class Altauser extends javax.swing.JFrame {
     /**
      * Creates new form Altauser
      */
-    public static AltaUsuario u = new AltaUsuario();
     
     public Altauser() {
         initComponents();
@@ -64,7 +63,6 @@ public class Altauser extends javax.swing.JFrame {
         newUsername = new javax.swing.JTextField();
         newpass = new javax.swing.JPasswordField();
         btncancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -107,21 +105,12 @@ public class Altauser extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ingresar ahora");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(53, 53, 53)
                 .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,8 +140,7 @@ public class Altauser extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71))
         );
 
@@ -197,46 +185,7 @@ public class Altauser extends javax.swing.JFrame {
 
     private void btncreauserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncreauserMouseClicked
         // TODO add your handling code here:
-        String nombreusuario, contraseña;
-        nombreusuario = newUsername.getText();
-        contraseña = newpass.getText();
-        
-        try{
-            if(u.write(nombreusuario, contraseña)== true)
-                JOptionPane.showMessageDialog(null, "Se ha registrado el nuevo usuario correctamente! ;)");
-            else
-                JOptionPane.showMessageDialog(null, "No ha registrado el nuevo usuario correctamente:( ");
-        }catch ( IOException e){
-            JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario.");
-        }
-        
-       Menu m4 = new Menu();
-       m4.setVisible(true);
-       m4.setResizable(false);
-       m4.setDefaultCloseOperation(EXIT_ON_CLOSE);
-       this.dispose();
     }//GEN-LAST:event_btncreauserMouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        String usuario, contraseña;
-        usuario = newUsername.getText();
-        contraseña = newpass.getText();
-        
-        try{
-            if(u.buscaUsuario(usuario, contraseña)== true){
-                PantPrincipalUser p1 = new PantPrincipalUser();
-                p1.setVisible(true);
-                p1.setResizable(false);
-                dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "¡Usuario o contraseña inválidos!");
-            }
-                
-        } catch (IOException e){
-            JOptionPane.showMessageDialog(null, "Error al comunicarse con el archivo.");
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -276,7 +225,6 @@ public class Altauser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncreauser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
