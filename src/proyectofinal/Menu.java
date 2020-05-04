@@ -254,6 +254,7 @@ Login.setVisible(true);
         Altauser a1 = new Altauser();
         a1.setVisible(true);
         a1.setResizable(false);
+        dispose();
     }//GEN-LAST:event_nuevouserbtnMouseClicked
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
