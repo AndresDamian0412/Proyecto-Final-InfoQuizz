@@ -281,7 +281,7 @@ Login.setVisible(true);
         user = nomUser.getText();
         pass = passwordUser.getText();
         
-        if(user.equalsIgnoreCase("Admin")&&pass.equals("contraseña")){
+        if(user.equalsIgnoreCase("Admin")&&pass.equalsIgnoreCase("password")){
             PantPrincipalAdmin p1 = new PantPrincipalAdmin();
             p1.setVisible(true);
             p1.setResizable(false);
