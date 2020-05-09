@@ -13,12 +13,22 @@ import java.io.Serializable;
  */
 public class Pregunta implements Serializable {
     
+    String Tema;
+    String Subt;
     String pregunta;
     String res1;
     String res2;
     String res3;
+    boolean bres1;
+    boolean bres2;
+    boolean bres3;
     
-    public Pregunta(String preg, String r1, String r2, String r3){
+    public Pregunta(String tem, String subt,String preg, String r1,boolean br1, String r2, boolean br2, String r3, boolean br3){
+        this.bres1 = br1;
+        this.bres2 = br2;
+        this.bres3 = br3;
+        this.Tema = tem;
+        this.Subt = subt;
         this.pregunta = preg;
         this.res1 = r1;
         this.res2 = r2;
@@ -28,6 +38,14 @@ public class Pregunta implements Serializable {
     
     public int getTamaño(){
         return 0; // recordar modificar QUITAR
+    }
+
+    public String getTema() {
+        return Tema;
+    }
+
+    public String getSubt() {
+        return Subt;
     }
     
     public String getpregunta(){
@@ -44,5 +62,17 @@ public class Pregunta implements Serializable {
     
     public String getRes3(){
         return res3;
+    }
+
+    public boolean isBres1() {
+        return bres1;
+    }
+
+    public boolean isBres2() {
+        return bres2;
+    }
+
+    public boolean isBres3() {
+        return bres3;
     }
 }

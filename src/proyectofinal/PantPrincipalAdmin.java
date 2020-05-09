@@ -36,8 +36,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         jpVista.setVistaColor(153,206,195,0,0,0);
         jpaneladmin.add(jpVista);
         
-        panelmodif.setOpaque(false);
-        panelmodif.setVisible(false);
+        btnnewask.setVisible(false);
     }
 
     /**
@@ -55,7 +54,6 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnConsultas = new javax.swing.JButton();
         btnModif = new javax.swing.JButton();
         backmenu = new javax.swing.JButton();
-        panelmodif = new javax.swing.JPanel();
         btnnewask = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,16 +73,19 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        backmenu.setText("Atrás");
+        backmenu.setText("Regresar a Login");
         backmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backmenuMouseClicked(evt);
             }
         });
 
-        panelmodif.setLayout(new javax.swing.BoxLayout(panelmodif, javax.swing.BoxLayout.LINE_AXIS));
-
         btnnewask.setText("Nueva");
+        btnnewask.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnnewaskMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpaneladminLayout = new javax.swing.GroupLayout(jpaneladmin);
         jpaneladmin.setLayout(jpaneladminLayout);
@@ -95,13 +96,8 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpaneladminLayout.createSequentialGroup()
-                                .addGap(242, 242, 242)
-                                .addComponent(panelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpaneladminLayout.createSequentialGroup()
-                                .addGap(278, 278, 278)
-                                .addComponent(btnnewask))))
+                        .addGap(278, 278, 278)
+                        .addComponent(btnnewask))
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
@@ -127,9 +123,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
                         .addComponent(btnnewask)
-                        .addGap(19, 19, 19)
-                        .addComponent(panelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
+                        .addGap(72, 72, 72)
                         .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(backmenu)
@@ -165,8 +159,16 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
 
     private void btnModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifMouseClicked
         // TODO add your handling code here:
-        panelmodif.setVisible(true);
+        btnnewask.setVisible(true);
     }//GEN-LAST:event_btnModifMouseClicked
+
+    private void btnnewaskMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnewaskMouseClicked
+        // TODO add your handling code here:
+        CamposPreg np = new CamposPreg();
+        np.setVisible(true);
+        this.dispose();
+           
+    }//GEN-LAST:event_btnnewaskMouseClicked
 
     /**
      * @param args the command line arguments
@@ -211,6 +213,5 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelconsultas;
     private javax.swing.JLabel jLabelmodif;
     private javax.swing.JPanel jpaneladmin;
-    private javax.swing.JPanel panelmodif;
     // End of variables declaration//GEN-END:variables
 }

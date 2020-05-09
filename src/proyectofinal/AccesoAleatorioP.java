@@ -35,10 +35,15 @@ public class AccesoAleatorioP {
                 
             }else{
                 flujop.seek(i*tamañopreg);
+                flujop.writeUTF(ask.getTema());
+                flujop.writeUTF(ask.getSubt());
                 flujop.writeUTF(ask.getpregunta());
                 flujop.writeUTF(ask.getRes1());
+                flujop.writeBoolean(ask.isBres1());
                 flujop.writeUTF(ask.getRes2());
+                flujop.writeBoolean(ask.isBres2());
                 flujop.writeUTF(ask.getRes3());
+                flujop.writeBoolean(ask.isBres3());
                 return true;
             }
         }else{
@@ -60,7 +65,7 @@ public class AccesoAleatorioP {
     public static Pregunta getPregunta(int i)throws IOException{
         if(i>=0 && i<getNumeroDePreguntas()){
             flujop.seek(i*tamañopreg);
-            return new Pregunta(flujop.readUTF(),flujop.readUTF(),flujop.readUTF(),flujop.readUTF());
+            return new Pregunta(flujop.readUTF(),flujop.readUTF(),flujop.readUTF(),flujop.readUTF(),flujop.readBoolean(),flujop.readUTF(),flujop.readBoolean(),flujop.readUTF(),flujop.readBoolean());
             
         }else{
             JOptionPane.showMessageDialog(null,"Posicion de pregunta inválida");
