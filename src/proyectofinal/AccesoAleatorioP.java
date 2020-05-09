@@ -7,6 +7,7 @@ package proyectofinal;
 
 import java.io.RandomAccessFile;
 import java.io.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +31,7 @@ public class AccesoAleatorioP {
         
         if(i>=0 && i<=getNumeroDePreguntas()){
             if(ask.getTamaño()>tamañopreg){
-                System.out.println("La pregunta es demasiado grande");
+                JOptionPane.showMessageDialog(null, "La pregunta es demasiado grande:(");
                 
             }else{
                 flujop.seek(i*tamañopreg);
@@ -41,7 +42,7 @@ public class AccesoAleatorioP {
                 return true;
             }
         }else{
-            System.out.println("Numero de pregunta fuera de limites");
+            JOptionPane.showMessageDialog(null,"Numero de pregunta fuera de limites");
         }
         return false;
     }
@@ -53,6 +54,31 @@ public class AccesoAleatorioP {
     }
     
     public static int getNumeroDePreguntas(){
-        return 0;
+        return numpreguntas;
+    }
+    
+    public static Pregunta getPregunta(int i)throws IOException{
+        if(i>=0 && i<getNumeroDePreguntas()){
+            flujop.seek(i*tamañopreg);
+            return new Pregunta(flujop.readUTF(),flujop.readUTF(),flujop.readUTF(),flujop.readUTF());
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Posicion de pregunta inválida");
+            return null;
+        }
+    }
+    
+    public static int buscaPreg(String search)throws IOException{
+        String pregbus;
+        if(search == null){
+            return -1;
+        }
+        for(int i=0; i<getNumeroDePreguntas();i++){
+            flujop.seek(i*tamañopreg);
+            pregbus = getPregunta(i).getpregunta();
+            if(pregbus.equalsIgnoreCase(search))
+                return i;
+        }
+        return -1;
     }
 }

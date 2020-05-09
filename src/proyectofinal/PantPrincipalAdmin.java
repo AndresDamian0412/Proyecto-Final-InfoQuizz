@@ -35,6 +35,9 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         jpVista.setSize(this.getSize());
         jpVista.setVistaColor(153,206,195,0,0,0);
         jpaneladmin.add(jpVista);
+        
+        panelmodif.setOpaque(false);
+        panelmodif.setVisible(false);
     }
 
     /**
@@ -52,6 +55,8 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnConsultas = new javax.swing.JButton();
         btnModif = new javax.swing.JButton();
         backmenu = new javax.swing.JButton();
+        panelmodif = new javax.swing.JPanel();
+        btnnewask = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +69,11 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
 
         btnModif.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
         btnModif.setText("MODIFICACIONES");
+        btnModif.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifMouseClicked(evt);
+            }
+        });
 
         backmenu.setText("Atrás");
         backmenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,6 +82,10 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        panelmodif.setLayout(new javax.swing.BoxLayout(panelmodif, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnnewask.setText("Nueva");
+
         javax.swing.GroupLayout jpaneladminLayout = new javax.swing.GroupLayout(jpaneladmin);
         jpaneladmin.setLayout(jpaneladminLayout);
         jpaneladminLayout.setHorizontalGroup(
@@ -79,7 +93,15 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             .addGroup(jpaneladminLayout.createSequentialGroup()
                 .addGap(111, 111, 111)
                 .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpaneladminLayout.createSequentialGroup()
+                        .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpaneladminLayout.createSequentialGroup()
+                                .addGap(242, 242, 242)
+                                .addComponent(panelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpaneladminLayout.createSequentialGroup()
+                                .addGap(278, 278, 278)
+                                .addComponent(btnnewask))))
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
@@ -95,16 +117,19 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         );
         jpaneladminLayout.setVerticalGroup(
             jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
+            .addGroup(jpaneladminLayout.createSequentialGroup()
                 .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpaneladminLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
+                        .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnnewask)
+                        .addGap(19, 19, 19)
+                        .addComponent(panelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
                         .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(backmenu)
@@ -137,6 +162,11 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         m5.setResizable(false);
         this.dispose();
     }//GEN-LAST:event_backmenuMouseClicked
+
+    private void btnModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifMouseClicked
+        // TODO add your handling code here:
+        panelmodif.setVisible(true);
+    }//GEN-LAST:event_btnModifMouseClicked
 
     /**
      * @param args the command line arguments
@@ -177,8 +207,10 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton backmenu;
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnModif;
+    private javax.swing.JButton btnnewask;
     private javax.swing.JLabel jLabelconsultas;
     private javax.swing.JLabel jLabelmodif;
     private javax.swing.JPanel jpaneladmin;
+    private javax.swing.JPanel panelmodif;
     // End of variables declaration//GEN-END:variables
 }

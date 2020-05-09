@@ -22,7 +22,6 @@ public class Altauser extends javax.swing.JFrame {
     
     public Altauser() {
         initComponents();
-        initComponents();
         Toolkit mipantalla2 = Toolkit.getDefaultToolkit();
         setSize(1017,575);
         setLocationRelativeTo(null);

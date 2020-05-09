@@ -18,6 +18,12 @@ public class Pregunta implements Serializable {
     String res2;
     String res3;
     
+    public Pregunta(String preg, String r1, String r2, String r3){
+        this.pregunta = preg;
+        this.res1 = r1;
+        this.res2 = r2;
+        this.res3 = r3;
+    }
     
     
     public int getTamaño(){
