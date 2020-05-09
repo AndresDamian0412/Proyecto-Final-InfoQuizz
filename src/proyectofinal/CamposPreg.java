@@ -8,6 +8,9 @@ package proyectofinal;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,9 +37,7 @@ public class CamposPreg extends javax.swing.JFrame {
         jpVista5.setVistaColor(153,206,195,0,0,0);
         panelform.add(jpVista5);
         
-        lbltema.setBackground(Color.gray);
-        
-        
+        btnhecho.setVisible(false);
     }
 
     /**
@@ -70,6 +71,7 @@ public class CamposPreg extends javax.swing.JFrame {
         Save = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         preg = new javax.swing.JTextField();
+        btnhecho = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,6 +173,11 @@ public class CamposPreg extends javax.swing.JFrame {
         });
 
         Save.setText("Guardar");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
 
         preg.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         preg.setText("INGRESE LA PREGUNTA");
@@ -180,6 +187,13 @@ public class CamposPreg extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(preg);
+
+        btnhecho.setText("Hecho");
+        btnhecho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnhechoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,7 +228,8 @@ public class CamposPreg extends javax.swing.JFrame {
                                     .addComponent(checkres2)
                                     .addComponent(checkres3)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnhecho)
+                                .addGap(18, 18, 18)
                                 .addComponent(cancel)
                                 .addGap(18, 18, 18)
                                 .addComponent(Save)))
@@ -260,9 +275,8 @@ public class CamposPreg extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblres1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(res1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(checkres1)))
+                    .addComponent(checkres1)
+                    .addComponent(res1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -278,7 +292,8 @@ public class CamposPreg extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel)
-                    .addComponent(Save))
+                    .addComponent(Save)
+                    .addComponent(btnhecho))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -356,6 +371,63 @@ public class CamposPreg extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
 
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        // TODO add your handling code here:
+        String tema = temapreg.getText().trim();
+        if(tema.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el tema de la pregunta"); 
+            return;
+        }
+        String subtema = subtemapreg.getText().trim();
+        if(subtema.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el subtema de la pregunta");
+            return;
+        }
+        String prg = preg.getText().trim();
+        if(prg.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el cuerpo de la pregunta");
+            return;
+        }
+        String r1 = res1.getText();
+        if(r1.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
+            return;
+        }
+        String r2 = res2.getText();
+        if(r2.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
+            return;
+        }
+        String r3 = res3.getText();
+        if(r3.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
+            return;
+        }
+        boolean bres1 = checkres1.isSelected();
+        boolean bres2 = checkres2.isSelected();
+        boolean bres3 = checkres3.isSelected();
+        if(bres1 == false && bres2 == false &&bres3==false){
+            JOptionPane.showMessageDialog(null, "No ha marcado la casilla de la pregunta correcta");
+            return;
+        }
+        try{
+            AccesoAleatorioP.creaArchPreg(new File ("Preguntas.dat"));
+            AccesoAleatorioP.añadePreg(new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3));
+            AccesoAleatorioP.cierraflujo();
+            JOptionPane.showMessageDialog(null, "¡Pregunta agregada correctamente!");
+            btnhecho.setVisible(true);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_SaveActionPerformed
+
+    private void btnhechoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnhechoMouseClicked
+        // TODO add your handling code here:
+        PantPrincipalAdmin p4 = new PantPrincipalAdmin();
+        p4.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnhechoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -393,8 +465,7 @@ public class CamposPreg extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Save;
-    private javax.swing.JButton btncreauser;
-    private javax.swing.JButton btncreauser1;
+    private javax.swing.JButton btnhecho;
     private javax.swing.JButton cancel;
     private javax.swing.JCheckBox checkres1;
     private javax.swing.JCheckBox checkres2;
@@ -402,19 +473,13 @@ public class CamposPreg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblPreg;
-    private javax.swing.JLabel lblpass1;
-    private javax.swing.JLabel lblpass2;
     private javax.swing.JLabel lblres1;
     private javax.swing.JLabel lblres2;
     private javax.swing.JLabel lblres3;
     private javax.swing.JLabel lblsubt;
     private javax.swing.JLabel lbltema;
-    private javax.swing.JLabel lblusername;
-    private javax.swing.JLabel lblusername1;
     private javax.swing.JPanel panelform;
     private javax.swing.JTextField preg;
     private javax.swing.JTextField res1;

@@ -109,7 +109,8 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="492" max="-2" attributes="0"/>
+                                      <Component id="btnhecho" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="cancel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="Save" min="-2" max="-2" attributes="0"/>
@@ -172,10 +173,8 @@
                       <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblres1" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="res1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="checkres1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="checkres1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="res1" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -197,6 +196,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Save" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnhecho" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -396,6 +396,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
@@ -414,6 +417,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnhecho">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hecho"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnhechoMouseClicked"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
