@@ -37,6 +37,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         jpaneladmin.add(jpVista);
         
         btnnewask.setVisible(false);
+        seeAll.setVisible(false);
     }
 
     /**
@@ -55,6 +56,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnModif = new javax.swing.JButton();
         backmenu = new javax.swing.JButton();
         btnnewask = new javax.swing.JButton();
+        seeAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +89,13 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        seeAll.setText("Mostrar todo");
+        seeAll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seeAllMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpaneladminLayout = new javax.swing.GroupLayout(jpaneladmin);
         jpaneladmin.setLayout(jpaneladminLayout);
         jpaneladminLayout.setHorizontalGroup(
@@ -96,8 +105,10 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(278, 278, 278)
-                        .addComponent(btnnewask))
+                        .addGap(245, 245, 245)
+                        .addComponent(btnnewask)
+                        .addGap(18, 18, 18)
+                        .addComponent(seeAll))
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
@@ -122,8 +133,10 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                         .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
-                        .addComponent(btnnewask)
-                        .addGap(72, 72, 72)
+                        .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnnewask)
+                            .addComponent(seeAll))
+                        .addGap(75, 75, 75)
                         .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(backmenu)
@@ -160,6 +173,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     private void btnModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifMouseClicked
         // TODO add your handling code here:
         btnnewask.setVisible(true);
+        seeAll.setVisible(true);
     }//GEN-LAST:event_btnModifMouseClicked
 
     private void btnnewaskMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnewaskMouseClicked
@@ -169,6 +183,13 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         this.dispose();
            
     }//GEN-LAST:event_btnnewaskMouseClicked
+
+    private void seeAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seeAllMouseClicked
+        // TODO add your handling code here:
+        ConsultAll c1 = new ConsultAll();
+        c1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_seeAllMouseClicked
 
     /**
      * @param args the command line arguments
@@ -213,5 +234,6 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelconsultas;
     private javax.swing.JLabel jLabelmodif;
     private javax.swing.JPanel jpaneladmin;
+    private javax.swing.JButton seeAll;
     // End of variables declaration//GEN-END:variables
 }

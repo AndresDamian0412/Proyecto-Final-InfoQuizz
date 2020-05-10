@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class AccesoAleatorioP {
     private static RandomAccessFile flujop;
     private static int numpreguntas;
-    private static final int tamañopreg = 200;
+    private static final int tamañopreg = 800;
     
     public static void creaArchPreg(File arch) throws IOException{
         flujop = new RandomAccessFile(arch,"rw");

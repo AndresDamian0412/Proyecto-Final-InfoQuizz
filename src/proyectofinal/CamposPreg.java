@@ -105,6 +105,11 @@ public class CamposPreg extends javax.swing.JFrame {
                 subtemapregFocusGained(evt);
             }
         });
+        subtemapreg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subtemapregActionPerformed(evt);
+            }
+        });
 
         lblPreg.setBackground(new java.awt.Color(197, 206, 213));
         lblPreg.setForeground(new java.awt.Color(0, 0, 0));
@@ -374,39 +379,39 @@ public class CamposPreg extends javax.swing.JFrame {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         // TODO add your handling code here:
         String tema = temapreg.getText().trim();
-        if(tema.isEmpty()){
+        if(tema.isEmpty()||tema.equalsIgnoreCase("INGRESE EL TEMA AL CUAL PERTENECE LA PREGUNTA")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el tema de la pregunta"); 
             return;
         }
         String subtema = subtemapreg.getText().trim();
-        if(subtema.isEmpty()){
+        if(subtema.isEmpty()|| subtema.equalsIgnoreCase("INGRESE EL SUBTEMA DE LA PREGUNTA")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el subtema de la pregunta");
             return;
         }
         String prg = preg.getText().trim();
-        if(prg.isEmpty()){
+        if(prg.isEmpty()|| prg.equalsIgnoreCase("INGRESE LA PREGUNTA")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el cuerpo de la pregunta");
             return;
         }
         String r1 = res1.getText();
-        if(r1.isEmpty()){
+        if(r1.isEmpty()|| r1.equalsIgnoreCase("INGRESE INCISO")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
             return;
         }
         String r2 = res2.getText();
-        if(r2.isEmpty()){
+        if(r2.isEmpty()||r2.equalsIgnoreCase("INGRESE INCISO")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
             return;
         }
         String r3 = res3.getText();
-        if(r3.isEmpty()){
+        if(r3.isEmpty()|| r3.equalsIgnoreCase("INGRESE INCISO")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
             return;
         }
         boolean bres1 = checkres1.isSelected();
         boolean bres2 = checkres2.isSelected();
         boolean bres3 = checkres3.isSelected();
-        if(bres1 == false && bres2 == false &&bres3==false){
+        if(bres1 == false && bres2 == false && bres3==false){
             JOptionPane.showMessageDialog(null, "No ha marcado la casilla de la pregunta correcta");
             return;
         }
@@ -419,6 +424,12 @@ public class CamposPreg extends javax.swing.JFrame {
         }catch(IOException e){
             e.printStackTrace();
         }
+        temapreg.setText(null);
+        subtemapreg.setText(null);
+        preg.setText(null);
+        res1.setText(null);
+        res2.setText(null);
+        res3.setText(null);
     }//GEN-LAST:event_SaveActionPerformed
 
     private void btnhechoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnhechoMouseClicked
@@ -427,6 +438,10 @@ public class CamposPreg extends javax.swing.JFrame {
         p4.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnhechoMouseClicked
+
+    private void subtemapregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtemapregActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subtemapregActionPerformed
 
     /**
      * @param args the command line arguments

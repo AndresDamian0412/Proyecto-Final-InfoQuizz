@@ -43,8 +43,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabelmodif" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
                           <Component id="btnnewask" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="seeAll" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabelconsultas" min="-2" pref="170" max="-2" attributes="0"/>
@@ -78,8 +80,11 @@
                           <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnnewask" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnnewask" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="seeAll" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Component id="btnConsultas" min="-2" pref="63" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="backmenu" min="-2" max="-2" attributes="0"/>
@@ -149,6 +154,14 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnnewaskMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="seeAll">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mostrar todo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seeAllMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

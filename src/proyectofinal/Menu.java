@@ -34,8 +34,6 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         panelmenu = new javax.swing.JPanel();
-        botonuser = new javax.swing.JButton();
-        nuevouserbtn = new javax.swing.JButton();
         msj1 = new javax.swing.JLabel();
         bienvenida = new javax.swing.JLabel();
         Login = new javax.swing.JPanel();
@@ -46,39 +44,13 @@ public class Menu extends javax.swing.JFrame {
         btnlogin = new javax.swing.JButton();
         atrasmenu = new javax.swing.JButton();
         back = new javax.swing.JLabel();
+        botonuser = new javax.swing.JButton();
+        nuevouserbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelmenu.setBackground(new java.awt.Color(153, 206, 195));
         panelmenu.setToolTipText("");
-
-        botonuser.setBackground(new java.awt.Color(153, 153, 255));
-        botonuser.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        botonuser.setText("Usuario");
-        botonuser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonuserMouseClicked(evt);
-            }
-        });
-        botonuser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonuserActionPerformed(evt);
-            }
-        });
-
-        nuevouserbtn.setBackground(new java.awt.Color(153, 153, 255));
-        nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        nuevouserbtn.setText("Nuevo Usuario");
-        nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nuevouserbtnMouseClicked(evt);
-            }
-        });
-        nuevouserbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevouserbtnActionPerformed(evt);
-            }
-        });
 
         msj1.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 18)); // NOI18N
         msj1.setText("Por favor, eliga uno de los siguientes para iniciar sesión ;)");
@@ -169,6 +141,24 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        botonuser.setBackground(new java.awt.Color(204, 0, 0));
+        botonuser.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        botonuser.setText("Usuario");
+        botonuser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonuserMouseClicked(evt);
+            }
+        });
+
+        nuevouserbtn.setBackground(new java.awt.Color(0, 51, 255));
+        nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nuevouserbtn.setText("Nuevo Usuario");
+        nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nuevouserbtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelmenuLayout = new javax.swing.GroupLayout(panelmenu);
         panelmenu.setLayout(panelmenuLayout);
         panelmenuLayout.setHorizontalGroup(
@@ -186,10 +176,10 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(msj1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                             .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelmenuLayout.createSequentialGroup()
-                        .addGap(403, 403, 403)
-                        .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(339, 339, 339)
+                        .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelmenuLayout.createSequentialGroup()
-                        .addGap(379, 379, 379)
+                        .addGap(378, 378, 378)
                         .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
@@ -205,13 +195,13 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msj1)
-                .addGap(44, 44, 44)
-                .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,17 +218,6 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonuserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonuserActionPerformed
-
-    private void botonuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonuserMouseClicked
-botonuser.setVisible(false);
-nuevouserbtn.setVisible(false);
-Login.setVisible(true);
-        
-    }//GEN-LAST:event_botonuserMouseClicked
-
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
         Portada p2 = new Portada();
@@ -249,27 +228,15 @@ Login.setVisible(true);
 
     private void atrasmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasmenuMouseClicked
         // TODO add your handling code here:
-        Menu m2 = new Menu();
-        m2.setVisible(true);
-        m2.setResizable(false);
-        dispose();
+        Login.setVisible(false);
+        botonuser.setVisible(true);
+        nuevouserbtn.setVisible(true);
         
     }//GEN-LAST:event_atrasmenuMouseClicked
-
-    private void nuevouserbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevouserbtnMouseClicked
-        Altauser a1 = new Altauser();
-        a1.setVisible(true);
-        a1.setResizable(false);
-        dispose();
-    }//GEN-LAST:event_nuevouserbtnMouseClicked
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnloginActionPerformed
-
-    private void nuevouserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevouserbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nuevouserbtnActionPerformed
 
     private void atrasmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasmenuActionPerformed
         // TODO add your handling code here:
@@ -291,6 +258,21 @@ Login.setVisible(true);
             JOptionPane.showMessageDialog(null,"¡Usuario o contraseña incorrectos!");
         }
     }//GEN-LAST:event_btnloginMouseClicked
+
+    private void botonuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonuserMouseClicked
+        // TODO add your handling code here:
+        botonuser.setVisible(false);
+        nuevouserbtn.setVisible(false);
+        Login.setVisible(true);
+    }//GEN-LAST:event_botonuserMouseClicked
+
+    private void nuevouserbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevouserbtnMouseClicked
+        // TODO add your handling code here:
+        Altauser a1 = new Altauser();
+        a1.setVisible(true);
+        a1.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_nuevouserbtnMouseClicked
 
     /**
      * @param args the command line arguments

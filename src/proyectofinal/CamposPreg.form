@@ -260,6 +260,7 @@
               </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="subtemapregFocusGained"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subtemapregActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPreg">
