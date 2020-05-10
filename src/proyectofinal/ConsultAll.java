@@ -120,25 +120,38 @@ public class ConsultAll extends javax.swing.JFrame {
             File archlect = new File("Preguntas.dat");
             RandomAccessFile entrada = new RandomAccessFile(archlect,"r");
             int Numpreg = (int)Math.ceil((double)entrada.length()/800);
-            String tema,subt,preg,res1,res2,res3;
+            String tema,subt,preg,res1,res2,res3,c1,c2,c3;
+            c1 = "Incorrecta";
+            c2 = "Incorrecta";
+            c3 = "Incorrecta";
+            boolean b1,b2,b3;
             for (int i=0; i <= Numpreg ; i++){
+                b1 = false; b2 = false; b3 = false;
                 entrada.seek(i*800);
                 tema = entrada.readUTF();
                 subt = entrada.readUTF();
                 preg = entrada.readUTF();
                 res1 = entrada.readUTF();
-                entrada.readBoolean();
+                b1 = entrada.readBoolean();
                 res2 = entrada.readUTF();
-                entrada.readBoolean();
+                b2 = entrada.readBoolean();
                 res3 = entrada.readUTF();
-                entrada.readBoolean();
+                b3 = entrada.readBoolean();
                 
+                if(b1 == true)
+                    c1 = "Correcta";
+                if(b2 ==true)
+                    c2 = "Correcta";
+                if(b3 == true)
+                    c3 = "Correcta";
+
+                contenedorpreg.append("Pregunta "+(i+1)+"\n");
                 contenedorpreg.append(tema+"\n");
                 contenedorpreg.append(subt+"\n");
                 contenedorpreg.append(preg+"\n");
-                contenedorpreg.append(res1+"\n");
-                contenedorpreg.append(res2+"\n");
-                contenedorpreg.append(res3+"\n");
+                contenedorpreg.append(res1+"-------"+c1+"\n");
+                contenedorpreg.append(res2+"-------"+c2+"\n");
+                contenedorpreg.append(res3+"-------"+c3+"\n");
                 contenedorpreg.append("\n");
                 contenedorpreg.append("*****************************************");
                 contenedorpreg.append("\n");
