@@ -6,6 +6,7 @@
 package proyectofinal;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.*;
 
@@ -121,12 +122,10 @@ public class ConsultAll extends javax.swing.JFrame {
             RandomAccessFile entrada = new RandomAccessFile(archlect,"r");
             int Numpreg = (int)Math.ceil((double)entrada.length()/800);
             String tema,subt,preg,res1,res2,res3,c1,c2,c3;
-            c1 = "Incorrecta";
-            c2 = "Incorrecta";
-            c3 = "Incorrecta";
             boolean b1,b2,b3;
             for (int i=0; i <= Numpreg ; i++){
                 b1 = false; b2 = false; b3 = false;
+                c1 = "Incorrecta"; c2 = "Incorrecta"; c3 = "Incorrecta";
                 entrada.seek(i*800);
                 tema = entrada.readUTF();
                 subt = entrada.readUTF();

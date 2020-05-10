@@ -13,7 +13,6 @@ import java.awt.Toolkit;
  * @author andre
  */
 public class PantPrincipalAdmin extends javax.swing.JFrame {
-
     /**
      * Creates new form PantPrincipalAdmin
      */
@@ -38,6 +37,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         
         btnnewask.setVisible(false);
         seeAll.setVisible(false);
+        modifp.setVisible(false);
     }
 
     /**
@@ -57,6 +57,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         backmenu = new javax.swing.JButton();
         btnnewask = new javax.swing.JButton();
         seeAll = new javax.swing.JButton();
+        modifp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +97,13 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        modifp.setText("Modificar pregunta");
+        modifp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modifpMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpaneladminLayout = new javax.swing.GroupLayout(jpaneladmin);
         jpaneladmin.setLayout(jpaneladminLayout);
         jpaneladminLayout.setHorizontalGroup(
@@ -105,10 +113,12 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(245, 245, 245)
+                        .addGap(164, 164, 164)
                         .addComponent(btnnewask)
                         .addGap(18, 18, 18)
-                        .addComponent(seeAll))
+                        .addComponent(seeAll)
+                        .addGap(18, 18, 18)
+                        .addComponent(modifp))
                     .addGroup(jpaneladminLayout.createSequentialGroup()
                         .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
@@ -135,8 +145,9 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
                         .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnnewask)
-                            .addComponent(seeAll))
-                        .addGap(75, 75, 75)
+                            .addComponent(seeAll)
+                            .addComponent(modifp))
+                        .addGap(77, 77, 77)
                         .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(backmenu)
@@ -174,6 +185,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnnewask.setVisible(true);
         seeAll.setVisible(true);
+        modifp.setVisible(true);
     }//GEN-LAST:event_btnModifMouseClicked
 
     private void btnnewaskMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnewaskMouseClicked
@@ -190,6 +202,13 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         c1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_seeAllMouseClicked
+
+    private void modifpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifpMouseClicked
+        // TODO add your handling code here:
+        Modifpreg mp1 = new Modifpreg();
+        mp1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modifpMouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,6 +253,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelconsultas;
     private javax.swing.JLabel jLabelmodif;
     private javax.swing.JPanel jpaneladmin;
+    private javax.swing.JButton modifp;
     private javax.swing.JButton seeAll;
     // End of variables declaration//GEN-END:variables
 }
