@@ -7,6 +7,8 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,9 +16,8 @@ import javax.swing.JOptionPane;
  * @author andre
  */
 public class Modifpreg extends javax.swing.JFrame {
-    
-    CamposPModif cpm = new CamposPModif();
 
+    private static int numeropreg;
     /**
      * Creates new form Modifpreg
      */
@@ -35,8 +36,8 @@ public class Modifpreg extends javax.swing.JFrame {
         jpVista6.setSize(this.getSize());
         jpVista6.setVistaColor(153,206,195,0,0,0);
         contenedor.add(jpVista6);
-        
-        campospreg.setEnabled(false);
+        Panelcampos.setVisible(false);
+        btnhecho.setVisible(false);
         
     }
 
@@ -50,31 +51,41 @@ public class Modifpreg extends javax.swing.JFrame {
     private void initComponents() {
 
         contenedor = new javax.swing.JPanel();
-        panelbotones = new javax.swing.JPanel();
         cancelar = new javax.swing.JButton();
-        npreg = new javax.swing.JButton();
         campospreg = new javax.swing.JButton();
+        npreg = new javax.swing.JButton();
+        Panelcampos = new javax.swing.JPanel();
+        lbltema = new javax.swing.JLabel();
+        temapreg = new javax.swing.JTextField();
+        lblsubt = new javax.swing.JLabel();
+        subtemapreg = new javax.swing.JTextField();
+        lblPreg = new javax.swing.JLabel();
+        lblres1 = new javax.swing.JLabel();
+        res1 = new javax.swing.JTextField();
+        lblres2 = new javax.swing.JLabel();
+        res2 = new javax.swing.JTextField();
+        lblres3 = new javax.swing.JLabel();
+        res3 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        checkres1 = new javax.swing.JCheckBox();
+        checkres2 = new javax.swing.JCheckBox();
+        checkres3 = new javax.swing.JCheckBox();
+        cancelpanel = new javax.swing.JButton();
+        Save = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        preg = new javax.swing.JTextField();
+        btnhecho = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        contenedor.setLayout(new java.awt.BorderLayout());
-
+        cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelarMouseClicked(evt);
             }
         });
-        panelbotones.add(cancelar);
-
-        npreg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        npreg.setText("Ingrese número de pregunta");
-        npreg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                npregMouseClicked(evt);
-            }
-        });
-        panelbotones.add(npreg);
 
         campospreg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         campospreg.setText("Llenar campos de la nueva pregunta");
@@ -83,31 +94,432 @@ public class Modifpreg extends javax.swing.JFrame {
                 campospregMouseClicked(evt);
             }
         });
-        panelbotones.add(campospreg);
 
-        contenedor.add(panelbotones, java.awt.BorderLayout.PAGE_END);
+        npreg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        npreg.setText("Ingrese número de pregunta");
+        npreg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                npregMouseClicked(evt);
+            }
+        });
 
-        getContentPane().add(contenedor, java.awt.BorderLayout.CENTER);
+        Panelcampos.setBackground(new java.awt.Color(153, 206, 153));
+        Panelcampos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, java.awt.Color.lightGray));
+
+        lbltema.setBackground(new java.awt.Color(197, 206, 213));
+        lbltema.setForeground(new java.awt.Color(0, 0, 0));
+        lbltema.setText("Tema");
+        lbltema.setAutoscrolls(true);
+        lbltema.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        temapreg.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        temapreg.setText("INGRESE EL TEMA AL CUAL PERTENECE LA PREGUNTA");
+        temapreg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                temapregFocusGained(evt);
+            }
+        });
+
+        lblsubt.setBackground(new java.awt.Color(197, 206, 213));
+        lblsubt.setForeground(new java.awt.Color(0, 0, 0));
+        lblsubt.setText("Subtema");
+        lblsubt.setAutoscrolls(true);
+        lblsubt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        subtemapreg.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
+        subtemapreg.setText("INGRESE EL SUBTEMA DE LA PREGUNTA");
+        subtemapreg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                subtemapregFocusGained(evt);
+            }
+        });
+        subtemapreg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subtemapregActionPerformed(evt);
+            }
+        });
+
+        lblPreg.setBackground(new java.awt.Color(197, 206, 213));
+        lblPreg.setForeground(new java.awt.Color(0, 0, 0));
+        lblPreg.setText("Pregunta");
+        lblPreg.setAutoscrolls(true);
+        lblPreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblres1.setBackground(new java.awt.Color(197, 206, 213));
+        lblres1.setForeground(new java.awt.Color(0, 0, 0));
+        lblres1.setText("Respuesta 1");
+        lblres1.setAutoscrolls(true);
+        lblres1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        res1.setText("INGRESE INCISO");
+        res1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                res1FocusGained(evt);
+            }
+        });
+        res1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                res1ActionPerformed(evt);
+            }
+        });
+
+        lblres2.setBackground(new java.awt.Color(197, 206, 213));
+        lblres2.setForeground(new java.awt.Color(0, 0, 0));
+        lblres2.setText("Respuesta 2");
+        lblres2.setAutoscrolls(true);
+        lblres2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        res2.setText("INGRESE INCISO");
+        res2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                res2FocusGained(evt);
+            }
+        });
+
+        lblres3.setBackground(new java.awt.Color(197, 206, 213));
+        lblres3.setForeground(new java.awt.Color(0, 0, 0));
+        lblres3.setText("Respuesta 3");
+        lblres3.setAutoscrolls(true);
+        lblres3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        res3.setText("INGRESE INCISO");
+        res3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                res3FocusGained(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Sitka Small", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("INGRESE LOS DATOS CORRESPONDIENTES A LA MODIFICACIÓN;)");
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 2, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Marque únicamente la respuesta correcta*");
+
+        cancelpanel.setText("Cancelar");
+        cancelpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelpanelMouseClicked(evt);
+            }
+        });
+
+        Save.setText("Guardar");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+
+        preg.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        preg.setText("INGRESE LA PREGUNTA");
+        preg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pregFocusGained(evt);
+            }
+        });
+        jScrollPane2.setViewportView(preg);
+
+        btnhecho.setText("Hecho");
+        btnhecho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnhechoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelcamposLayout = new javax.swing.GroupLayout(Panelcampos);
+        Panelcampos.setLayout(PanelcamposLayout);
+        PanelcamposLayout.setHorizontalGroup(
+            PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelcamposLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(PanelcamposLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelcamposLayout.createSequentialGroup()
+                                .addGap(613, 613, 613)
+                                .addComponent(checkres1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelcamposLayout.createSequentialGroup()
+                                .addComponent(btnhecho)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancelpanel)
+                                .addGap(18, 18, 18)
+                                .addComponent(Save)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(PanelcamposLayout.createSequentialGroup()
+                                    .addComponent(lbltema, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(65, 65, 65)
+                                    .addComponent(temapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelcamposLayout.createSequentialGroup()
+                                    .addComponent(lblsubt, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(65, 65, 65)
+                                    .addComponent(subtemapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(PanelcamposLayout.createSequentialGroup()
+                                                .addComponent(lblres3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(65, 65, 65)
+                                                .addComponent(res3))
+                                            .addGroup(PanelcamposLayout.createSequentialGroup()
+                                                .addComponent(lblres2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(65, 65, 65)
+                                                .addComponent(res2))
+                                            .addGroup(PanelcamposLayout.createSequentialGroup()
+                                                .addComponent(lblres1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(65, 65, 65)
+                                                .addComponent(res1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(checkres2)
+                                            .addComponent(checkres3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(PanelcamposLayout.createSequentialGroup()
+                                            .addGap(217, 217, 217)
+                                            .addComponent(jScrollPane2))
+                                        .addGroup(PanelcamposLayout.createSequentialGroup()
+                                            .addComponent(lblPreg, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(485, 485, 485))))))
+                        .addContainerGap(52, Short.MAX_VALUE))))
+        );
+        PanelcamposLayout.setVerticalGroup(
+            PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelcamposLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbltema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(temapreg, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                        .addComponent(checkres1)
+                        .addGap(131, 131, 131))
+                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblsubt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(subtemapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPreg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblres1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(res1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblres2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(res2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(checkres2))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblres3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(res3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(checkres3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelpanel)
+                    .addComponent(Save)
+                    .addComponent(btnhecho))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
+        contenedor.setLayout(contenedorLayout);
+        contenedorLayout.setHorizontalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLayout.createSequentialGroup()
+                .addContainerGap(215, Short.MAX_VALUE)
+                .addComponent(cancelar)
+                .addGap(18, 18, 18)
+                .addComponent(npreg)
+                .addGap(18, 18, 18)
+                .addComponent(campospreg)
+                .addGap(167, 167, 167))
+            .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenedorLayout.createSequentialGroup()
+                    .addGap(98, 98, 98)
+                    .addComponent(Panelcampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(99, Short.MAX_VALUE)))
+        );
+        contenedorLayout.setVerticalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLayout.createSequentialGroup()
+                .addContainerGap(522, Short.MAX_VALUE)
+                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelar)
+                    .addComponent(npreg)
+                    .addComponent(campospreg))
+                .addGap(20, 20, 20))
+            .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenedorLayout.createSequentialGroup()
+                    .addGap(37, 37, 37)
+                    .addComponent(Panelcampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(69, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
         // TODO add your handling code here:
-        PantPrincipalAdmin regresomodif = new PantPrincipalAdmin();
-        regresomodif.setVisible(true);
+        PantPrincipalAdmin pnuevo = new PantPrincipalAdmin();
+        pnuevo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarMouseClicked
 
     private void npregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_npregMouseClicked
         // TODO add your handling code here:
-        CamposPModif.setPosicion(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de pregunta\n(puede consultarlo en el campo 'Mostrar todo')")));
+        this.numeropreg = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de pregunta\n(Puede consultarlo en el campo 'Mostrar Todo')"));
+        npreg.setEnabled(false);
         campospreg.setEnabled(true);
     }//GEN-LAST:event_npregMouseClicked
 
+    private void temapregFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_temapregFocusGained
+        // TODO add your handling code here:
+        temapreg.selectAll();
+    }//GEN-LAST:event_temapregFocusGained
+
+    private void subtemapregFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subtemapregFocusGained
+        // TODO add your handling code here:
+        subtemapreg.selectAll();
+    }//GEN-LAST:event_subtemapregFocusGained
+
+    private void subtemapregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtemapregActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subtemapregActionPerformed
+
+    private void res1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_res1FocusGained
+        // TODO add your handling code here:
+        res1.selectAll();
+    }//GEN-LAST:event_res1FocusGained
+
+    private void res1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_res1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_res1ActionPerformed
+
+    private void res2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_res2FocusGained
+        // TODO add your handling code here:
+        res2.selectAll();
+    }//GEN-LAST:event_res2FocusGained
+
+    private void res3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_res3FocusGained
+        // TODO add your handling code here:
+        res3.selectAll();
+    }//GEN-LAST:event_res3FocusGained
+
+    private void cancelpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelpanelMouseClicked
+        // TODO add your handling code here:
+        Panelcampos.setVisible(false);
+        temapreg.setText(null);
+        subtemapreg.setText(null);
+        preg.setText(null);
+        res1.setText(null);
+        res2.setText(null);
+        res3.setText(null);
+        this.numeropreg = 0;
+        campospreg.setEnabled(false);
+    }//GEN-LAST:event_cancelpanelMouseClicked
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        // TODO add your handling code here:
+        String tema = temapreg.getText().trim();
+        if(tema.isEmpty()||tema.equalsIgnoreCase("INGRESE EL TEMA AL CUAL PERTENECE LA PREGUNTA")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el tema de la pregunta");
+            return;
+        }
+        String subtema = subtemapreg.getText().trim();
+        if(subtema.isEmpty()|| subtema.equalsIgnoreCase("INGRESE EL SUBTEMA DE LA PREGUNTA")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el subtema de la pregunta");
+            return;
+        }
+        String prg = preg.getText().trim();
+        if(prg.isEmpty()|| prg.equalsIgnoreCase("INGRESE LA PREGUNTA")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el cuerpo de la pregunta");
+            return;
+        }
+        String r1 = res1.getText();
+        if(r1.isEmpty()|| r1.equalsIgnoreCase("INGRESE INCISO")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
+            return;
+        }
+        String r2 = res2.getText();
+        if(r2.isEmpty()||r2.equalsIgnoreCase("INGRESE INCISO")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
+            return;
+        }
+        String r3 = res3.getText();
+        if(r3.isEmpty()|| r3.equalsIgnoreCase("INGRESE INCISO")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el inciso");
+            return;
+        }
+        boolean bres1 = checkres1.isSelected();
+        boolean bres2 = checkres2.isSelected();
+        boolean bres3 = checkres3.isSelected();
+        if(bres1 == false && bres2 == false && bres3==false){
+            JOptionPane.showMessageDialog(null, "No ha marcado la casilla de la pregunta correcta");
+            return;
+        }
+        try{
+            AccesoAleatorioP.creaArchPreg(new File ("Preguntas.dat"));
+            AccesoAleatorioP.setPregunta(numeropreg, new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3));
+            AccesoAleatorioP.cierraflujo();
+            JOptionPane.showMessageDialog(null, "¡Pregunta agregada correctamente!");
+            btnhecho.setVisible(true);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        temapreg.setText(null);
+        subtemapreg.setText(null);
+        preg.setText(null);
+        res1.setText(null);
+        res2.setText(null);
+        res3.setText(null);
+    }//GEN-LAST:event_SaveActionPerformed
+
+    private void pregFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pregFocusGained
+        // TODO add your handling code here:
+        preg.selectAll();
+    }//GEN-LAST:event_pregFocusGained
+
+    private void btnhechoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnhechoMouseClicked
+        // TODO add your handling code here:
+        PantPrincipalAdmin p4 = new PantPrincipalAdmin();
+        p4.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnhechoMouseClicked
+
     private void campospregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campospregMouseClicked
         // TODO add your handling code here:
-        contenedor.add(cpm);
+        Panelcampos.setVisible(true);
     }//GEN-LAST:event_campospregMouseClicked
 
     /**
@@ -146,10 +558,31 @@ public class Modifpreg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panelcampos;
+    private javax.swing.JButton Save;
+    private javax.swing.JButton btnhecho;
     private javax.swing.JButton campospreg;
     private javax.swing.JButton cancelar;
+    private javax.swing.JButton cancelpanel;
+    private javax.swing.JCheckBox checkres1;
+    private javax.swing.JCheckBox checkres2;
+    private javax.swing.JCheckBox checkres3;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblPreg;
+    private javax.swing.JLabel lblres1;
+    private javax.swing.JLabel lblres2;
+    private javax.swing.JLabel lblres3;
+    private javax.swing.JLabel lblsubt;
+    private javax.swing.JLabel lbltema;
     private javax.swing.JButton npreg;
-    private javax.swing.JPanel panelbotones;
+    private javax.swing.JTextField preg;
+    private javax.swing.JTextField res1;
+    private javax.swing.JTextField res2;
+    private javax.swing.JTextField res3;
+    private javax.swing.JTextField subtemapreg;
+    private javax.swing.JTextField temapreg;
     // End of variables declaration//GEN-END:variables
 }

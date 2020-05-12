@@ -183,6 +183,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newUsernameFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="newpass">
               <Properties>
@@ -192,6 +195,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newpassFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btncancelar">
               <Properties>

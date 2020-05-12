@@ -37,7 +37,10 @@ public class Pregunta implements Serializable {
     
     
     public int getTamaño(){
-        return 0; // recordar modificar QUITAR
+        int suma;
+        suma = ((Tema.length())*2)+ ((Subt.length())*2)+((pregunta.length())*2)+ ((res1.length())*2)
+                +((res2.length())*2)+((res3.length())*2)+12+3;
+        return suma;
     }
 
     public String getTema() {

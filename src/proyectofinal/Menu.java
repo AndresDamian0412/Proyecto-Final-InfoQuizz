@@ -2,6 +2,7 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -245,18 +246,21 @@ public class Menu extends javax.swing.JFrame {
     private void btnloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMouseClicked
         // TODO add your handling code here:
         String user, pass;
-        user = nomUser.getText();
-        pass = passwordUser.getText();
-        
-        if(user.equalsIgnoreCase("Admin")&&pass.equalsIgnoreCase("password")){
-            PantPrincipalAdmin p1 = new PantPrincipalAdmin();
-            p1.setVisible(true);
-            p1.setResizable(false);
-            p1.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(null,"¡Usuario o contraseña incorrectos!");
+        user = nomUser.getText().trim();
+        char[]arrayclave = passwordUser.getPassword();
+        String clave = new String(arrayclave).trim();
+        String clavereal = user.concat(clave);
+        if(user.isEmpty() || clave.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+            return;
         }
+        try{
+            AccesoAleatorioU.creaArchUser(new File("Usuarios.dat"));
+        }catch(IOException e){
+            
+        }
+        
+       
     }//GEN-LAST:event_btnloginMouseClicked
 
     private void botonuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonuserMouseClicked

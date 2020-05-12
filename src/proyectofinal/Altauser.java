@@ -7,6 +7,7 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -93,8 +94,18 @@ public class Altauser extends javax.swing.JFrame {
         });
 
         newUsername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newUsernameFocusGained(evt);
+            }
+        });
 
         newpass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newpass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newpassFocusGained(evt);
+            }
+        });
 
         btncancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btncancelar.setText("Cancelar");
@@ -184,7 +195,37 @@ public class Altauser extends javax.swing.JFrame {
 
     private void btncreauserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncreauserMouseClicked
         // TODO add your handling code here:
+        String user = newUsername.getText().trim();
+        if(user.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el nombre de usuario");
+            return;
+        }
+        char[] arraypass = newpass.getPassword();
+        String pass = new String(arraypass);
+        String clavereal = user.concat(pass);
+        if(pass.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No se ha ingresado la contraseña");
+            return;
+        }
+        try{
+            AccesoAleatorioU.creaArchUser(new File("Usuarios.dat"));
+            AccesoAleatorioU.añadeUsuario(new Usuario(user,clavereal));
+            AccesoAleatorioU.cierraflujo();
+            JOptionPane.showMessageDialog(null, "¡Usuario registrado con éxito!");
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Error al registrar usuario");
+        }
     }//GEN-LAST:event_btncreauserMouseClicked
+
+    private void newUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUsernameFocusGained
+        // TODO add your handling code here:
+        newUsername.selectAll();
+    }//GEN-LAST:event_newUsernameFocusGained
+
+    private void newpassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newpassFocusGained
+        // TODO add your handling code here:
+        newpass.selectAll();
+    }//GEN-LAST:event_newpassFocusGained
 
     /**
      * @param args the command line arguments

@@ -120,7 +120,7 @@ public class ConsultAll extends javax.swing.JFrame {
             // TODO add your handling code here:
             File archlect = new File("Preguntas.dat");
             RandomAccessFile entrada = new RandomAccessFile(archlect,"r");
-            int Numpreg = (int)Math.ceil((double)entrada.length()/800);
+            int Numpreg = (int)Math.ceil((double)entrada.length()/1200);
             String tema,subt,preg,res1,res2,res3,c1,c2,c3;
             boolean b1,b2,b3;
             for (int i=0; i <= Numpreg ; i++){
