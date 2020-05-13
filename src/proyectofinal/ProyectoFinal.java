@@ -14,6 +14,8 @@ import javax.swing.JFrame;
  */
 public class ProyectoFinal {
 
+    // clase principal
+    
     /**
      * @param args the command line arguments
      */

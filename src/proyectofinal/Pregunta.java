@@ -12,11 +12,11 @@ import java.io.Serializable;
  * @author andre
  */
 public class Pregunta implements Serializable {
-    
+    // clase pregunta,  para crear objetos de tipo pregunta
     String Tema;
     String Subt;
     String pregunta;
-    String res1;
+    String res1;  //atributos de la clase
     String res2;
     String res3;
     boolean bres1;
@@ -27,7 +27,7 @@ public class Pregunta implements Serializable {
         this.bres1 = br1;
         this.bres2 = br2;
         this.bres3 = br3;
-        this.Tema = tem;
+        this.Tema = tem;            //constructor
         this.Subt = subt;
         this.pregunta = preg;
         this.res1 = r1;
@@ -36,13 +36,14 @@ public class Pregunta implements Serializable {
     }
     
     
-    public int getTamaño(){
+    public int getTamaño(){ // regresa tamaño del objeto pregunta
         int suma;
         suma = ((Tema.length())*2)+ ((Subt.length())*2)+((pregunta.length())*2)+ ((res1.length())*2)
                 +((res2.length())*2)+((res3.length())*2)+12+3;
         return suma;
     }
 
+    // getters
     public String getTema() {
         return Tema;
     }
@@ -57,7 +58,7 @@ public class Pregunta implements Serializable {
     
     public String getRes1(){
         return res1;
-    }
+    } 
     
     public String getRes2(){
         return res2;

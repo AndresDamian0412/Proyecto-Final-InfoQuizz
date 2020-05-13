@@ -391,6 +391,7 @@ public class Modifpreg extends javax.swing.JFrame {
 
     private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
         // TODO add your handling code here:
+        //cierra este frame y abre uno del tipo PantallaPrincipal
         PantPrincipalAdmin pnuevo = new PantPrincipalAdmin();
         pnuevo.setVisible(true);
         this.dispose();
@@ -398,9 +399,10 @@ public class Modifpreg extends javax.swing.JFrame {
 
     private void npregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_npregMouseClicked
         // TODO add your handling code here:
+        //Obtiene la posicion de la pregunta que se va a modificar
         this.numeropreg = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de pregunta\n(Puede consultarlo en el campo 'Mostrar Todo')"));
-        npreg.setEnabled(false);
-        campospreg.setEnabled(true);
+        npreg.setEnabled(false); // desactiva boton 
+        campospreg.setEnabled(true); // avtiba boton
     }//GEN-LAST:event_npregMouseClicked
 
     private void temapregFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_temapregFocusGained
@@ -438,19 +440,22 @@ public class Modifpreg extends javax.swing.JFrame {
 
     private void cancelpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelpanelMouseClicked
         // TODO add your handling code here:
-        Panelcampos.setVisible(false);
-        temapreg.setText(null);
+        Panelcampos.setVisible(false); //quita el panel de campos de llenado
+        temapreg.setText(null); //vacia los campos
         subtemapreg.setText(null);
         preg.setText(null);
         res1.setText(null);
         res2.setText(null);
         res3.setText(null);
-        this.numeropreg = 0;
-        campospreg.setEnabled(false);
+        this.numeropreg = 0; //vacia el numero buscado
+        campospreg.setEnabled(false); // desactiva el panel
     }//GEN-LAST:event_cancelpanelMouseClicked
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         // TODO add your handling code here:
+        
+        //guarda las variables, borra los espacios al inicio y final, y comprueba que no esten vacias y/o tengan
+        //lo que tiene escrito el textfield como instruccion
         String tema = temapreg.getText().trim();
         if(tema.isEmpty()||tema.equalsIgnoreCase("INGRESE EL TEMA AL CUAL PERTENECE LA PREGUNTA")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el tema de la pregunta");
@@ -482,13 +487,14 @@ public class Modifpreg extends javax.swing.JFrame {
             return;
         }
         boolean bres1 = checkres1.isSelected();
-        boolean bres2 = checkres2.isSelected();
+        boolean bres2 = checkres2.isSelected(); // guarda booleanos
         boolean bres3 = checkres3.isSelected();
-        if(bres1 == false && bres2 == false && bres3==false){
+        if(bres1 == false && bres2 == false && bres3==false){ // comprueba que al menos uno este seleccionado
             JOptionPane.showMessageDialog(null, "No ha marcado la casilla de la pregunta correcta");
             return;
         }
         try{
+            //inicia el flujo y trata de modificar la pregunta, aun esta en desarrollo
             AccesoAleatorioP.creaArchPreg(new File ("Preguntas.dat"));
             AccesoAleatorioP.setPregunta(numeropreg, new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3));
             AccesoAleatorioP.cierraflujo();

@@ -17,6 +17,8 @@ public class PantPrincipalUser extends javax.swing.JFrame {
     /**
      * Creates new form PantPrincipalUser
      */
+    
+    //recien creada, solo muestra el inicio de la pantalla de usuario
     public PantPrincipalUser() {
         initComponents();
         Toolkit mipantalla2 = Toolkit.getDefaultToolkit();
