@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
     
     public Menu() {
+        // diseño predefinido de cada frame
         initComponents();
         Toolkit mipantalla2 = Toolkit.getDefaultToolkit();
         setSize(1017,575);
@@ -18,12 +19,12 @@ public class Menu extends javax.swing.JFrame {
         Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
         
-        rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/atrasportada.png");
-        Login.setVisible(false);
+        rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/atrasportada.png"); //ajusta imagen a una etiqueta
+        Login.setVisible(false); // hace invisible el panel login
        
         //Objeto jPanel con color VistaColor
         jpColor jpVista = new jpColor();
-        jpVista.setSize(this.getSize());
+        jpVista.setSize(this.getSize());  // color degradado de los frame
         jpVista.setVistaColor(153,206,195,0,0,0);
         panelmenu.add(jpVista);
          
@@ -221,16 +222,16 @@ public class Menu extends javax.swing.JFrame {
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
-        Portada p2 = new Portada();
-        p2.setVisible(true);
-        p2.setResizable(false);
-        this.dispose();
+        Portada p2 = new Portada(); // Crea un objeto de tipo portada
+        p2.setVisible(true); // hace visible el frame
+        p2.setResizable(false); // impide que se agrande el tamaño
+        this.dispose(); // cierra el frame actual
     }//GEN-LAST:event_backMouseClicked
 
     private void atrasmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasmenuMouseClicked
         // TODO add your handling code here:
-        Login.setVisible(false);
-        botonuser.setVisible(true);
+        Login.setVisible(false); // boton atras hace invisible el panel login
+        botonuser.setVisible(true); // hace visible los botones usuario y nuevo usuario
         nuevouserbtn.setVisible(true);
         
     }//GEN-LAST:event_atrasmenuMouseClicked
@@ -245,29 +246,34 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMouseClicked
         // TODO add your handling code here:
-        String user;
-        user = nomUser.getText().trim();
-        char[]arrayclave = passwordUser.getPassword();
-        String clave = new String(arrayclave).trim();
-        String clavereal = user.concat(clave);
-        if(user.isEmpty() || clave.isEmpty()){
+        //acciones del boton entrar 
+        String user; // 
+        user = nomUser.getText().trim(); // en la variable usuario se guarda lo que se ingrese aal textfield
+        char[]arrayclave = passwordUser.getPassword(); // el campo de contraseña regresa un array 
+        String clave = new String(arrayclave).trim(); // se guarda el array en una cadena para mejor manejo y se borran
+                                                // espacios que pueda tener al inicio o al final
+        String clavereal = user.concat(clave); // para mayor seguridad la clave incluye el nombre de usuario 
+        if(user.isEmpty() || clave.isEmpty()){ // si estan vacios entra el return para que se reinicie
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
             return;
         }
+        // una vez comprobado que son correctos los datos inicia el flujo
         try{
-            AccesoAleatorioU.creaArchUser(new File("Usuarios.dat"));
-            if(AccesoAleatorioU.buscaUserypass(user, clavereal)==1){
-                PantPrincipalUser p1 = new PantPrincipalUser();
-                p1.setVisible(true);
-                this.dispose();
+            AccesoAleatorioU.creaArchUser(new File("Usuarios.dat")); // se llama al metodo para crear flujo
+            if(AccesoAleatorioU.buscaUserypass(user, clavereal)==1){ // si el metodo encuentra el usuario con contraseña
+                                                                // regresa 1 y nos da acceso a pantalla de usuario
+                PantPrincipalUser p1 = new PantPrincipalUser(); // crea objeto de clase pantalla usuario
+                p1.setVisible(true); // hace visible el frame
+                this.dispose(); // cierra el frame actual
+                // si no lo encuentra busca en archivo usuario
             }else if(user.equalsIgnoreCase("admin")&&clave.equalsIgnoreCase("password")){
                 PantPrincipalAdmin pmenu = new PantPrincipalAdmin();
-                pmenu.setVisible(true);
-                this.dispose();
+                pmenu.setVisible(true);  // comprobacion para admin, aun falta crear archivo
+                this.dispose(); // cierra el frame actual
             }else{
-                JOptionPane.showMessageDialog(null, "¡Usuario o contraseña incorrectos!");
+                JOptionPane.showMessageDialog(null, "¡Usuario o contraseña incorrectos!"); //
             }
-            
+            AccesoAleatorioU.cierraflujo(); // cierra el flujo
             
         }catch(IOException e){
             
@@ -278,17 +284,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void botonuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonuserMouseClicked
         // TODO add your handling code here:
-        botonuser.setVisible(false);
-        nuevouserbtn.setVisible(false);
-        Login.setVisible(true);
+        botonuser.setVisible(false); // boton user se hace invisible
+        nuevouserbtn.setVisible(false); // boton nuevo usuario invisible
+        Login.setVisible(true); // panel login visible
     }//GEN-LAST:event_botonuserMouseClicked
 
     private void nuevouserbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevouserbtnMouseClicked
         // TODO add your handling code here:
-        Altauser a1 = new Altauser();
-        a1.setVisible(true);
-        a1.setResizable(false);
-        dispose();
+        Altauser a1 = new Altauser(); // crea objeto de clase Alta user
+        a1.setVisible(true); //hace visible el frame 
+        a1.setResizable(false); // no permite agrandarlo
+        dispose(); // cierra este frame
     }//GEN-LAST:event_nuevouserbtnMouseClicked
 
     /**

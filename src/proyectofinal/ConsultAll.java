@@ -19,6 +19,7 @@ public class ConsultAll extends javax.swing.JFrame {
     /**
      * Creates new form ConsultAll
      */
+    //esto es el diseño predefinido de cada pantalla
     public ConsultAll() {
         initComponents();
         Toolkit mipantalla5 = Toolkit.getDefaultToolkit();
@@ -28,12 +29,12 @@ public class ConsultAll extends javax.swing.JFrame {
         Image Icono = mipantalla5.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
-        back.setVisible(false);
-        contenedorpreg.setEditable(false);
+        back.setVisible(false); //hace invisible el boton back
+        contenedorpreg.setEditable(false); // no permite que se escriba dentro del text area
         
         //Objeto jPanel con color VistaColor
         jpColor jpVista6 = new jpColor();
-        jpVista6.setSize(this.getSize());
+        jpVista6.setSize(this.getSize());       //diseño del frame
         jpVista6.setVistaColor(153,206,195,0,0,0);
         panelconsultall.add(jpVista6);
     }
@@ -116,43 +117,44 @@ public class ConsultAll extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void muestrapregsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_muestrapregsMouseClicked
+        //boton que ayuda a mostrar todas las preguntas
         try {
             // TODO add your handling code here:
-            File archlect = new File("Preguntas.dat");
-            RandomAccessFile entrada = new RandomAccessFile(archlect,"r");
-            int Numpreg = (int)Math.ceil((double)entrada.length()/1200);
-            String tema,subt,preg,res1,res2,res3,c1,c2,c3;
-            boolean b1,b2,b3;
-            for (int i=0; i <= Numpreg ; i++){
-                b1 = false; b2 = false; b3 = false;
-                c1 = "Incorrecta"; c2 = "Incorrecta"; c3 = "Incorrecta";
-                entrada.seek(i*800);
-                tema = entrada.readUTF();
-                subt = entrada.readUTF();
-                preg = entrada.readUTF();
-                res1 = entrada.readUTF();
-                b1 = entrada.readBoolean();
-                res2 = entrada.readUTF();
-                b2 = entrada.readBoolean();
-                res3 = entrada.readUTF();
-                b3 = entrada.readBoolean();
+            File archlect = new File("Preguntas.dat"); //crea un objeto de tipo file con la direccion del archivo de preguntas
+            RandomAccessFile entrada = new RandomAccessFile(archlect,"r"); // crea el flujo de solo lectura
+            int Numpreg = (int)Math.ceil((double)entrada.length()/1200); //obtiene el numero de preguntas
+            String tema,subt,preg,res1,res2,res3,c1,c2,c3; // variables que guardan los datos de cada pregunta
+            boolean b1,b2,b3; // boleanos para ver cual es la correcta
+            for (int i=0; i <= Numpreg ; i++){ // ciclo para leer todas las preguntas
+                b1 = false; b2 = false; b3 = false; // siempre se inicializan en falso para que no se repitan los valores
+                c1 = "Incorrecta"; c2 = "Incorrecta"; c3 = "Incorrecta"; // siempre son incorrectas por la misma razon anterior
+                entrada.seek(i*800); // se posiciona en cada inicio de pregunta
+                tema = entrada.readUTF(); // guarda tema
+                subt = entrada.readUTF(); // guarda subtema
+                preg = entrada.readUTF(); // guarda pregunta
+                res1 = entrada.readUTF(); // guarda inciso
+                b1 = entrada.readBoolean(); // guarda booleano de inciso
+                res2 = entrada.readUTF(); // guarda inciso
+                b2 = entrada.readBoolean(); //guarda booleano de inciso
+                res3 = entrada.readUTF(); // guarda inciso
+                b3 = entrada.readBoolean(); // guarda booleano de inciso
                 
                 if(b1 == true)
                     c1 = "Correcta";
                 if(b2 ==true)
-                    c2 = "Correcta";
+                    c2 = "Correcta";  //comprueba cual es el booleano correcto
                 if(b3 == true)
                     c3 = "Correcta";
 
-                contenedorpreg.append("Pregunta "+(i+1)+"\n");
-                contenedorpreg.append(tema+"\n");
-                contenedorpreg.append(subt+"\n");
-                contenedorpreg.append(preg+"\n");
-                contenedorpreg.append(res1+"-------"+c1+"\n");
-                contenedorpreg.append(res2+"-------"+c2+"\n");
-                contenedorpreg.append(res3+"-------"+c3+"\n");
-                contenedorpreg.append("\n");
-                contenedorpreg.append("*****************************************");
+                contenedorpreg.append("Pregunta "+(i+1)+"\n"); // escribe un numero de pregunta leido
+                contenedorpreg.append(tema+"\n"); // imprime tema
+                contenedorpreg.append(subt+"\n"); // imprime subtema
+                contenedorpreg.append(preg+"\n"); // imprime pregunta
+                contenedorpreg.append(res1+"-------"+c1+"\n"); // imprime respuesta y si es o no correcta
+                contenedorpreg.append(res2+"-------"+c2+"\n"); // imprime respuesta y si es o no correcta
+                contenedorpreg.append(res3+"-------"+c3+"\n"); // imprime respuesta y si es o no correcta
+                contenedorpreg.append("\n"); 
+                contenedorpreg.append("*****************************************"); // detalle de vista
                 contenedorpreg.append("\n");
             }
         } catch (FileNotFoundException ex) {
@@ -160,15 +162,16 @@ public class ConsultAll extends javax.swing.JFrame {
         }catch(IOException e){
             
         }
-        back.setVisible(true);
-        muestrapregs.setEnabled(false);
+        back.setVisible(true); // hace visible el boton back
+        muestrapregs.setEnabled(false); // desactiva el boton mostrar preguntas
     }//GEN-LAST:event_muestrapregsMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
-        PantPrincipalAdmin p = new PantPrincipalAdmin();
-        p.setVisible(true);
-        this.dispose();
+        
+        PantPrincipalAdmin p = new PantPrincipalAdmin(); // crea un objeto de tipo pantalla usuario
+        p.setVisible(true); // hace visible el frame
+        this.dispose(); // cierra el frame
     }//GEN-LAST:event_backMouseClicked
 
     /**
