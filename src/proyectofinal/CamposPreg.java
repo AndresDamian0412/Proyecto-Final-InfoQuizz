@@ -7,7 +7,7 @@ package proyectofinal;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.Toolkit; //paquetes importados
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -22,22 +22,22 @@ public class CamposPreg extends javax.swing.JFrame {
      * Creates new form CamposPreg
      */
     public CamposPreg() {
-        initComponents();
-        Toolkit mipantalla4 = Toolkit.getDefaultToolkit();
-        setSize(1017,575);
-        setLocationRelativeTo(null);
-        setTitle("InfoQuizz");
-        Image Icono = mipantalla4.getImage("src/proyectofinal/imagenes/preview.jpeg");
-        setIconImage(Icono);
-        setResizable(false);
+        initComponents();  //los cambios que se hacen aqui se guardan en esta funcion autogenerada
+        Toolkit mipantalla4 = Toolkit.getDefaultToolkit(); //obtiene informacion de la pantalla y lo guarda en el objeto
+        setSize(1017,575); // establece el tamaño de la pantalla 
+        setLocationRelativeTo(null); // establece la posicion de la pantalla en el centro
+        setTitle("InfoQuizz"); //Establece el titulo
+        Image Icono = mipantalla4.getImage("src/proyectofinal/imagenes/preview.jpeg"); //Se crea un objeto de tipo Image
+        setIconImage(Icono); // Se usa el objeto image para colocar icono
+        setResizable(false); //esto impode que agranden la pantalla
         
         //Objeto jPanel con color VistaColor
         jpColor jpVista5 = new jpColor();
-        jpVista5.setSize(this.getSize());
+        jpVista5.setSize(this.getSize());  //esta funcion hace el color degradado en el panel
         jpVista5.setVistaColor(153,206,195,0,0,0);
         panelform.add(jpVista5);
         
-        btnhecho.setVisible(false);
+        btnhecho.setVisible(false); // Hace invisible el boton hecho
     }
 
     /**
@@ -338,7 +338,7 @@ public class CamposPreg extends javax.swing.JFrame {
     private void res1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_res1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_res1ActionPerformed
-
+// todos los focus gained seleccionan el texto de los textfield para facilitar la escritura en ellos
     private void temapregFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_temapregFocusGained
         // TODO add your handling code here:
         temapreg.selectAll();
@@ -370,19 +370,22 @@ public class CamposPreg extends javax.swing.JFrame {
     }//GEN-LAST:event_res3FocusGained
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        // TODO add your handling code here:
-        PantPrincipalAdmin p3 = new PantPrincipalAdmin();
-        p3.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here: // acciones del boton cancelar
+        PantPrincipalAdmin p3 = new PantPrincipalAdmin(); // crea un objeto de tipo pantalla principal
+        p3.setVisible(true); // hace visible el frame
+        this.dispose(); //cierra este frame
     }//GEN-LAST:event_cancelMouseClicked
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        // TODO add your handling code here:
-        String tema = temapreg.getText().trim();
-        if(tema.isEmpty()||tema.equalsIgnoreCase("INGRESE EL TEMA AL CUAL PERTENECE LA PREGUNTA")){
+        // TODO add your handling code here: 
+        //boton que crea la pregunta en el archivo
+        String tema = temapreg.getText().trim(); //guarda el tema y quita los espacios al inicio y final
+        if(tema.isEmpty()||tema.equalsIgnoreCase("INGRESE EL TEMA AL CUAL PERTENECE LA PREGUNTA")){ 
+            //comprueba que no este vacio y que no este escrito la instruccion que ya esta escrita ene l texfield
             JOptionPane.showMessageDialog(null, "No ha ingresado el tema de la pregunta"); 
             return;
         }
+        //las comprobaciones se hacen para todos los textfield
         String subtema = subtemapreg.getText().trim();
         if(subtema.isEmpty()|| subtema.equalsIgnoreCase("INGRESE EL SUBTEMA DE LA PREGUNTA")){
             JOptionPane.showMessageDialog(null, "No ha ingresado el subtema de la pregunta");
@@ -409,23 +412,24 @@ public class CamposPreg extends javax.swing.JFrame {
             return;
         }
         boolean bres1 = checkres1.isSelected();
-        boolean bres2 = checkres2.isSelected();
+        boolean bres2 = checkres2.isSelected(); // se guardan los valores booleanos de cada pregunta 
         boolean bres3 = checkres3.isSelected();
-        if(bres1 == false && bres2 == false && bres3==false){
+        if(bres1 == false && bres2 == false && bres3==false){ // comprueba que al menos una este seleccionada
             JOptionPane.showMessageDialog(null, "No ha marcado la casilla de la pregunta correcta");
             return;
         }
-        try{
-            AccesoAleatorioP.creaArchPreg(new File ("Preguntas.dat"));
-            AccesoAleatorioP.añadePreg(new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3));
-            AccesoAleatorioP.cierraflujo();
-            JOptionPane.showMessageDialog(null, "¡Pregunta agregada correctamente!");
-            btnhecho.setVisible(true);
+        try{ // intenta la escritura de la pregunta en el archivo
+            AccesoAleatorioP.creaArchPreg(new File ("Preguntas.dat")); // crea el flujo entre el archuivo
+            AccesoAleatorioP.añadePreg(new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3)); // envia un objeto
+                                                          // de tipo pregunta con los datos correspondientes a los campos llenados
+            AccesoAleatorioP.cierraflujo(); // despues de hacer la escritura cierra el flujo
+            JOptionPane.showMessageDialog(null, "¡Pregunta agregada correctamente!"); // si todo ssale bien, escribe mensaje de exito
+            btnhecho.setVisible(true); // hace el boton hecho visible
         }catch(IOException e){
             e.printStackTrace();
         }
         temapreg.setText(null);
-        subtemapreg.setText(null);
+        subtemapreg.setText(null); // borra lo que hay en los textfields para una mejor vusta 
         preg.setText(null);
         res1.setText(null);
         res2.setText(null);
@@ -434,9 +438,10 @@ public class CamposPreg extends javax.swing.JFrame {
 
     private void btnhechoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnhechoMouseClicked
         // TODO add your handling code here:
+        // cuando ya esta hecho el registro crea un objeto de clase Pantalla principal admin
         PantPrincipalAdmin p4 = new PantPrincipalAdmin();
-        p4.setVisible(true);
-        this.dispose();
+        p4.setVisible(true); // hace visible el frame 
+        this.dispose(); // cierra el frame actual
     }//GEN-LAST:event_btnhechoMouseClicked
 
     private void subtemapregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtemapregActionPerformed

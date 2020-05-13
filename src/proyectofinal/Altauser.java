@@ -22,16 +22,16 @@ public class Altauser extends javax.swing.JFrame {
      */
     
     public Altauser() {
-        initComponents();
-        Toolkit mipantalla2 = Toolkit.getDefaultToolkit();
-        setSize(1017,575);
-        setLocationRelativeTo(null);
-        setTitle("InfoQuizz");
-        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg");
-        setIconImage(Icono);
+        initComponents(); //los cambios que se hacen aqui se guardan en esta funcion autogenerada
+        Toolkit mipantalla2 = Toolkit.getDefaultToolkit(); //obtiene informacion de la pantalla y lo guarda en el objeto
+        setSize(1017,575);   // establece el tamaño de la pantalla 
+        setLocationRelativeTo(null); // establece la posicion de la pantalla en el centro
+        setTitle("InfoQuizz"); //Establece el titulo
+        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg"); //Se crea un objeto de tipo Image
+        setIconImage(Icono); // Se usa el objeto image para colocar icono
         
         //Objeto jPanel con color VistaColor
-        jpColor jpVista2 = new jpColor();
+        jpColor jpVista2 = new jpColor(); //esta funcion hace el color degradado en el panel
         jpVista2.setSize(this.getSize());
         jpVista2.setVistaColor(153,206,195,0,0,0);
         jPanel1.add(jpVista2);
@@ -179,37 +179,39 @@ public class Altauser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMouseClicked
-        // TODO add your handling code here:
-        Menu m3 = new Menu();
-        m3.setVisible(true);
-        m3.setResizable(false);
-        dispose();
+        // TODO add your handling code here:  //este es el codigo accion del boton cancelar
+        Menu m3 = new Menu(); // se crea un objeto de tipo Menu
+        m3.setVisible(true); // hace visible el frame
+        m3.setResizable(false); // impide que se modifique el tamaño del frame
+        dispose(); // cierra el frame actual
     }//GEN-LAST:event_btncancelarMouseClicked
 
     private void btncreauserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncreauserMouseClicked
-        // TODO add your handling code here:
-        String user = newUsername.getText().trim();
-        if(user.isEmpty()){
+        // TODO add your handling code here: // boton creacion de usuario
+        String user = newUsername.getText().trim();  //guarda lo que tiene el campo user y quita espacios al inicio y final con trim()
+        if(user.isEmpty()){ //Si esta vacio no pasa
             JOptionPane.showMessageDialog(null, "No ha ingresado el nombre de usuario");
-            return;
+            return; // el return sirve para reiniciar
         }
-        char[] arraypass = newpass.getPassword();
-        String pass = new String(arraypass);
-        String clavereal = user.concat(pass);
-        if(pass.isEmpty()){
+        char[] arraypass = newpass.getPassword(); //el campo contraseña regresa un array con los caracteres escritos
+        String pass = new String(arraypass);//se declara una variable para convertir el array en cadena
+        String clavereal = user.concat(pass); // para mayor seguridad la clave es el nombre de usuario y la conrseña juntos 
+                                            //pero esto no lo hace el usuario, lo hace el programa
+        if(pass.isEmpty()){ // si la clave esta vacia no entra al ciclo igual que la anterior
             JOptionPane.showMessageDialog(null, "No se ha ingresado la contraseña");
             return;
         }
-        try{
-            AccesoAleatorioU.creaArchUser(new File("Usuarios.dat"));
-            AccesoAleatorioU.añadeUsuario(new Usuario(user,clavereal));
-            AccesoAleatorioU.cierraflujo();
-            JOptionPane.showMessageDialog(null, "¡Usuario registrado con éxito!");
+        try{ // si los datos si estan llenos entra con el intento de la alta del usuario
+            AccesoAleatorioU.creaArchUser(new File("Usuarios.dat")); // usa el metodo para crear el flujo 
+            AccesoAleatorioU.añadeUsuario(new Usuario(user,clavereal)); // se usa el metodo crear usuario y se envia un objeto
+                                                                        // de tipo usuario con el usuario y la clave real
+            AccesoAleatorioU.cierraflujo(); // despues de la escritura se cierra el flujo
+            JOptionPane.showMessageDialog(null, "¡Usuario registrado con éxito!"); //si esto es cierto regresa mensaje de exito
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error al registrar usuario");
         }
     }//GEN-LAST:event_btncreauserMouseClicked
-
+//los focus gained siven para seleccionar lo escrito en caso de querer dar de alta otro usuario, es solo estetico
     private void newUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUsernameFocusGained
         // TODO add your handling code here:
         newUsername.selectAll();
