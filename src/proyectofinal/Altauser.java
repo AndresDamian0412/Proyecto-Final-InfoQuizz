@@ -7,7 +7,7 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
+import java.io.File;                //paquetes importados
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -35,13 +35,6 @@ public class Altauser extends javax.swing.JFrame {
         jpVista2.setSize(this.getSize());
         jpVista2.setVistaColor(153,206,195,0,0,0);
         jPanel1.add(jpVista2);
-        
-        jpColor jpVista3 = new jpColor();
-        jpVista3.setSize(this.getSize());
-        jpVista3.setVistaColor(153,206,195,153,206,153);
-        jPanel1.add(jpVista3);
-        
-        
     }
 
     /**

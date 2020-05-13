@@ -245,7 +245,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMouseClicked
         // TODO add your handling code here:
-        String user, pass;
+        String user;
         user = nomUser.getText().trim();
         char[]arrayclave = passwordUser.getPassword();
         String clave = new String(arrayclave).trim();
@@ -256,6 +256,19 @@ public class Menu extends javax.swing.JFrame {
         }
         try{
             AccesoAleatorioU.creaArchUser(new File("Usuarios.dat"));
+            if(AccesoAleatorioU.buscaUserypass(user, clavereal)==1){
+                PantPrincipalUser p1 = new PantPrincipalUser();
+                p1.setVisible(true);
+                this.dispose();
+            }else if(user.equalsIgnoreCase("admin")&&clave.equalsIgnoreCase("password")){
+                PantPrincipalAdmin pmenu = new PantPrincipalAdmin();
+                pmenu.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "¡Usuario o contraseña incorrectos!");
+            }
+            
+            
         }catch(IOException e){
             
         }
