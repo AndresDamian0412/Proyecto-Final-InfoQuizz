@@ -66,7 +66,12 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         jLabelmodif.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnConsultas.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
-        btnConsultas.setText("CONSULTAS");
+        btnConsultas.setText("VER DATOS DE USUARIOS");
+        btnConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultasMouseClicked(evt);
+            }
+        });
 
         btnModif.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
         btnModif.setText("MODIFICACIONES");
@@ -80,6 +85,11 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         backmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backmenuMouseClicked(evt);
+            }
+        });
+        backmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backmenuActionPerformed(evt);
             }
         });
 
@@ -209,6 +219,17 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         mp1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modifpMouseClicked
+
+    private void backmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backmenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backmenuActionPerformed
+
+    private void btnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseClicked
+        // TODO add your handling code here:
+        ConsultaUsers c1 = new ConsultaUsers();
+        c1.setVisible(true);
+        this. dispose();
+    }//GEN-LAST:event_btnConsultasMouseClicked
 
     /**
      * @param args the command line arguments

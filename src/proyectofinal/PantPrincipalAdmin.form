@@ -129,8 +129,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CONSULTAS"/>
+            <Property name="text" type="java.lang.String" value="VER DATOS DE USUARIOS"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultasMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnModif">
           <Properties>
@@ -149,6 +152,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backmenuMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backmenuActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnnewask">
