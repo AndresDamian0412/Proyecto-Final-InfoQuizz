@@ -111,11 +111,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbladver" min="-2" pref="193" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbladver1" min="-2" pref="207" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnComienza" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnSiguiente" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="scrollpreg" alignment="0" min="-2" pref="751" max="-2" attributes="0"/>
@@ -169,10 +167,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnComienza" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnSiguiente" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -292,13 +287,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Siguiente"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnComienza">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Comenzar"/>
-              </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnComienzaMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSiguienteMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>

@@ -23,6 +23,9 @@ public class Cuestionario extends javax.swing.JFrame {
     
     private static int numeroaleatorio; //para pregunta aleatoria
     private static int[] pasados;
+    private static int prgenArch;
+    private static int correctas=0;
+    private static int indice=0;
 
     /**
      * Creates new form Cuestionario
@@ -50,8 +53,11 @@ public class Cuestionario extends javax.swing.JFrame {
         txtIncisoa.setEditable(false);
         txtIncisob.setEditable(false);
         txtIncisoc.setEditable(false);
-        //al inicio el boton siguiente no está visible
-        btnSiguiente.setVisible(false);
+        
+        //muestra la primer pregunta
+        llenaArray();
+        muestraPreg(pasados[indice]);
+        indice++;
     }
 
     /**
@@ -81,7 +87,6 @@ public class Cuestionario extends javax.swing.JFrame {
         lbladver = new javax.swing.JLabel();
         lbladver1 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
-        btnComienza = new javax.swing.JButton();
         lblCuest = new javax.swing.JLabel();
         progresocuest = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -123,11 +128,9 @@ public class Cuestionario extends javax.swing.JFrame {
         lbladver1.setText("Seleccione la respuesta correcta*");
 
         btnSiguiente.setText("Siguiente");
-
-        btnComienza.setText("Comenzar");
-        btnComienza.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnComienzaMouseClicked(evt);
+                btnSiguienteMouseClicked(evt);
             }
         });
 
@@ -148,11 +151,9 @@ public class Cuestionario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbladver, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnComienza)
-                            .addGap(18, 18, 18)
                             .addComponent(btnSiguiente))
                         .addComponent(scrollpreg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -194,9 +195,7 @@ public class Cuestionario extends javax.swing.JFrame {
                         .addComponent(lbladver1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSiguiente)
-                            .addComponent(btnComienza))))
+                        .addComponent(btnSiguiente)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbladver)
                 .addContainerGap())
@@ -268,14 +267,14 @@ public class Cuestionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSubtActionPerformed
 
-    private void btnComienzaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComienzaMouseClicked
+    private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
         // TODO add your handling code here:
-        //experimental
-        btnComienza.setVisible(false);
-        btnSiguiente.setVisible(true);
+        if(comprueba() == true)
+            correctas++;
         limpiaCampos();
-        muestraPreg();
-    }//GEN-LAST:event_btnComienzaMouseClicked
+        muestraPreg(pasados[indice]);
+        indice++;
+    }//GEN-LAST:event_btnSiguienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -313,7 +312,6 @@ public class Cuestionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnComienza;
     private javax.swing.JButton btnSiguiente;
     private static javax.swing.JCheckBox checkA;
     private static javax.swing.JCheckBox checkB;
@@ -349,24 +347,15 @@ public static void limpiaCampos(){
     checkB.setSelected(false);
 }
 
-public static void muestraPreg(){
-    pasados = new int[150];
-    boolean bandera;
+public static void muestraPreg(int i){
+    pasados = new int[prgenArch];
+    boolean existe;
         try {
             File prg = new File("Preguntas.dat"); //archivo de preguntas
             RandomAccessFile flujopreguntas = new RandomAccessFile(prg,"r"); //randomaccessfile de solo lectura
-            int prgenArch = (int)Math.ceil((flujopreguntas.length()/1200)); //me dice el numero de preguntas en el archivo
+            prgenArch = (int)Math.ceil((flujopreguntas.length()/1200)); //me dice el numero de preguntas en el archivo
             
-            do{ //sirve para obtener un numero dentro del rango
-                bandera = false;
-                numeroaleatorio = (int)(Math.random()*100); //recibe un numero aleatorio
-                for(int i = 0;i<=pasados.length;i++){
-                    if(pasados[i]==numeroaleatorio)
-                        bandera=true;
-                }
-            }while(numeroaleatorio > prgenArch ||bandera==true);
-            
-            flujopreguntas.seek(numeroaleatorio*1200);
+            flujopreguntas.seek(i*1200);
             txtTema.setText(flujopreguntas.readUTF());
             txtSubt.setText(flujopreguntas.readUTF());
             txtPregunta.setText(flujopreguntas.readUTF());
@@ -424,6 +413,8 @@ public static boolean comprueba(){
         }
         return false;
 }
-    
-}
 
+    private static void llenaArray(){
+        
+    }
+}
