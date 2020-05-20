@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinal;
 
 import java.awt.Image;
@@ -22,14 +17,13 @@ import javax.swing.JOptionPane;
 public class Cuestionario extends javax.swing.JFrame {
     
     private static int numeroaleatorio; //para pregunta aleatoria
-    private static int[] pasados;
+    private static int[] numeros ;
     private static int prgenArch;
-    private static int correctas=0;
+    //private static int correctas=0;
     private static int indice=0;
+    
+    private static RandomAccessFile flujopreguntas;
 
-    /**
-     * Creates new form Cuestionario
-     */
     public Cuestionario() {
         initComponents();
         Toolkit mipantalla5 = Toolkit.getDefaultToolkit();
@@ -54,9 +48,13 @@ public class Cuestionario extends javax.swing.JFrame {
         txtIncisob.setEditable(false);
         txtIncisoc.setEditable(false);
         
-        //muestra la primer pregunta
-        llenaArray();
-        muestraPreg(pasados[indice]);
+        try {
+            //muestra la primer pregunta
+            llenaArray();
+        } catch (IOException ex) {
+            Logger.getLogger(Cuestionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        muestraPreg(numeros[indice]);
         indice++;
     }
 
@@ -270,9 +268,9 @@ public class Cuestionario extends javax.swing.JFrame {
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
         // TODO add your handling code here:
         if(comprueba() == true)
-            correctas++;
+          //  correctas++;
         limpiaCampos();
-        muestraPreg(pasados[indice]);
+        muestraPreg(numeros[indice]);
         indice++;
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
@@ -348,12 +346,9 @@ public static void limpiaCampos(){
 }
 
 public static void muestraPreg(int i){
-    pasados = new int[prgenArch];
-    boolean existe;
         try {
             File prg = new File("Preguntas.dat"); //archivo de preguntas
-            RandomAccessFile flujopreguntas = new RandomAccessFile(prg,"r"); //randomaccessfile de solo lectura
-            prgenArch = (int)Math.ceil((flujopreguntas.length()/1200)); //me dice el numero de preguntas en el archivo
+            flujopreguntas = new RandomAccessFile(prg,"r"); //randomaccessfile de solo lectura
             
             flujopreguntas.seek(i*1200);
             txtTema.setText(flujopreguntas.readUTF());
@@ -414,7 +409,35 @@ public static boolean comprueba(){
         return false;
 }
 
-    private static void llenaArray(){
+    private static void llenaArray() throws IOException{
+        prgenArch = (int)Math.ceil((flujopreguntas.length()/1200)); //me dice el numero de preguntas en el archivo
+        numeros = new int[prgenArch];
+        int maximo =prgenArch ;
+        int minimo = 0;
+        int longitud=prgenArch;
+        int elementos_en_array=0;
+        boolean existe;
+        int aleatorio;
         
+        
+        while(elementos_en_array < longitud){
+            
+            aleatorio= generaAleatorios(maximo,minimo);
+            existe = false;
+            for(int i=0;i<numeros.length && !existe;i++){
+                if(aleatorio == numeros[i])
+                    existe=true;
+            }
+            if(existe == false)
+                numeros[elementos_en_array++] = aleatorio;
+        }
+        for(int x=0;x<numeros.length;x++){
+            System.out.println(numeros[x]);
+        }
+    }
+    
+    private static int generaAleatorios(int maximo, int minimo){
+        int numaleatorio = (int)Math.floor(Math.random()*(minimo-maximo+1)+(maximo));
+        return numaleatorio;
     }
 }
