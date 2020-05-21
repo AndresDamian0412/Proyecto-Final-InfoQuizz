@@ -293,11 +293,16 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
         // TODO add your handling code here:
         boolean alto=false;
+        double porcentaje;
+        porcentaje = (100/pregenArch);
         salida++;
         cambio();
         alto=cambio();
             
         if(comprueba(numeros[i])){
+            if(progresocuest.getValue()<=100){
+            progresocuest.setValue(progresocuest.getValue()+(int)(Math.ceil(porcentaje)));
+            }
             correctas++;
         }
         limpiaCampos();
@@ -489,6 +494,11 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private boolean cambio(){
         if (salida>=pregenArch){
             if(nf<1){
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Resultados res=new Resultados();
                 res.setVisible(true);
                 this.dispose();
