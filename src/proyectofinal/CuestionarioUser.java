@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package proyectofinal;
 
 import java.awt.Image;
@@ -14,17 +19,18 @@ import javax.swing.JOptionPane;
  *
  * @author andre
  */
-public class Cuestionario extends javax.swing.JFrame {
+public class CuestionarioUser extends javax.swing.JFrame {
+    private static int[]numeros;
+    private static int i=0;
+    private static int pregenArch;
+    private static int correctas=0;
+    private static int salida=0;
+    private static int nf=0;
     
-    private static int numeroaleatorio; //para pregunta aleatoria
-    private static int[] numeros ;
-    private static int prgenArch;
-    //private static int correctas=0;
-    private static int indice=0;
-    
-    private static RandomAccessFile flujopreguntas;
-
-    public Cuestionario() {
+    /**
+     * Creates new form CuestionarioUser
+     */
+    public CuestionarioUser() throws IOException {
         initComponents();
         Toolkit mipantalla5 = Toolkit.getDefaultToolkit();
         setSize(1017,575);
@@ -40,7 +46,7 @@ public class Cuestionario extends javax.swing.JFrame {
         jpVista6.setVistaColor(153,206,195,0,0,0);
         jPanel1.add(jpVista6);
         
-        //hace los textfields no modificables
+         //hace los textfields no modificables
         txtTema.setEditable(false);
         txtSubt.setEditable(false);
         txtPregunta.setEditable(false);
@@ -48,14 +54,10 @@ public class Cuestionario extends javax.swing.JFrame {
         txtIncisob.setEditable(false);
         txtIncisoc.setEditable(false);
         
-        try {
-            //muestra la primer pregunta
-            llenaArray();
-        } catch (IOException ex) {
-            Logger.getLogger(Cuestionario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        muestraPreg(numeros[indice]);
-        indice++;
+        btnSiguiente.setVisible(false);
+        setPregenArch();
+        llenaArray();
+        JOptionPane.showMessageDialog(null, "**Si marcas dos casillas la respuesta\n se considerará erronea**");
     }
 
     /**
@@ -85,6 +87,8 @@ public class Cuestionario extends javax.swing.JFrame {
         lbladver = new javax.swing.JLabel();
         lbladver1 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
+        btnMuestraprimera = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         lblCuest = new javax.swing.JLabel();
         progresocuest = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -132,6 +136,20 @@ public class Cuestionario extends javax.swing.JFrame {
             }
         });
 
+        btnMuestraprimera.setText("Comienza");
+        btnMuestraprimera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMuestraprimeraMouseClicked(evt);
+            }
+        });
+
+        cancelar.setText("Cancelar");
+        cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -149,51 +167,58 @@ public class Cuestionario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbladver, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSiguiente))
                         .addComponent(scrollpreg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(scrollincic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
-                                .addComponent(scrollincib, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(scrollincia, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(checkA, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(checkB, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(checkC, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cancelar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnMuestraprimera)
+                                    .addGap(18, 18, 18))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(scrollincic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                                        .addComponent(scrollincib, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(scrollincia, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGap(44, 44, 44)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkA, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(checkB, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(checkC, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(btnSiguiente)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(txtTema, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtSubt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtTema, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSubt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkA))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollincib, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkB))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollincic, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkC))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(lbladver1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSiguiente)))
+                    .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkA))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollincib, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkB))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkC)
+                    .addComponent(scrollincic, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbladver1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSiguiente)
+                        .addComponent(btnMuestraprimera)
+                        .addComponent(cancelar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbladver)
                 .addContainerGap())
@@ -240,7 +265,7 @@ public class Cuestionario extends javax.swing.JFrame {
                         .addComponent(progresocuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,12 +292,40 @@ public class Cuestionario extends javax.swing.JFrame {
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
         // TODO add your handling code here:
-        if(comprueba() == true)
-          //  correctas++;
+        boolean alto=false;
+        salida++;
+        cambio();
+        alto=cambio();
+            
+        if(comprueba(numeros[i])){
+            correctas++;
+        }
         limpiaCampos();
-        muestraPreg(numeros[indice]);
-        indice++;
+        i++;
+        if(alto!=true)
+        muestraPreg(numeros[i]);
+       
     }//GEN-LAST:event_btnSiguienteMouseClicked
+
+    private void btnMuestraprimeraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMuestraprimeraMouseClicked
+        // TODO add your handling code here:
+        btnMuestraprimera.setVisible(false);
+        btnSiguiente.setVisible(true);
+        muestraPreg(numeros[i]);
+    }//GEN-LAST:event_btnMuestraprimeraMouseClicked
+
+    private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
+        // TODO add your handling code here:
+        int res=0;
+        res = JOptionPane.showConfirmDialog(null, "¿Seguro que quiere cancelar el cuestionario?"+"\n"+"Si sale ahora, todos su progreso se perderá");
+        if(res==0){
+            Menu mq = new Menu();
+            mq.setVisible(true);
+            this.dispose();
+        }else{
+            return;
+        }
+    }//GEN-LAST:event_cancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -291,26 +344,32 @@ public class Cuestionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cuestionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuestionarioUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cuestionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuestionarioUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cuestionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuestionarioUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cuestionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuestionarioUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cuestionario().setVisible(true);
+                try {
+                    new CuestionarioUser().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMuestraprimera;
     private javax.swing.JButton btnSiguiente;
+    private javax.swing.JButton cancelar;
     private static javax.swing.JCheckBox checkA;
     private static javax.swing.JCheckBox checkB;
     private static javax.swing.JCheckBox checkC;
@@ -333,22 +392,21 @@ public class Cuestionario extends javax.swing.JFrame {
     private static javax.swing.JTextField txtTema;
     // End of variables declaration//GEN-END:variables
 
-public static void limpiaCampos(){
-    txtTema.setText("");
-    txtSubt.setText("");
-    txtPregunta.setText("");
-    txtIncisoa.setText("");
-    txtIncisob.setText("");
-    txtIncisoc.setText("");
-    checkA.setSelected(false);
-    checkB.setSelected(false);
-    checkB.setSelected(false);
-}
-
-public static void muestraPreg(int i){
+    private static void limpiaCampos(){
+        txtTema.setText("");
+        txtSubt.setText("");
+        txtPregunta.setText("");
+        txtIncisoa.setText("");
+        txtIncisob.setText("");
+        txtIncisoc.setText("");
+        checkA.setSelected(false);
+        checkB.setSelected(false);
+        checkC.setSelected(false);
+    }
+    public static void muestraPreg(int i){
         try {
             File prg = new File("Preguntas.dat"); //archivo de preguntas
-            flujopreguntas = new RandomAccessFile(prg,"r"); //randomaccessfile de solo lectura
+            RandomAccessFile flujopreguntas = new RandomAccessFile(prg,"r"); //randomaccessfile de solo lectura
             
             flujopreguntas.seek(i*1200);
             txtTema.setText(flujopreguntas.readUTF());
@@ -360,26 +418,22 @@ public static void muestraPreg(int i){
             flujopreguntas.readBoolean();//salta el booleano
             txtIncisoc.setText(flujopreguntas.readUTF());
             flujopreguntas.readBoolean();
+            flujopreguntas.close();
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Cuestionario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Cuestionario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
     
-    
-}
-
-public static int getNumeroPreg(){
-    return numeroaleatorio;
-}
-
-public static boolean comprueba(){
+    public static boolean comprueba(int i){
         try {
             File preg = new File("Preguntas.dat");
             RandomAccessFile entrada = new RandomAccessFile(preg,"r");
-            boolean rc1,rc2,rc3;
-            entrada.seek(getNumeroPreg()*1200);
+            boolean rc1,rc2,rc3,rl1,rl2,rl3;
+            rc1=false; rc2=false; rc3=false; rl1=false; rl2=false; rl3=false;
+            entrada.seek(i*1200);
             entrada.readUTF();
             entrada.readUTF();
             entrada.readUTF();
@@ -389,55 +443,73 @@ public static boolean comprueba(){
             rc2 = entrada.readBoolean();
             entrada.readUTF();
             rc3 = entrada.readBoolean();
-            
-            if(rc1 == checkA.isSelected()){
-                if(rc2 == checkB.isSelected()){
-                    if(rc3 == checkC.isSelected()){
+            entrada.close();
+            if(checkA.isSelected()==true){rl1=true;}else{rl1=false;}
+            if(checkB.isSelected()==true){rl2=true;}else{rl2=false;}
+            if(checkC.isSelected()==true){rl3=true;}else{rl3=false;}
+            if(rc1 == rl1){
+                if(rc2 == rl2){
+                    if(rc3 == rl3){
                         return true;
                     }
                 }
                 return false;
             }
             return false;
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Cuestionario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "El archivo no esta en la ubicacion correcta");
-        } catch (IOException ex) {
-            Logger.getLogger(Cuestionario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-}
-
-    private static void llenaArray() throws IOException{
-        prgenArch = (int)Math.ceil((flujopreguntas.length()/1200)); //me dice el numero de preguntas en el archivo
-        numeros = new int[prgenArch];
-        int maximo =prgenArch ;
-        int minimo = 0;
-        int longitud=prgenArch;
-        int elementos_en_array=0;
-        boolean existe;
-        int aleatorio;
-        
-        
-        while(elementos_en_array < longitud){
-            
-            aleatorio= generaAleatorios(maximo,minimo);
-            existe = false;
-            for(int i=0;i<numeros.length && !existe;i++){
-                if(aleatorio == numeros[i])
-                    existe=true;
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "El archivo no esta en la ubicacion correcta");
+            } catch (IOException ex) {
+                Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(existe == false)
-                numeros[elementos_en_array++] = aleatorio;
-        }
-        for(int x=0;x<numeros.length;x++){
-            System.out.println(numeros[x]);
+            return false;
+    }
+    
+    private static void llenaArray() throws IOException{
+        
+        int i = 0,cantidad = pregenArch, rango=pregenArch;
+        numeros= new int[cantidad];
+        numeros[i] = (int)(Math.random()*rango);
+        for(i=1;i<cantidad;i++){
+            numeros[i]=(int)(Math.random()*rango);
+            for(int j=0;j<i;j++){
+                if(numeros[i]==numeros[j])
+                    i--;
+            }
         }
     }
     
-    private static int generaAleatorios(int maximo, int minimo){
-        int numaleatorio = (int)Math.floor(Math.random()*(minimo-maximo+1)+(maximo));
-        return numaleatorio;
+    private static void setPregenArch() throws IOException{
+        File preguntas = new File("Preguntas.dat");
+        RandomAccessFile flujopreguntas = new RandomAccessFile(preguntas,"r");
+        pregenArch = (int)Math.ceil((flujopreguntas.length()/(double)1200)); //me dice el numero de preguntas en el archivo
+        flujopreguntas.close();
+    }
+    
+    private boolean cambio(){
+        if (salida>=pregenArch){
+            if(nf<1){
+                Resultados res=new Resultados();
+                res.setVisible(true);
+                this.dispose();
+                nf++;
+            }
+            
+            return true;
+        }
+        return false;
+    }
+    public static float getCorrectas(){
+        return (float)correctas;
+    }
+    public static float getPregenArch(){
+        return (float)pregenArch;
+    }
+    
+    public static void setInicializadores(int a, int b, int c, int d){
+        correctas = a;
+        salida = b;
+        nf = c;
+        i = d;
     }
 }

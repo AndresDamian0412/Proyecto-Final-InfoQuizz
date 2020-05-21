@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class Menu extends javax.swing.JFrame {
+    private static int posicionuser;
     
     public Menu() {
         // diseño predefinido de cada frame
@@ -18,6 +19,7 @@ public class Menu extends javax.swing.JFrame {
         setTitle("InfoQuizz");
         Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
+        setResizable(false);
         
         rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/atrasportada.png"); //ajusta imagen a una etiqueta
         Login.setVisible(false); // hace invisible el panel login
@@ -261,16 +263,25 @@ public class Menu extends javax.swing.JFrame {
         try{
             AccesoAleatorioU.creaArchUser(new File("Usuarios.dat")); // se llama al metodo para crear flujo
             if(AccesoAleatorioU.buscaUserypass(user, clavereal)==1){ // si el metodo encuentra el usuario con contraseña
-                                                                // regresa 1 y nos da acceso a pantalla de usuario
+                setNumerouser(AccesoAleatorioU.posicionUserypass(user, clavereal));                                                // regresa 1 y nos da acceso a pantalla de usuario
                 PantPrincipalUser p1 = new PantPrincipalUser(); // crea objeto de clase pantalla usuario
                 p1.setVisible(true); // hace visible el frame
                 this.dispose(); // cierra el frame actual
                 // si no lo encuentra busca en archivo usuario
-            }else if(user.equalsIgnoreCase("admin")&&clave.equalsIgnoreCase("password")){
+            }else if(user.equalsIgnoreCase("Andres Martinez")&&clave.equalsIgnoreCase("19690068")){
                 PantPrincipalAdmin pmenu = new PantPrincipalAdmin();
                 pmenu.setVisible(true);  // comprobacion para admin, aun falta crear archivo
                 this.dispose(); // cierra el frame actual
-            }else{
+            }else if(user.equalsIgnoreCase("Dafne Salinas")&&clave.equalsIgnoreCase("19690066")){
+                PantPrincipalAdmin pmenu = new PantPrincipalAdmin();
+                pmenu.setVisible(true);  // comprobacion para admin, aun falta crear archivo
+                this.dispose(); // cierra el frame actual
+            }else if(user.equalsIgnoreCase("Ernesto Moctezuma")&&clave.equalsIgnoreCase("19690217")){
+                PantPrincipalAdmin pmenu = new PantPrincipalAdmin();
+                pmenu.setVisible(true);  // comprobacion para admin, aun falta crear archivo
+                this.dispose(); // cierra el frame actual
+            }
+            else{
                 JOptionPane.showMessageDialog(null, "¡Usuario o contraseña incorrectos!"); //
             }
             AccesoAleatorioU.cierraflujo(); // cierra el flujo
@@ -347,4 +358,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel panelmenu;
     private javax.swing.JPasswordField passwordUser;
     // End of variables declaration//GEN-END:variables
+
+    public static int getNumerouser(){
+        return posicionuser;
+    }
+    private void setNumerouser(int posicion){
+        this.posicionuser = posicion;
+    }
 }

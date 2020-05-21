@@ -95,7 +95,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft YaHei UI" size="18" style="2"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Para comenzar, pos favor presione en &quot;COMENZAR&quot;"/>
+            <Property name="text" type="java.lang.String" value="Para comenzar, por favor presione en &quot;COMENZAR&quot;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnComenzar">

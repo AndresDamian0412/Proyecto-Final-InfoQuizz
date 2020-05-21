@@ -7,6 +7,9 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -60,7 +63,7 @@ public class PantPrincipalUser extends javax.swing.JFrame {
         bienvenida.setText("BIENVENIDO AL CUESTIONARIO");
 
         msj1.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 18)); // NOI18N
-        msj1.setText("Para comenzar, pos favor presione en \"COMENZAR\"");
+        msj1.setText("Para comenzar, por favor presione en \"COMENZAR\"");
 
         btnComenzar.setText("COMENZAR");
         btnComenzar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,10 +142,14 @@ public class PantPrincipalUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnComenzarActionPerformed
 
     private void btnComenzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComenzarMouseClicked
-        // TODO add your handling code here:
-        Cuestionario c1 = new Cuestionario();
-        c1.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            CuestionarioUser cu  = new CuestionarioUser();
+            cu.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(PantPrincipalUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnComenzarMouseClicked
 
     /**

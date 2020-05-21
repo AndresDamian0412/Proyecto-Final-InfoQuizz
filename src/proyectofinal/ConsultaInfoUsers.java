@@ -6,21 +6,22 @@
 package proyectofinal;
 
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 /**
  *
  * @author andre
  */
-public class ConsultAll extends javax.swing.JFrame {
+public class ConsultaInfoUsers extends javax.swing.JFrame {
 
     /**
-     * Creates new form ConsultAll
+     * Creates new form ConsultaInfoUsers
      */
-    //esto es el diseño predefinido de cada pantalla
-    public ConsultAll() {
+    public ConsultaInfoUsers() {
         initComponents();
         Toolkit mipantalla5 = Toolkit.getDefaultToolkit();
         setSize(1017,575);
@@ -30,7 +31,7 @@ public class ConsultAll extends javax.swing.JFrame {
         setIconImage(Icono);
         setResizable(false);
         back.setVisible(false); //hace invisible el boton back
-        contenedorpreg.setEditable(false); // no permite que se escriba dentro del text area
+        contenedorinfo.setEditable(false); // no permite que se escriba dentro del text area
         
         //Objeto jPanel con color VistaColor
         jpColor jpVista6 = new jpColor();
@@ -49,23 +50,23 @@ public class ConsultAll extends javax.swing.JFrame {
     private void initComponents() {
 
         panelconsultall = new javax.swing.JPanel();
-        muestrapregs = new javax.swing.JButton();
+        muestrainfusers = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        contenedorpreg = new javax.swing.JTextArea();
+        contenedorinfo = new javax.swing.JTextArea();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        muestrapregs.setText("Mostrar");
-        muestrapregs.addMouseListener(new java.awt.event.MouseAdapter() {
+        muestrainfusers.setText("Mostrar");
+        muestrainfusers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                muestrapregsMouseClicked(evt);
+                muestrainfusersMouseClicked(evt);
             }
         });
 
-        contenedorpreg.setColumns(20);
-        contenedorpreg.setRows(5);
-        jScrollPane2.setViewportView(contenedorpreg);
+        contenedorinfo.setColumns(20);
+        contenedorinfo.setRows(5);
+        jScrollPane2.setViewportView(contenedorinfo);
 
         back.setText("Regresar");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,11 +85,11 @@ public class ConsultAll extends javax.swing.JFrame {
                         .addGap(791, 791, 791)
                         .addComponent(back)
                         .addGap(18, 18, 18)
-                        .addComponent(muestrapregs))
+                        .addComponent(muestrainfusers))
                     .addGroup(panelconsultallLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         panelconsultallLayout.setVerticalGroup(
             panelconsultallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,78 +98,69 @@ public class ConsultAll extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelconsultallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(muestrapregs)
+                    .addComponent(muestrainfusers)
                     .addComponent(back))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelconsultall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1017, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelconsultall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelconsultall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 575, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelconsultall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void muestrapregsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_muestrapregsMouseClicked
+    private void muestrainfusersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_muestrainfusersMouseClicked
         //boton que ayuda a mostrar todas las preguntas
         try {
             // TODO add your handling code here:
-            File archlect = new File("Preguntas.dat"); //crea un objeto de tipo file con la direccion del archivo de preguntas
+            File archlect = new File("Usuarios.dat"); //crea un objeto de tipo file con la direccion del archivo de usuarios
             RandomAccessFile entrada = new RandomAccessFile(archlect,"r"); // crea el flujo de solo lectura
-            int Numpreg = (int)Math.ceil((double)entrada.length()/1200); //obtiene el numero de preguntas
-            String tema,subt,preg,res1,res2,res3,c1,c2,c3; // variables que guardan los datos de cada pregunta
-            boolean b1,b2,b3; // boleanos para ver cual es la correcta
-            for (int i=0; i <= Numpreg ; i++){ // ciclo para leer todas las preguntas
-                b1 = false; b2 = false; b3 = false; // siempre se inicializan en falso para que no se repitan los valores
-                c1 = "Incorrecta"; c2 = "Incorrecta"; c3 = "Incorrecta"; // siempre son incorrectas por la misma razon anterior
-                entrada.seek(i*1200); // se posiciona en cada inicio de pregunta
-                tema = entrada.readUTF(); // guarda tema
-                subt = entrada.readUTF(); // guarda subtema
-                preg = entrada.readUTF(); // guarda pregunta
-                res1 = entrada.readUTF(); // guarda inciso
-                b1 = entrada.readBoolean(); // guarda booleano de inciso
-                res2 = entrada.readUTF(); // guarda inciso
-                b2 = entrada.readBoolean(); //guarda booleano de inciso
-                res3 = entrada.readUTF(); // guarda inciso
-                b3 = entrada.readBoolean(); // guarda booleano de inciso
-                
-                if(b1 == true)
-                    c1 = "Correcta";
-                if(b2 ==true)
-                    c2 = "Correcta";  //comprueba cual es el booleano correcto
-                if(b3 == true)
-                    c3 = "Correcta";
+            int Numuser = (int)Math.ceil((double)entrada.length()/100); //obtiene el numero de usuarios
+            String usuario,contraseña; // variables que guardan los datos de cada usuario
+            for (int i=0; i <= Numuser ; i++){ // ciclo para leer todas las preguntas
 
-                contenedorpreg.append("Pregunta "+(i+1)+"\n"); // escribe un numero de pregunta leido
-                contenedorpreg.append(tema+"\n"); // imprime tema
-                contenedorpreg.append(subt+"\n"); // imprime subtema
-                contenedorpreg.append(preg+"\n"); // imprime pregunta
-                contenedorpreg.append(res1+"-------"+c1+"\n"); // imprime respuesta y si es o no correcta
-                contenedorpreg.append(res2+"-------"+c2+"\n"); // imprime respuesta y si es o no correcta
-                contenedorpreg.append(res3+"-------"+c3+"\n"); // imprime respuesta y si es o no correcta
-                contenedorpreg.append("\n"); 
-                contenedorpreg.append("*****************************************"); // detalle de vista
-                contenedorpreg.append("\n");
+                entrada.seek(i*100); // se posiciona en cada inicio de pregunta
+                usuario = entrada.readUTF(); // guarda usuario
+                contraseña = entrada.readUTF();//guarda clave
+                entrada.readFloat();
+
+                contenedorinfo.append("Usuario "+(i+1)+"\n"); // escribe un numero de usuario leido
+                contenedorinfo.append(usuario+"\n"); // imprime usuario
+                contenedorinfo.append(contraseña+"\n"); // imprime contraseña
+                contenedorinfo.append("\n");
+                contenedorinfo.append("*****************************************"); // detalle de vista
+                contenedorinfo.append("\n");
             }
         } catch (FileNotFoundException ex) {
-        
+
         }catch(IOException e){
-            
+
         }
         back.setVisible(true); // hace visible el boton back
-        muestrapregs.setEnabled(false); // desactiva el boton mostrar preguntas
-    }//GEN-LAST:event_muestrapregsMouseClicked
+        muestrainfusers.setEnabled(false); // desactiva el boton mostrar preguntas
+    }//GEN-LAST:event_muestrainfusersMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
-        
+
         PantPrincipalAdmin p = new PantPrincipalAdmin(); // crea un objeto de tipo pantalla usuario
         p.setVisible(true); // hace visible el frame
         this.dispose(); // cierra el frame
@@ -191,29 +183,29 @@ public class ConsultAll extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaInfoUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaInfoUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaInfoUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaInfoUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultAll().setVisible(true);
+                new ConsultaInfoUsers().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JTextArea contenedorpreg;
+    private javax.swing.JTextArea contenedorinfo;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton muestrapregs;
+    private javax.swing.JButton muestrainfusers;
     private javax.swing.JPanel panelconsultall;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,6 +38,9 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnnewask.setVisible(false);
         seeAll.setVisible(false);
         modifp.setVisible(false);
+        
+        btnInfo.setVisible(false);
+        btnPuntaje.setVisible(false);
     }
 
     /**
@@ -58,6 +61,8 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnnewask = new javax.swing.JButton();
         seeAll = new javax.swing.JButton();
         modifp = new javax.swing.JButton();
+        btnPuntaje = new javax.swing.JButton();
+        btnInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,27 +119,48 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnPuntaje.setText("Puntajes");
+        btnPuntaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPuntajeMouseClicked(evt);
+            }
+        });
+
+        btnInfo.setText("Informacion");
+        btnInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInfoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpaneladminLayout = new javax.swing.GroupLayout(jpaneladmin);
         jpaneladmin.setLayout(jpaneladminLayout);
         jpaneladminLayout.setHorizontalGroup(
             jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpaneladminLayout.createSequentialGroup()
                 .addGap(111, 111, 111)
-                .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpaneladminLayout.createSequentialGroup()
-                        .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
-                        .addComponent(btnnewask)
-                        .addGap(18, 18, 18)
-                        .addComponent(seeAll)
-                        .addGap(18, 18, 18)
-                        .addComponent(modifp))
-                    .addGroup(jpaneladminLayout.createSequentialGroup()
-                        .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(backmenu))))
+                .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(backmenu)
+                    .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpaneladminLayout.createSequentialGroup()
+                            .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(164, 164, 164)
+                            .addComponent(btnnewask)
+                            .addGap(18, 18, 18)
+                            .addComponent(seeAll)
+                            .addGap(18, 18, 18)
+                            .addComponent(modifp))
+                        .addGroup(jpaneladminLayout.createSequentialGroup()
+                            .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jpaneladminLayout.createSequentialGroup()
+                                    .addGap(84, 84, 84)
+                                    .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jpaneladminLayout.createSequentialGroup()
+                                    .addGap(226, 226, 226)
+                                    .addComponent(btnPuntaje)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnInfo))))))
                 .addContainerGap(167, Short.MAX_VALUE))
             .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
@@ -160,8 +186,12 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(77, 77, 77)
                         .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPuntaje)
+                            .addComponent(btnInfo))
+                        .addGap(36, 36, 36)
                         .addComponent(backmenu)
-                        .addGap(122, 122, 122))))
+                        .addGap(54, 54, 54))))
             .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpaneladminLayout.createSequentialGroup()
                     .addGap(152, 152, 152)
@@ -226,10 +256,23 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
 
     private void btnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseClicked
         // TODO add your handling code here:
+        btnInfo.setVisible(true);
+        btnPuntaje.setVisible(true);
+    }//GEN-LAST:event_btnConsultasMouseClicked
+
+    private void btnPuntajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPuntajeMouseClicked
+        // TODO add your handling code here:
         ConsultaUsers c1 = new ConsultaUsers();
         c1.setVisible(true);
         this. dispose();
-    }//GEN-LAST:event_btnConsultasMouseClicked
+    }//GEN-LAST:event_btnPuntajeMouseClicked
+
+    private void btnInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseClicked
+        // TODO add your handling code here:
+        ConsultaInfoUsers ciu= new ConsultaInfoUsers();
+        ciu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnInfoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -269,7 +312,9 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backmenu;
     private javax.swing.JButton btnConsultas;
+    private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnModif;
+    private javax.swing.JButton btnPuntaje;
     private javax.swing.JButton btnnewask;
     private javax.swing.JLabel jLabelconsultas;
     private javax.swing.JLabel jLabelmodif;

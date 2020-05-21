@@ -56,6 +56,7 @@ public class Altauser extends javax.swing.JFrame {
         newUsername = new javax.swing.JTextField();
         newpass = new javax.swing.JPasswordField();
         btncancelar = new javax.swing.JButton();
+        btnHecho = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -108,12 +109,21 @@ public class Altauser extends javax.swing.JFrame {
             }
         });
 
+        btnHecho.setText("Hecho");
+        btnHecho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHechoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnHecho)
+                .addGap(18, 18, 18)
                 .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +153,8 @@ public class Altauser extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncreauser, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHecho))
                 .addGap(71, 71, 71))
         );
 
@@ -210,6 +221,8 @@ public class Altauser extends javax.swing.JFrame {
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error al registrar usuario");
         }
+        newpass.setText("");
+        newUsername.setText("");
     }//GEN-LAST:event_btncreauserMouseClicked
 //los focus gained siven para seleccionar lo escrito en caso de querer dar de alta otro usuario, es solo estetico
     private void newUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUsernameFocusGained
@@ -221,6 +234,13 @@ public class Altauser extends javax.swing.JFrame {
         // TODO add your handling code here:
         newpass.selectAll();
     }//GEN-LAST:event_newpassFocusGained
+
+    private void btnHechoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHechoMouseClicked
+        // TODO add your handling code here:
+        Menu otrom = new Menu();
+        otrom.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnHechoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -258,6 +278,7 @@ public class Altauser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHecho;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncreauser;
     private javax.swing.JLabel jLabel1;

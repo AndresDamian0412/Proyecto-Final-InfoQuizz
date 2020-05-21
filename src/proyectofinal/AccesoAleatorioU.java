@@ -105,4 +105,18 @@ public class AccesoAleatorioU {
         }
         return -1;
     }
+     public static int posicionUserypass(String user, String pss)throws IOException{ // Busca el usuario y contraseña para el login
+        String userbus, passuser;  //estas dos variables se usan para comprobaciones con lo que se manda y con lo que se encuentra en el archivo
+        if(user == null||pss == null){ // si son vacios no hace la busqueda y regresa -1
+            return -1;
+        }
+        for(int i=0; i<getNumerodeUsers();i++){ //sirve para recorrer el archivo
+            flujou.seek(i*Tamañouser); 
+            userbus = getUsuario(i).getUser(); //se usa el getter de usuario para el objeto usuario que regresa la funcion getUsuario
+            passuser = getUsuario(i).getPass(); // hace lo mismo que el anterior solo que recibe la contraseña
+            if(userbus.equalsIgnoreCase(user)&& passuser.equals(pss)) // si son iguales regresa 1, si no, sigue el ciclo hasta recorrer todo el archivo
+                return i;
+        }
+        return -1;
+    }
 }
