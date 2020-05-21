@@ -27,7 +27,7 @@ public class Modifpreg extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla4.getImage("src/proyectofinal/imagenes/preview.jpeg");
+        Image Icono = mipantalla4.getImage("src/proyectofinal/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
         

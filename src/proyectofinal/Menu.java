@@ -17,11 +17,11 @@ public class Menu extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg");
+        Image Icono = mipantalla2.getImage("src/proyectofinal/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
         
-        rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/atrasportada.png"); //ajusta imagen a una etiqueta
+        rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/atrasportada.png"); //ajusta imagen a una etiqueta
         Login.setVisible(false); // hace invisible el panel login
        
         //Objeto jPanel con color VistaColor

@@ -36,7 +36,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla5.getImage("src/proyectofinal/imagenes/preview.jpeg");
+        Image Icono = mipantalla5.getImage("src/proyectofinal/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
         

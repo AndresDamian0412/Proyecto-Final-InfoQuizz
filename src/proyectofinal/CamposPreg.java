@@ -27,7 +27,7 @@ public class CamposPreg extends javax.swing.JFrame {
         setSize(1017,575); // establece el tamaño de la pantalla 
         setLocationRelativeTo(null); // establece la posicion de la pantalla en el centro
         setTitle("InfoQuizz"); //Establece el titulo
-        Image Icono = mipantalla4.getImage("src/proyectofinal/imagenes/preview.jpeg"); //Se crea un objeto de tipo Image
+        Image Icono = mipantalla4.getImage("src/proyectofinal/preview.jpeg"); //Se crea un objeto de tipo Image
         setIconImage(Icono); // Se usa el objeto image para colocar icono
         setResizable(false); //esto impode que agranden la pantalla
         
