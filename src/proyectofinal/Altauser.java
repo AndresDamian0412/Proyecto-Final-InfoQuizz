@@ -27,7 +27,7 @@ public class Altauser extends javax.swing.JFrame {
         setSize(1017,575);   // establece el tamaño de la pantalla 
         setLocationRelativeTo(null); // establece la posicion de la pantalla en el centro
         setTitle("InfoQuizz"); //Establece el titulo
-        Image Icono = mipantalla2.getImage("src/proyectofinal/preview.jpeg"); //Se crea un objeto de tipo Image
+        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg"); //Se crea un objeto de tipo Image
         setIconImage(Icono); // Se usa el objeto image para colocar icono
         
         //Objeto jPanel con color VistaColor

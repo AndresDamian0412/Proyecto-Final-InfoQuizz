@@ -28,7 +28,7 @@ public class PantPrincipalUser extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla2.getImage("src/proyectofinal/preview.jpeg");
+        Image Icono = mipantalla2.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
         

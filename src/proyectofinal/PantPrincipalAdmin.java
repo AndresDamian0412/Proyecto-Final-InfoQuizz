@@ -22,12 +22,12 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla3.getImage("src/proyectofinal/preview.jpeg");
+        Image Icono = mipantalla3.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
         
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelmodif, "src/proyectofinal/lapizicono.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelconsultas, "src/proyectofinal/interrogacion.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelmodif, "src/proyectofinal/imagenes/lapizicono.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelconsultas, "src/proyectofinal/imagenes/interrogacion.png");
         
         //Objeto jPanel con color VistaColor
         jpColor jpVista = new jpColor();

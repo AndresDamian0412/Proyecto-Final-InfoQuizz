@@ -27,7 +27,7 @@ public class ConsultaInfoUsers extends javax.swing.JFrame {
         setSize(1017,575);
         setLocationRelativeTo(null);
         setTitle("InfoQuizz");
-        Image Icono = mipantalla5.getImage("src/proyectofinal/preview.jpeg");
+        Image Icono = mipantalla5.getImage("src/proyectofinal/imagenes/preview.jpeg");
         setIconImage(Icono);
         setResizable(false);
         back.setVisible(false); //hace invisible el boton back
