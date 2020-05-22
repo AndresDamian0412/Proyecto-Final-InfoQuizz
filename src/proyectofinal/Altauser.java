@@ -35,6 +35,8 @@ public class Altauser extends javax.swing.JFrame {
         jpVista2.setSize(this.getSize());
         jpVista2.setVistaColor(153,206,195,0,0,0);
         jPanel1.add(jpVista2);
+        
+        btnHecho.setVisible(false);
     }
 
     /**
@@ -223,6 +225,7 @@ public class Altauser extends javax.swing.JFrame {
         }
         newpass.setText("");
         newUsername.setText("");
+        btnHecho.setVisible(true);
     }//GEN-LAST:event_btncreauserMouseClicked
 //los focus gained siven para seleccionar lo escrito en caso de querer dar de alta otro usuario, es solo estetico
     private void newUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUsernameFocusGained
