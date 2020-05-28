@@ -9,6 +9,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,6 +40,7 @@ public class Modifpreg extends javax.swing.JFrame {
         contenedor.add(jpVista6);
         Panelcampos.setVisible(false);
         btnhecho.setVisible(false);
+        campospreg.setVisible(false);
         
     }
 
@@ -402,7 +405,23 @@ public class Modifpreg extends javax.swing.JFrame {
         //Obtiene la posicion de la pregunta que se va a modificar
         this.numeropreg = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de pregunta\n(Puede consultarlo en el campo 'Mostrar Todo')"));
         npreg.setEnabled(false); // desactiva boton 
-        campospreg.setEnabled(true); // avtiba boton
+        campospreg.setVisible(true);
+        campospreg.setEnabled(true); // activa boton
+        Pregunta muestra;
+        try {
+            muestra = Modificaciones.muestraActual(numeropreg);
+            temapreg.setText(muestra.getTema());
+            subtemapreg.setText(muestra.getSubt());
+            preg.setText(muestra.getpregunta());
+            res1.setText(muestra.getRes1());
+            res2.setText(muestra.getRes2());
+            res3.setText(muestra.getRes3());
+            checkres1.setSelected(muestra.isBres1());
+            checkres2.setSelected(muestra.isBres2());
+            checkres3.setSelected(muestra.isBres3());
+        } catch (IOException ex) {
+            Logger.getLogger(Modifpreg.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_npregMouseClicked
 
     private void temapregFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_temapregFocusGained
@@ -495,10 +514,15 @@ public class Modifpreg extends javax.swing.JFrame {
         }
         try{
             //inicia el flujo y trata de modificar la pregunta, aun esta en desarrollo
-            AccesoAleatorioP.creaArchPreg(new File ("Preguntas.dat"));
-            AccesoAleatorioP.setPregunta(numeropreg, new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3));
-            AccesoAleatorioP.cierraflujo();
-            JOptionPane.showMessageDialog(null, "¡Pregunta agregada correctamente!");
+            if(Modificaciones.llenaArray(numeropreg)){
+                Modificaciones.llenaVacio(new Pregunta(tema,subtema,prg,r1,bres1,r2,bres2,r3,bres3));
+                Modificaciones.guardaCambios();
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo modificar la pregunta:(");
+            }
+            Modificaciones.cierraFlujo();
+            
+            JOptionPane.showMessageDialog(null, "¡Pregunta modificada correctamente!");
             btnhecho.setVisible(true);
         }catch(IOException e){
             e.printStackTrace();
