@@ -73,7 +73,7 @@ public class Altauser extends javax.swing.JFrame {
 
         lblusername.setBackground(new java.awt.Color(255, 255, 255));
         lblusername.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
-        lblusername.setText("Nombre de Usuario:");
+        lblusername.setText("Nombre de usuario:");
         lblusername.setAutoscrolls(true);
         lblusername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

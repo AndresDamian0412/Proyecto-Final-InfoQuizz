@@ -71,7 +71,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         jLabelmodif.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnConsultas.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
-        btnConsultas.setText("VER DATOS DE USUARIOS");
+        btnConsultas.setText("Modificaciones");
         btnConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnConsultasMouseClicked(evt);
@@ -79,7 +79,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         });
 
         btnModif.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
-        btnModif.setText("MODIFICACIONES");
+        btnModif.setText("Modificaciones");
         btnModif.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnModifMouseClicked(evt);

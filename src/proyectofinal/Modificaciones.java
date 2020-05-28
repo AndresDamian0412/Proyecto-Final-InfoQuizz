@@ -27,7 +27,6 @@ public class Modificaciones {
     private static void setNumPreg()throws IOException{ //me dice cuantas preguntas hay en el archivo para el tamaño de array
         prgs = new File("Preguntas.dat");
         flujo = new RandomAccessFile(prgs,"rw");
-        
         PregEnArch=(int)Math.ceil((double)flujo.length()/(double)tamañopregunta);
     }
     public static void cierraFlujo() throws IOException{ //solo cierra el flujo

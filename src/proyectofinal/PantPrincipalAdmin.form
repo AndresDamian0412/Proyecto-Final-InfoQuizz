@@ -144,7 +144,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="VER DATOS DE USUARIOS"/>
+            <Property name="text" type="java.lang.String" value="Modificaciones"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultasMouseClicked"/>
@@ -155,7 +155,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="MODIFICACIONES"/>
+            <Property name="text" type="java.lang.String" value="Modificaciones"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnModifMouseClicked"/>

@@ -156,7 +156,7 @@ public class Menu extends javax.swing.JFrame {
 
         nuevouserbtn.setBackground(new java.awt.Color(0, 51, 255));
         nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        nuevouserbtn.setText("Nuevo Usuario");
+        nuevouserbtn.setText("Nuevo usuario");
         nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nuevouserbtnMouseClicked(evt);

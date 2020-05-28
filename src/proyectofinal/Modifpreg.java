@@ -7,7 +7,6 @@ package proyectofinal;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -194,7 +193,7 @@ public class Modifpreg extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("INGRESE LOS DATOS CORRESPONDIENTES A LA MODIFICACIÓN;)");
+        jLabel1.setText("Ingrese los datos correspondientes a la modificación ;)");
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 2, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
@@ -255,44 +254,47 @@ public class Modifpreg extends javax.swing.JFrame {
                                 .addComponent(Save)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelcamposLayout.createSequentialGroup()
-                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
+                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelcamposLayout.createSequentialGroup()
+                                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                                        .addComponent(lblres3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(res3))
+                                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                                        .addComponent(lblres2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(res2))
+                                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                                        .addComponent(lblres1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(res1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkres2)
+                                    .addComponent(checkres3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(PanelcamposLayout.createSequentialGroup()
-                                    .addComponent(lbltema, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(65, 65, 65)
-                                    .addComponent(temapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(217, 217, 217)
+                                    .addComponent(jScrollPane2))
                                 .addGroup(PanelcamposLayout.createSequentialGroup()
-                                    .addComponent(lblsubt, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(65, 65, 65)
-                                    .addComponent(subtemapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblPreg, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(485, 485, 485)))
+                            .addGroup(PanelcamposLayout.createSequentialGroup()
                                 .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelcamposLayout.createSequentialGroup()
-                                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(PanelcamposLayout.createSequentialGroup()
-                                                .addComponent(lblres3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(65, 65, 65)
-                                                .addComponent(res3))
-                                            .addGroup(PanelcamposLayout.createSequentialGroup()
-                                                .addComponent(lblres2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(65, 65, 65)
-                                                .addComponent(res2))
-                                            .addGroup(PanelcamposLayout.createSequentialGroup()
-                                                .addComponent(lblres1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(65, 65, 65)
-                                                .addComponent(res1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(checkres2)
-                                            .addComponent(checkres3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelcamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(PanelcamposLayout.createSequentialGroup()
-                                            .addGap(217, 217, 217)
-                                            .addComponent(jScrollPane2))
-                                        .addGroup(PanelcamposLayout.createSequentialGroup()
-                                            .addComponent(lblPreg, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(485, 485, 485))))))
+                                        .addComponent(lbltema, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(temapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                                        .addComponent(lblsubt, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(subtemapreg, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelcamposLayout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(jLabel1)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap(52, Short.MAX_VALUE))))
         );
         PanelcamposLayout.setVerticalGroup(
