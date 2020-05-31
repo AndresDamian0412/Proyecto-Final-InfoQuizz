@@ -69,7 +69,7 @@ public class Portada extends javax.swing.JFrame {
         nomproyecto.setText("PROYECTO ARCHIVERO");
 
         autor1.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 24)); // NOI18N
-        autor1.setText("Dafne Guadalupe Hernadez Salinas");
+        autor1.setText("Dafne Guadalupe Hernández Salinas");
 
         autor3.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 24)); // NOI18N
         autor3.setText("Jose Ernesto Moctezuma Morales");

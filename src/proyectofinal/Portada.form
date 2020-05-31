@@ -188,7 +188,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei UI" size="24" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dafne Guadalupe Hernadez Salinas"/>
+        <Property name="text" type="java.lang.String" value="Dafne Guadalupe Hern&#xe1;ndez Salinas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="autor3">

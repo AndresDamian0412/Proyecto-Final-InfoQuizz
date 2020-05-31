@@ -38,6 +38,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnnewask.setVisible(false);
         seeAll.setVisible(false);
         modifp.setVisible(false);
+        eliminapreg.setVisible(false);
         
         btnInfo.setVisible(false);
         btnPuntaje.setVisible(false);
@@ -63,6 +64,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         modifp = new javax.swing.JButton();
         btnPuntaje = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
+        eliminapreg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +73,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         jLabelmodif.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnConsultas.setFont(new java.awt.Font("Trebuchet MS", 3, 24)); // NOI18N
-        btnConsultas.setText("Modificaciones");
+        btnConsultas.setText("Consultas");
         btnConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnConsultasMouseClicked(evt);
@@ -133,6 +135,13 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        eliminapreg.setText("Eliminar pregunta");
+        eliminapreg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminapregMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpaneladminLayout = new javax.swing.GroupLayout(jpaneladmin);
         jpaneladmin.setLayout(jpaneladminLayout);
         jpaneladminLayout.setHorizontalGroup(
@@ -141,27 +150,31 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                 .addGap(111, 111, 111)
                 .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(backmenu)
-                    .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jpaneladminLayout.createSequentialGroup()
-                            .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(164, 164, 164)
-                            .addComponent(btnnewask)
-                            .addGap(18, 18, 18)
-                            .addComponent(seeAll)
-                            .addGap(18, 18, 18)
-                            .addComponent(modifp))
-                        .addGroup(jpaneladminLayout.createSequentialGroup()
-                            .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jpaneladminLayout.createSequentialGroup()
-                                    .addGap(84, 84, 84)
-                                    .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jpaneladminLayout.createSequentialGroup()
-                                    .addGap(226, 226, 226)
-                                    .addComponent(btnPuntaje)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnInfo))))))
-                .addContainerGap(167, Short.MAX_VALUE))
+                    .addGroup(jpaneladminLayout.createSequentialGroup()
+                        .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpaneladminLayout.createSequentialGroup()
+                                .addComponent(jLabelmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72)
+                                .addComponent(btnnewask)
+                                .addGap(18, 18, 18)
+                                .addComponent(seeAll)
+                                .addGap(18, 18, 18)
+                                .addComponent(modifp)
+                                .addGap(18, 18, 18)
+                                .addComponent(eliminapreg))
+                            .addGroup(jpaneladminLayout.createSequentialGroup()
+                                .addComponent(jLabelconsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpaneladminLayout.createSequentialGroup()
+                                        .addGap(84, 84, 84)
+                                        .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpaneladminLayout.createSequentialGroup()
+                                        .addGap(226, 226, 226)
+                                        .addComponent(btnPuntaje)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnInfo)))))
+                        .addGap(84, 84, 84)))
+                .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpaneladminLayout.createSequentialGroup()
                     .addContainerGap(361, Short.MAX_VALUE)
@@ -182,8 +195,9 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
                         .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnnewask)
                             .addComponent(seeAll)
-                            .addComponent(modifp))
-                        .addGap(77, 77, 77)
+                            .addComponent(modifp)
+                            .addComponent(eliminapreg))
+                        .addGap(74, 74, 74)
                         .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jpaneladminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -226,6 +240,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         btnnewask.setVisible(true);
         seeAll.setVisible(true);
         modifp.setVisible(true);
+        eliminapreg.setVisible(true);
     }//GEN-LAST:event_btnModifMouseClicked
 
     private void btnnewaskMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnewaskMouseClicked
@@ -274,6 +289,13 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInfoMouseClicked
 
+    private void eliminapregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminapregMouseClicked
+        // TODO add your handling code here:
+        BorraPreg bp = new BorraPreg();
+        bp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_eliminapregMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -316,6 +338,7 @@ public class PantPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnModif;
     private javax.swing.JButton btnPuntaje;
     private javax.swing.JButton btnnewask;
+    private javax.swing.JButton eliminapreg;
     private javax.swing.JLabel jLabelconsultas;
     private javax.swing.JLabel jLabelmodif;
     private javax.swing.JPanel jpaneladmin;
