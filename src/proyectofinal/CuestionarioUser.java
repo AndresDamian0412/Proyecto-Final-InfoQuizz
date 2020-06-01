@@ -69,6 +69,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgResp = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtTema = new javax.swing.JTextField();
@@ -81,14 +82,15 @@ public class CuestionarioUser extends javax.swing.JFrame {
         txtIncisob = new javax.swing.JTextField();
         scrollincic = new javax.swing.JScrollPane();
         txtIncisoc = new javax.swing.JTextField();
-        checkA = new javax.swing.JCheckBox();
-        checkB = new javax.swing.JCheckBox();
-        checkC = new javax.swing.JCheckBox();
         lbladver = new javax.swing.JLabel();
         lbladver1 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
         btnMuestraprimera = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        res1 = new javax.swing.JRadioButton();
+        res2 = new javax.swing.JRadioButton();
+        res3 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         lblCuest = new javax.swing.JLabel();
         progresocuest = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -150,6 +152,29 @@ public class CuestionarioUser extends javax.swing.JFrame {
             }
         });
 
+        btgResp.add(res1);
+        res1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                res1MouseClicked(evt);
+            }
+        });
+
+        btgResp.add(res2);
+        res2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                res2ActionPerformed(evt);
+            }
+        });
+
+        btgResp.add(res3);
+
+        jButton1.setText("Revisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -169,27 +194,31 @@ public class CuestionarioUser extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(scrollpreg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnMuestraprimera)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnSiguiente))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(scrollincic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                                .addComponent(scrollincib)
+                                .addComponent(scrollincia, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGap(34, 34, 34)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cancelar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnMuestraprimera)
-                                    .addGap(18, 18, 18))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(scrollincic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
-                                        .addComponent(scrollincib, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scrollincia, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGap(44, 44, 44)))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkA, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(checkB, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(checkC, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(btnSiguiente)))))
+                                .addComponent(res1)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(res3)
+                                        .addComponent(res2))
+                                    .addGap(41, 41, 41))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(341, 341, 341))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,16 +232,25 @@ public class CuestionarioUser extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkA))
-                .addGap(30, 30, 30)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(res1)))
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollincib, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkB))
-                .addGap(29, 29, 29)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(res2)
+                        .addGap(12, 12, 12)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkC)
-                    .addComponent(scrollincic, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(scrollincic, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(res3)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbladver1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -251,7 +289,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +303,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
                         .addComponent(progresocuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,6 +370,18 @@ public class CuestionarioUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cancelarMouseClicked
 
+    private void res2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_res2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_res2ActionPerformed
+
+    private void res1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_res1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_res1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,12 +422,11 @@ public class CuestionarioUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgResp;
     private javax.swing.JButton btnMuestraprimera;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton cancelar;
-    private static javax.swing.JCheckBox checkA;
-    private static javax.swing.JCheckBox checkB;
-    private static javax.swing.JCheckBox checkC;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -385,6 +434,9 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private javax.swing.JLabel lbladver;
     private javax.swing.JLabel lbladver1;
     private javax.swing.JProgressBar progresocuest;
+    private javax.swing.JRadioButton res1;
+    private javax.swing.JRadioButton res2;
+    private javax.swing.JRadioButton res3;
     private javax.swing.JScrollPane scrollincia;
     private javax.swing.JScrollPane scrollincib;
     private javax.swing.JScrollPane scrollincic;
@@ -404,9 +456,9 @@ public class CuestionarioUser extends javax.swing.JFrame {
         txtIncisoa.setText("");
         txtIncisob.setText("");
         txtIncisoc.setText("");
-        checkA.setSelected(false);
-        checkB.setSelected(false);
-        checkC.setSelected(false);
+        res1.setSelected(false);
+        res2.setSelected(false);
+        res3.setSelected(false);
     }
     public static void muestraPreg(int i){
         try {
@@ -449,9 +501,9 @@ public class CuestionarioUser extends javax.swing.JFrame {
             entrada.readUTF();
             rc3 = entrada.readBoolean();
             entrada.close();
-            if(checkA.isSelected()==true){rl1=true;}else{rl1=false;}
-            if(checkB.isSelected()==true){rl2=true;}else{rl2=false;}
-            if(checkC.isSelected()==true){rl3=true;}else{rl3=false;}
+            if(res1.isSelected()==true){rl1=true;}else{rl1=false;}
+            if(res2.isSelected()==true){rl2=true;}else{rl2=false;}
+            if(res3.isSelected()==true){rl3=true;}else{rl3=false;}
             if(rc1 == rl1){
                 if(rc2 == rl2){
                     if(rc3 == rl3){
