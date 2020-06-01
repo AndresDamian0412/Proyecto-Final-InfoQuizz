@@ -22,13 +22,13 @@ public class Menu extends javax.swing.JFrame {
         setResizable(false);
         
         rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/proyectofinal/imagenes/atrasportada.png"); //ajusta imagen a una etiqueta
-        Login.setVisible(false); // hace invisible el panel login
+        // hace invisible el panel login
        
         //Objeto jPanel con color VistaColor
-        jpColor jpVista = new jpColor();
-        jpVista.setSize(this.getSize());  // color degradado de los frame
-        jpVista.setVistaColor(153,206,195,0,0,0);
-        panelmenu.add(jpVista);
+        //jpColor jpVista = new jpColor();
+        //jpVista.setSize(this.getSize());  // color degradado de los frame
+        //jpVista.setVistaColor(153,206,195,0,0,0);
+        //panelmenu.add(jpVista);
          
     }
     
@@ -40,36 +40,46 @@ public class Menu extends javax.swing.JFrame {
         panelmenu = new javax.swing.JPanel();
         msj1 = new javax.swing.JLabel();
         bienvenida = new javax.swing.JLabel();
-        Login = new javax.swing.JPanel();
-        lbluser = new javax.swing.JLabel();
-        lblpswrd = new javax.swing.JLabel();
-        nomUser = new javax.swing.JTextField();
-        passwordUser = new javax.swing.JPasswordField();
-        btnlogin = new javax.swing.JButton();
-        atrasmenu = new javax.swing.JButton();
         back = new javax.swing.JLabel();
-        botonuser = new javax.swing.JButton();
         nuevouserbtn = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
+        lblusername = new javax.swing.JLabel();
+        newUsername = new javax.swing.JTextField();
+        newpass = new javax.swing.JPasswordField();
+        lblpass1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelmenu.setBackground(new java.awt.Color(153, 206, 195));
+        panelmenu.setBackground(new java.awt.Color(153, 206, 153));
         panelmenu.setToolTipText("");
 
         msj1.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 18)); // NOI18N
-        msj1.setText("Por favor, eliga uno de los siguientes para iniciar sesión ;)");
+        msj1.setText("Por favor, elija uno de los siguientes para iniciar sesión ;)");
 
         bienvenida.setFont(new java.awt.Font("Arial Rounded MT Bold", 3, 48)); // NOI18N
         bienvenida.setText("BIENVENIDOS");
 
-        Login.setBackground(new java.awt.Color(101, 98, 150));
-        Login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
 
-        lbluser.setFont(new java.awt.Font("Arial Unicode MS", 3, 14)); // NOI18N
-        lbluser.setText("Usuario: ");
-
-        lblpswrd.setFont(new java.awt.Font("Arial Unicode MS", 3, 14)); // NOI18N
-        lblpswrd.setText("Contraseña: ");
+        nuevouserbtn.setBackground(new java.awt.Color(0, 51, 255));
+        nuevouserbtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nuevouserbtn.setForeground(new java.awt.Color(255, 255, 255));
+        nuevouserbtn.setText("Nuevo usuario");
+        nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nuevouserbtnMouseClicked(evt);
+            }
+        });
+        nuevouserbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevouserbtnActionPerformed(evt);
+            }
+        });
 
         btnlogin.setText("Entrar");
         btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,90 +93,43 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        atrasmenu.setText("Atrás");
-        atrasmenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atrasmenuMouseClicked(evt);
-            }
-        });
-        atrasmenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasmenuActionPerformed(evt);
+        lblusername.setBackground(new java.awt.Color(255, 255, 255));
+        lblusername.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
+        lblusername.setText("Nombre de usuario:");
+        lblusername.setAutoscrolls(true);
+        lblusername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        newUsername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newUsernameFocusGained(evt);
             }
         });
 
-        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
-        Login.setLayout(LoginLayout);
-        LoginLayout.setHorizontalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbluser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblpswrd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(LoginLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(passwordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(nomUser, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(btnlogin)
-                        .addGap(18, 18, 18)
-                        .addComponent(atrasmenu)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        LoginLayout.setVerticalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbluser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblpswrd, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnlogin)
-                    .addComponent(atrasmenu))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
+        newpass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newpass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newpassFocusGained(evt);
             }
         });
 
-        botonuser.setBackground(new java.awt.Color(204, 0, 0));
-        botonuser.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
-        botonuser.setText("Usuario");
-        botonuser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonuserMouseClicked(evt);
-            }
-        });
-
-        nuevouserbtn.setBackground(new java.awt.Color(0, 51, 255));
-        nuevouserbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        nuevouserbtn.setText("Nuevo usuario");
-        nuevouserbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nuevouserbtnMouseClicked(evt);
-            }
-        });
+        lblpass1.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
+        lblpass1.setText("Contraseña:");
+        lblpass1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout panelmenuLayout = new javax.swing.GroupLayout(panelmenu);
         panelmenu.setLayout(panelmenuLayout);
         panelmenuLayout.setHorizontalGroup(
             panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelmenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelmenuLayout.createSequentialGroup()
+                        .addComponent(btnlogin)
+                        .addGap(185, 185, 185))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelmenuLayout.createSequentialGroup()
+                        .addComponent(nuevouserbtn)
+                        .addGap(360, 360, 360))))
             .addGroup(panelmenuLayout.createSequentialGroup()
                 .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelmenuLayout.createSequentialGroup()
@@ -176,16 +139,20 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelmenuLayout.createSequentialGroup()
                         .addGap(253, 253, 253)
+                        .addComponent(msj1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelmenuLayout.createSequentialGroup()
+                        .addGap(285, 285, 285)
                         .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(msj1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(panelmenuLayout.createSequentialGroup()
-                        .addGap(339, 339, 339)
-                        .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelmenuLayout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                            .addComponent(lblusername, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(lblpass1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelmenuLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelmenuLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(newUsername)))))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         panelmenuLayout.setVerticalGroup(
             panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,13 +166,19 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msj1)
-                .addGap(33, 33, 33)
-                .addComponent(botonuser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
+                .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblusername)
+                    .addComponent(newUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGroup(panelmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblpass1))
+                .addGap(18, 18, 18)
+                .addComponent(btnlogin)
+                .addGap(18, 18, 18)
+                .addComponent(nuevouserbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,36 +195,16 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        // TODO add your handling code here:
-        Portada p2 = new Portada(); // Crea un objeto de tipo portada
-        p2.setVisible(true); // hace visible el frame
-        p2.setResizable(false); // impide que se agrande el tamaño
-        this.dispose(); // cierra el frame actual
-    }//GEN-LAST:event_backMouseClicked
-
-    private void atrasmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasmenuMouseClicked
-        // TODO add your handling code here:
-        Login.setVisible(false); // boton atras hace invisible el panel login
-        botonuser.setVisible(true); // hace visible los botones usuario y nuevo usuario
-        nuevouserbtn.setVisible(true);
-        
-    }//GEN-LAST:event_atrasmenuMouseClicked
-
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnloginActionPerformed
-
-    private void atrasmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasmenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_atrasmenuActionPerformed
 
     private void btnloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMouseClicked
         // TODO add your handling code here:
         //acciones del boton entrar 
         String user; // 
-        user = nomUser.getText().trim(); // en la variable usuario se guarda lo que se ingrese aal textfield
-        char[]arrayclave = passwordUser.getPassword(); // el campo de contraseña regresa un array 
+        user = newUsername.getText().trim(); // en la variable usuario se guarda lo que se ingrese aal textfield
+        char[]arrayclave = newpass.getPassword(); // el campo de contraseña regresa un array 
         String clave = new String(arrayclave).trim(); // se guarda el array en una cadena para mejor manejo y se borran
                                                 // espacios que pueda tener al inicio o al final
         String clavereal = user.concat(clave); // para mayor seguridad la clave incluye el nombre de usuario 
@@ -293,13 +246,6 @@ public class Menu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnloginMouseClicked
 
-    private void botonuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonuserMouseClicked
-        // TODO add your handling code here:
-        botonuser.setVisible(false); // boton user se hace invisible
-        nuevouserbtn.setVisible(false); // boton nuevo usuario invisible
-        Login.setVisible(true); // panel login visible
-    }//GEN-LAST:event_botonuserMouseClicked
-
     private void nuevouserbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevouserbtnMouseClicked
         // TODO add your handling code here:
         Altauser a1 = new Altauser(); // crea objeto de clase Alta user
@@ -307,6 +253,28 @@ public class Menu extends javax.swing.JFrame {
         a1.setResizable(false); // no permite agrandarlo
         dispose(); // cierra este frame
     }//GEN-LAST:event_nuevouserbtnMouseClicked
+
+    private void nuevouserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevouserbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevouserbtnActionPerformed
+
+    private void newUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUsernameFocusGained
+        // TODO add your handling code here:
+        newUsername.selectAll();
+    }//GEN-LAST:event_newUsernameFocusGained
+
+    private void newpassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newpassFocusGained
+        // TODO add your handling code here:
+        newpass.selectAll();
+    }//GEN-LAST:event_newpassFocusGained
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        // TODO add your handling code here:
+        Portada p2 = new Portada(); // Crea un objeto de tipo portada
+        p2.setVisible(true); // hace visible el frame
+        p2.setResizable(false); // impide que se agrande el tamaño
+        this.dispose(); // cierra el frame actual
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -344,19 +312,16 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPanel Login;
-    private javax.swing.JButton atrasmenu;
     private javax.swing.JLabel back;
     private javax.swing.JLabel bienvenida;
-    private javax.swing.JButton botonuser;
     private javax.swing.JButton btnlogin;
-    private javax.swing.JLabel lblpswrd;
-    private javax.swing.JLabel lbluser;
+    private javax.swing.JLabel lblpass1;
+    private javax.swing.JLabel lblusername;
     private javax.swing.JLabel msj1;
-    private javax.swing.JTextField nomUser;
+    private javax.swing.JTextField newUsername;
+    private javax.swing.JPasswordField newpass;
     private javax.swing.JButton nuevouserbtn;
     private javax.swing.JPanel panelmenu;
-    private javax.swing.JPasswordField passwordUser;
     // End of variables declaration//GEN-END:variables
 
     public static int getNumerouser(){
