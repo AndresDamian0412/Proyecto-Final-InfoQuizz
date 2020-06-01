@@ -5,6 +5,7 @@
  */
 package proyectofinal;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -26,6 +27,9 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private static int correctas=0;
     private static int salida=0;
     private static int nf=0;
+    private static Color v= new Color(24,229,31);
+    private static Color r= new Color(242,19,31);
+    private static Color b= new Color(255,255,255);
     
     /**
      * Creates new form CuestionarioUser
@@ -58,6 +62,8 @@ public class CuestionarioUser extends javax.swing.JFrame {
         setPregenArch();
         llenaArray();
         JOptionPane.showMessageDialog(null, "**Si marcas dos casillas la respuesta\n se considerará erronea**");
+        
+        
     }
 
     /**
@@ -322,6 +328,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
         // TODO add your handling code here:
+        btnSiguiente.setVisible(false);
         boolean alto=false;
         double porcentaje;
         porcentaje = (100/pregenArch);
@@ -334,14 +341,13 @@ public class CuestionarioUser extends javax.swing.JFrame {
             progresocuest.setValue(progresocuest.getValue()+(int)(Math.ceil(porcentaje)));
             }
             correctas++;
-            
         }
+        
         limpiaCampos();
         i++;
         if(alto!=true)
         muestraPreg(numeros[i]);
-        
-       
+        btnSiguiente.setVisible(true);
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnMuestraprimeraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMuestraprimeraMouseClicked
@@ -449,6 +455,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
         res2.setSelected(false);
         res3.setSelected(false);
         grupo_botones.clearSelection();
+        limpiaColor();
        
     }
 
@@ -494,6 +501,15 @@ public class CuestionarioUser extends javax.swing.JFrame {
             entrada.readUTF();
             rc3 = entrada.readBoolean();
             entrada.close();
+            
+            
+            
+                if(rc1){txtIncisoa.setBackground(v);}else{txtIncisoa.setBackground(r);}
+                if(rc2){txtIncisob.setBackground(v);}else{txtIncisob.setBackground(r);}
+                if(rc3){txtIncisoc.setBackground(v);}else{txtIncisoc.setBackground(r);}
+        
+            limpiaColor();
+            
             if(res1.isSelected()){rl1=true;}else{rl1=false;}
             if(res2.isSelected()){rl2=true;}else{rl2=false;}
             if(res3.isSelected()){rl3=true;}else{rl3=false;}
@@ -570,8 +586,15 @@ public class CuestionarioUser extends javax.swing.JFrame {
         i = d;
     }
     
-    
-    private static void revisa(){
-        
+    private static void limpiaColor(){
+         try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        txtIncisoa.setBackground(b);
+        txtIncisob.setBackground(b);
+        txtIncisoc.setBackground(b);
     }
+ 
 }
