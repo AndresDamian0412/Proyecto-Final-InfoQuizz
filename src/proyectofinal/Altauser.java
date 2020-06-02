@@ -36,7 +36,7 @@ public class Altauser extends javax.swing.JFrame {
         jpVista2.setVistaColor(153,206,195,0,0,0);
         jPanel1.add(jpVista2);
         
-        btnHecho.setVisible(false);
+        
     }
 
     /**
@@ -58,7 +58,6 @@ public class Altauser extends javax.swing.JFrame {
         newUsername = new javax.swing.JTextField();
         newpass = new javax.swing.JPasswordField();
         btncancelar = new javax.swing.JButton();
-        btnHecho = new javax.swing.JButton();
         back = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -112,23 +111,7 @@ public class Altauser extends javax.swing.JFrame {
             }
         });
 
-        btnHecho.setBackground(new java.awt.Color(255, 255, 255));
-        btnHecho.setForeground(new java.awt.Color(255, 255, 255));
-        btnHecho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/imagenes/atrasportada.png"))); // NOI18N
-        btnHecho.setText("Hecho");
-        btnHecho.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnHecho.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnHechoMouseClicked(evt);
-            }
-        });
-        btnHecho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHechoActionPerformed(evt);
-            }
-        });
-
-        back.setText("jLabel3");
+        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -157,9 +140,7 @@ public class Altauser extends javax.swing.JFrame {
                             .addComponent(newUsername)
                             .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnHecho, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(53, 53, 53)
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
@@ -167,9 +148,7 @@ public class Altauser extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHecho, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblusername)
@@ -250,7 +229,7 @@ public class Altauser extends javax.swing.JFrame {
         }
         newpass.setText("");
         newUsername.setText("");
-        btnHecho.setVisible(true);
+        
     }//GEN-LAST:event_btncreauserMouseClicked
 //los focus gained siven para seleccionar lo escrito en caso de querer dar de alta otro usuario, es solo estetico
     private void newUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUsernameFocusGained
@@ -262,15 +241,6 @@ public class Altauser extends javax.swing.JFrame {
         // TODO add your handling code here:
         newpass.selectAll();
     }//GEN-LAST:event_newpassFocusGained
-
-    private void btnHechoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHechoMouseClicked
-        // TODO add your handling code here:
-    
-    }//GEN-LAST:event_btnHechoMouseClicked
-
-    private void btnHechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHechoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHechoActionPerformed
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
       Menu otrom = new Menu();
@@ -316,7 +286,6 @@ public class Altauser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
-    private javax.swing.JButton btnHecho;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncreauser;
     private javax.swing.JLabel jLabel1;
