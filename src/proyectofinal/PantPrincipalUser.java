@@ -32,11 +32,7 @@ public class PantPrincipalUser extends javax.swing.JFrame {
         setIconImage(Icono);
         setResizable(false);
         
-        //Objeto jPanel con color VistaColor
-        jpColor jpVista6 = new jpColor();
-        jpVista6.setSize(this.getSize());
-        jpVista6.setVistaColor(153,206,195,0,0,0);
-        jPanel1.add(jpVista6);
+        
     }
 
     /**
@@ -58,6 +54,8 @@ public class PantPrincipalUser extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(153, 206, 153));
 
         bienvenida.setFont(new java.awt.Font("Arial Rounded MT Bold", 3, 48)); // NOI18N
         bienvenida.setText("BIENVENIDO AL CUESTIONARIO");

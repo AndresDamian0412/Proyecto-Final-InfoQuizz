@@ -100,7 +100,7 @@ public class AccesoAleatorioU {
             flujou.seek(i*Tamañouser); 
             userbus = getUsuario(i).getUser(); //se usa el getter de usuario para el objeto usuario que regresa la funcion getUsuario
             passuser = getUsuario(i).getPass(); // hace lo mismo que el anterior solo que recibe la contraseña
-            if(userbus.equalsIgnoreCase(user)&& passuser.equals(pss)) // si son iguales regresa 1, si no, sigue el ciclo hasta recorrer todo el archivo
+            if(user.equalsIgnoreCase(userbus)&& pss.equals(passuser)) // si son iguales regresa 1, si no, sigue el ciclo hasta recorrer todo el archivo
                 return 1;
         }
         return -1;

@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class CuestionarioUser extends javax.swing.JFrame {
     private static int[]numeros;
+    private static Pregunta[] asks;
     private static int i=0;
     private static int pregenArch;
     private static int correctas=0;
@@ -87,12 +88,6 @@ public class CuestionarioUser extends javax.swing.JFrame {
         txtSubt = new javax.swing.JTextField();
         scrollpreg = new javax.swing.JScrollPane();
         txtPregunta = new javax.swing.JTextField();
-        scrollincia = new javax.swing.JScrollPane();
-        txtIncisoa = new javax.swing.JTextField();
-        scrollincib = new javax.swing.JScrollPane();
-        txtIncisob = new javax.swing.JTextField();
-        scrollincic = new javax.swing.JScrollPane();
-        txtIncisoc = new javax.swing.JTextField();
         lbladver = new javax.swing.JLabel();
         lbladver1 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
@@ -102,6 +97,12 @@ public class CuestionarioUser extends javax.swing.JFrame {
         res2 = new javax.swing.JRadioButton();
         res3 = new javax.swing.JRadioButton();
         btnRev = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtIncisoa = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtIncisob = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtIncisoc = new javax.swing.JTextField();
         lblCuest = new javax.swing.JLabel();
         progresocuest = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -133,15 +134,6 @@ public class CuestionarioUser extends javax.swing.JFrame {
             }
         });
         scrollpreg.setViewportView(txtPregunta);
-
-        txtIncisoa.setText("Inciso");
-        scrollincia.setViewportView(txtIncisoa);
-
-        txtIncisob.setText("Inciso");
-        scrollincib.setViewportView(txtIncisob);
-
-        txtIncisoc.setText("Inciso");
-        scrollincic.setViewportView(txtIncisoc);
 
         lbladver.setText("Marque solo una casilla**");
 
@@ -191,54 +183,55 @@ public class CuestionarioUser extends javax.swing.JFrame {
             }
         });
 
+        txtIncisoa.setText("Inciso");
+        jScrollPane1.setViewportView(txtIncisoa);
+
+        txtIncisob.setText("Inciso");
+        jScrollPane2.setViewportView(txtIncisob);
+
+        txtIncisoc.setText("Inciso");
+        jScrollPane3.setViewportView(txtIncisoc);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTema, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(txtSubt, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(lbladver, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(175, 175, 175)
-                                .addComponent(cancelar))))
+                            .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMuestraprimera)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSiguiente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRev))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(res2)
+                            .addComponent(res3)
+                            .addComponent(res1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(res1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(scrollincic)
-                                    .addComponent(scrollincib, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
+                                .addGap(73, 73, 73)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(res2)
-                                    .addComponent(res3))
-                                .addGap(61, 61, 61))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(446, 446, 446)
-                                .addComponent(btnMuestraprimera)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSiguiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRev)))))
+                                    .addComponent(txtTema, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(txtSubt, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -252,34 +245,37 @@ public class CuestionarioUser extends javax.swing.JFrame {
                 .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(res2)
+                                .addGap(35, 35, 35)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(res3)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbladver1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbladver))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cancelar)
+                                .addComponent(btnMuestraprimera)
+                                .addComponent(btnSiguiente)
+                                .addComponent(btnRev))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(18, 18, 18)
                         .addComponent(res1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(scrollincib, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(res2)
-                        .addGap(22, 22, 22)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollincic, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(res3)))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbladver1)
-                    .addComponent(cancelar)
-                    .addComponent(btnMuestraprimera)
-                    .addComponent(btnSiguiente)
-                    .addComponent(btnRev))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbladver)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         lblCuest.setBackground(new java.awt.Color(255, 255, 255));
@@ -304,7 +300,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(370, 370, 370)
                         .addComponent(jLabel1)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,7 +318,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
                         .addComponent(progresocuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -459,6 +455,9 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCuest;
     private javax.swing.JLabel lbladver;
     private javax.swing.JLabel lbladver1;
@@ -466,9 +465,6 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private static javax.swing.JRadioButton res1;
     private static javax.swing.JRadioButton res2;
     private static javax.swing.JRadioButton res3;
-    private javax.swing.JScrollPane scrollincia;
-    private javax.swing.JScrollPane scrollincib;
-    private javax.swing.JScrollPane scrollincic;
     private javax.swing.JScrollPane scrollpreg;
     private static javax.swing.JTextField txtIncisoa;
     private static javax.swing.JTextField txtIncisob;
@@ -494,73 +490,43 @@ public class CuestionarioUser extends javax.swing.JFrame {
 
 
     public static void muestraPreg(int i){
-        try {
-            File prg = new File("Preguntas.dat"); //archivo de preguntas
-            RandomAccessFile flujopreguntas = new RandomAccessFile(prg,"r"); //randomaccessfile de solo lectura
-            
-            flujopreguntas.seek(i*1200);
-            txtTema.setText(flujopreguntas.readUTF());
-            txtSubt.setText(flujopreguntas.readUTF());
-            txtPregunta.setText(flujopreguntas.readUTF());
-            txtIncisoa.setText(flujopreguntas.readUTF());
-            flujopreguntas.readBoolean(); //salta el booleano
-            txtIncisob.setText(flujopreguntas.readUTF());
-            flujopreguntas.readBoolean();//salta el booleano
-            txtIncisoc.setText(flujopreguntas.readUTF());
-            flujopreguntas.readBoolean();
-            flujopreguntas.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       txtTema.setText(asks[i].getTema());
+       txtSubt.setText(asks[i].getSubt());
+       txtPregunta.setText(asks[i].getpregunta());
+       txtIncisoa.setText(asks[i].getRes1());
+       txtIncisob.setText(asks[i].getRes2());
+       txtIncisoc.setText(asks[i].getRes3());
     }
     
    public static boolean comprueba(int i){
-        try {
-            File preg = new File("Preguntas.dat");
-            RandomAccessFile entrada = new RandomAccessFile(preg,"r");
-            boolean rl1,rl2,rl3;
-            rc1=false; rc2=false; rc3=false; rl1=false; rl2=false; rl3=false;
-            entrada.seek(i*1200);
-            entrada.readUTF();
-            entrada.readUTF();
-            entrada.readUTF();
-            entrada.readUTF();
-            rc1 = entrada.readBoolean();
-            entrada.readUTF();
-            rc2 = entrada.readBoolean();
-            entrada.readUTF();
-            rc3 = entrada.readBoolean();
-            entrada.close();
-            if(res1.isSelected()){rl1=true;}else{rl1=false;}
-            if(res2.isSelected()){rl2=true;}else{rl2=false;}
-            if(res3.isSelected()){rl3=true;}else{rl3=false;}
-            if(rc1 == rl1){
-                if(rc2 == rl2){
-                    if(rc3 == rl3){
-                        return true;
-                    }
+        boolean rl1,rl2,rl3;
+        rc1=false; rc2=false; rc3=false; rl1=false; rl2=false; rl3=false;
+        rc1 = asks[i].isBres1();
+        rc2 = asks[i].isBres2();
+        rc3 = asks[i].isBres3();
+        if(res1.isSelected()){rl1=true;}else{rl1=false;}
+        if(res2.isSelected()){rl2=true;}else{rl2=false;}
+        if(res3.isSelected()){rl3=true;}else{rl3=false;}
+        if(rc1 == rl1){
+            if(rc2 == rl2){
+                if(rc3 == rl3){
+                    return true;
                 }
-                return false;
             }
             return false;
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "El archivo no esta en la ubicacion correcta");
-            } catch (IOException ex) {
-                Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return false;
+        }
+        return false;
+
     }
 
 
     
     private static void llenaArray() throws IOException{
+        RandomAccessFile flujo= new RandomAccessFile((new File("Preguntas.dat")),"r"); //abre el flujo r para escribir
         
         int i = 0,cantidad = pregenArch, rango=pregenArch;
         numeros= new int[cantidad];
+        asks=new Pregunta[cantidad];
         numeros[i] = (int)(Math.random()*rango);
         for(i=1;i<cantidad;i++){
             numeros[i]=(int)(Math.random()*rango);
@@ -569,6 +535,24 @@ public class CuestionarioUser extends javax.swing.JFrame {
                     i--;
             }
         }
+  
+        for(int a=0;a<cantidad;a++){                //recorre el arreglo de numeros aleatorios
+            String Tema,Subtema,Pregunta,inc1,inc2,inc3;
+            boolean ra1,ra2,ra3;
+            flujo.seek((numeros[a])*1200);                 // se usa para posicionar un punto en el archivo
+            Tema=flujo.readUTF();
+            Subtema=flujo.readUTF();
+            Pregunta=flujo.readUTF();
+            inc1=flujo.readUTF();
+            ra1=flujo.readBoolean();
+            inc2=flujo.readUTF();
+            ra2=flujo.readBoolean();
+            inc3=flujo.readUTF();
+            ra3=flujo.readBoolean();
+            asks[a]= new Pregunta(Tema,Subtema,Pregunta,inc1,ra1,inc2,ra2,inc3,ra3); //guarda onjetos de tipo pregunta
+        }
+        flujo.close();
+        System.out.println(asks.length);
     }
     
     private static void setPregenArch() throws IOException{
