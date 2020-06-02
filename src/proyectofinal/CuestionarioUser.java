@@ -30,6 +30,9 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private static Color v= new Color(24,229,31);
     private static Color r= new Color(242,19,31);
     private static Color b= new Color(255,255,255);
+    private static boolean rc1;
+    private static boolean rc2;
+    private static boolean rc3;
     
     /**
      * Creates new form CuestionarioUser
@@ -59,9 +62,11 @@ public class CuestionarioUser extends javax.swing.JFrame {
         txtIncisoc.setEditable(false);
         
         btnSiguiente.setVisible(false);
+        btnRev.setVisible(false);
         setPregenArch();
         llenaArray();
         JOptionPane.showMessageDialog(null, "**Si marcas dos casillas la respuesta\n se considerará erronea**");
+        
         
         
     }
@@ -96,6 +101,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
         res1 = new javax.swing.JRadioButton();
         res2 = new javax.swing.JRadioButton();
         res3 = new javax.swing.JRadioButton();
+        btnRev = new javax.swing.JButton();
         lblCuest = new javax.swing.JLabel();
         progresocuest = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
@@ -173,6 +179,18 @@ public class CuestionarioUser extends javax.swing.JFrame {
             }
         });
 
+        btnRev.setText("Revisar");
+        btnRev.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRevMouseClicked(evt);
+            }
+        });
+        btnRev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRevActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -187,6 +205,16 @@ public class CuestionarioUser extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addComponent(txtSubt, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lbladver, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(175, 175, 175)
+                                .addComponent(cancelar))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,32 +224,21 @@ public class CuestionarioUser extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(res1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(543, 543, 543)
-                                        .addComponent(btnSiguiente)
-                                        .addGap(22, 22, 22))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(scrollincic)
-                                            .addComponent(scrollincib, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(scrollincic)
+                                    .addComponent(scrollincib, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(res2)
                                     .addComponent(res3))
-                                .addGap(61, 61, 61))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(61, 61, 61))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lbladver, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbladver1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(207, 207, 207)
-                                .addComponent(cancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnMuestraprimera)))))
+                                .addGap(446, 446, 446)
+                                .addComponent(btnMuestraprimera)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSiguiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRev)))))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -233,18 +250,21 @@ public class CuestionarioUser extends javax.swing.JFrame {
                 .addComponent(txtSubt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(scrollpreg, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(res1))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(scrollincib, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(scrollincia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(res2)))
+                        .addGap(31, 31, 31)
+                        .addComponent(res1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(scrollincib, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(res2)
+                        .addGap(22, 22, 22)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollincic, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -255,7 +275,8 @@ public class CuestionarioUser extends javax.swing.JFrame {
                     .addComponent(lbladver1)
                     .addComponent(cancelar)
                     .addComponent(btnMuestraprimera)
-                    .addComponent(btnSiguiente))
+                    .addComponent(btnSiguiente)
+                    .addComponent(btnRev))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbladver)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -330,30 +351,20 @@ public class CuestionarioUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnSiguiente.setVisible(false);
         boolean alto=false;
-        double porcentaje;
-        porcentaje = (100/pregenArch);
         salida++;
-        cambio();
         alto=cambio();
-            
-        if(comprueba(numeros[i])){
-            if(progresocuest.getValue()<=100){
-            progresocuest.setValue(progresocuest.getValue()+(int)(Math.ceil(porcentaje)));
-            }
-            correctas++;
-        }
-        
         limpiaCampos();
         i++;
         if(alto!=true)
         muestraPreg(numeros[i]);
-        btnSiguiente.setVisible(true);
+        btnRev.setVisible(true);
+        
     }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void btnMuestraprimeraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMuestraprimeraMouseClicked
         // TODO add your handling code here:
         btnMuestraprimera.setVisible(false);
-        btnSiguiente.setVisible(true);
+        btnRev.setVisible(true);
         muestraPreg(numeros[i]);
     }//GEN-LAST:event_btnMuestraprimeraMouseClicked
 
@@ -377,6 +388,28 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private void res3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_res3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_res3ActionPerformed
+
+    private void btnRevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRevActionPerformed
+
+    private void btnRevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevMouseClicked
+        // TODO add your handling code here:
+        btnRev.setVisible(false);
+        double porcentaje;
+        porcentaje = (100/pregenArch);
+        if(comprueba(numeros[i])){
+            if(progresocuest.getValue()<=100){
+            progresocuest.setValue(progresocuest.getValue()+(int)(Math.ceil(porcentaje)));
+            }
+            correctas++;
+        }
+        if(rc1){txtIncisoa.setBackground(v);}else{txtIncisoa.setBackground(r);}
+        if(rc2){txtIncisob.setBackground(v);}else{txtIncisob.setBackground(r);}
+        if(rc3){txtIncisoc.setBackground(v);}else{txtIncisoc.setBackground(r);}
+        
+        btnSiguiente.setVisible(true);
+    }//GEN-LAST:event_btnRevMouseClicked
 
     /**
      * @param args the command line arguments
@@ -419,6 +452,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMuestraprimera;
+    private javax.swing.JButton btnRev;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton cancelar;
     private static javax.swing.ButtonGroup grupo_botones;
@@ -456,7 +490,6 @@ public class CuestionarioUser extends javax.swing.JFrame {
         res3.setSelected(false);
         grupo_botones.clearSelection();
         limpiaColor();
-       
     }
 
 
@@ -488,7 +521,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
         try {
             File preg = new File("Preguntas.dat");
             RandomAccessFile entrada = new RandomAccessFile(preg,"r");
-            boolean rc1,rc2,rc3,rl1,rl2,rl3;
+            boolean rl1,rl2,rl3;
             rc1=false; rc2=false; rc3=false; rl1=false; rl2=false; rl3=false;
             entrada.seek(i*1200);
             entrada.readUTF();
@@ -501,15 +534,6 @@ public class CuestionarioUser extends javax.swing.JFrame {
             entrada.readUTF();
             rc3 = entrada.readBoolean();
             entrada.close();
-            
-            
-            
-                if(rc1){txtIncisoa.setBackground(v);}else{txtIncisoa.setBackground(r);}
-                if(rc2){txtIncisob.setBackground(v);}else{txtIncisob.setBackground(r);}
-                if(rc3){txtIncisoc.setBackground(v);}else{txtIncisoc.setBackground(r);}
-        
-            limpiaColor();
-            
             if(res1.isSelected()){rl1=true;}else{rl1=false;}
             if(res2.isSelected()){rl2=true;}else{rl2=false;}
             if(res3.isSelected()){rl3=true;}else{rl3=false;}
@@ -587,11 +611,6 @@ public class CuestionarioUser extends javax.swing.JFrame {
     }
     
     private static void limpiaColor(){
-         try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(CuestionarioUser.class.getName()).log(Level.SEVERE, null, ex);
-                }
         txtIncisoa.setBackground(b);
         txtIncisob.setBackground(b);
         txtIncisoc.setBackground(b);
