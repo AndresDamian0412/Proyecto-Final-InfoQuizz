@@ -66,7 +66,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
         btnRev.setVisible(false);
         setPregenArch();
         llenaArray();
-        JOptionPane.showMessageDialog(null, "**Si marca dos casillas la respuesta\n se considerará erronea**");
+        
         
         
         
@@ -367,7 +367,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
         // TODO add your handling code here:
         int res=0;
-        res = JOptionPane.showConfirmDialog(null, "¿Seguro que quiere cancelar el cuestionario?"+"\n"+"Si sale ahora, todos su progreso se perderá");
+        res = JOptionPane.showConfirmDialog(null, "¿Seguro que quiere cancelar el cuestionario?"+"\n"+"Si sale ahora, todo su progreso se perderá");
         if(res==0){
             Menu mq = new Menu();
             mq.setVisible(true);
@@ -524,7 +524,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
     private static void llenaArray() throws IOException{
         RandomAccessFile flujo= new RandomAccessFile((new File("Preguntas.dat")),"r"); //abre el flujo r para escribir
         
-        int i = 0,cantidad = pregenArch, rango=pregenArch;
+        int i = 0,cantidad = 10, rango=10;
         numeros= new int[cantidad];
         asks=new Pregunta[cantidad];
         numeros[i] = (int)(Math.random()*rango);
@@ -563,7 +563,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
     }
     
     private boolean cambio(){
-        if (salida>=pregenArch){
+        if (salida>=10){
             if(nf<1){
                 try {
                     Thread.sleep(3000);

@@ -220,7 +220,6 @@ public class Resultados extends javax.swing.JFrame {
         MuestraResultados();
         MuestraPuntaje();
         if(escribepuntaje())
-            JOptionPane.showMessageDialog(null, "¡Puntaje guardado exitosamente!;)");
         btnMuestra.setVisible(false);
     }//GEN-LAST:event_btnMuestraMouseClicked
 
@@ -308,7 +307,7 @@ public class Resultados extends javax.swing.JFrame {
         String Acertadas,Erroneas;
         float acertadas=0,erroneas=0;
         acertadas=CuestionarioUser.getCorrectas();
-        erroneas=(CuestionarioUser.getPregenArch()-acertadas);
+        erroneas=(10-acertadas);
         
         Acertadas = ""+(int)acertadas;
         Erroneas = ""+(int)erroneas;
@@ -327,7 +326,7 @@ public class Resultados extends javax.swing.JFrame {
     
     private static void setEntradas(){
         Acertadas = CuestionarioUser.getCorrectas();
-        Reactivos = CuestionarioUser.getPregenArch();
+        Reactivos = 10;//CuestionarioUser.getPregenArch()
     }
     
     private static void retroalimentacion(){
