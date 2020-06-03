@@ -56,10 +56,16 @@ public class ConsultAll extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        muestrapregs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         muestrapregs.setText("Mostrar");
         muestrapregs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 muestrapregsMouseClicked(evt);
+            }
+        });
+        muestrapregs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                muestrapregsActionPerformed(evt);
             }
         });
 
@@ -67,6 +73,7 @@ public class ConsultAll extends javax.swing.JFrame {
         contenedorpreg.setRows(5);
         jScrollPane2.setViewportView(contenedorpreg);
 
+        back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         back.setText("Regresar");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,7 +106,7 @@ public class ConsultAll extends javax.swing.JFrame {
                 .addGroup(panelconsultallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(muestrapregs)
                     .addComponent(back))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,6 +180,10 @@ public class ConsultAll extends javax.swing.JFrame {
         p.setVisible(true); // hace visible el frame
         this.dispose(); // cierra el frame
     }//GEN-LAST:event_backMouseClicked
+
+    private void muestrapregsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muestrapregsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_muestrapregsActionPerformed
 
     /**
      * @param args the command line arguments

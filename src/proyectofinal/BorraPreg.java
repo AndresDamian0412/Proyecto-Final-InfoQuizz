@@ -117,6 +117,7 @@ public class BorraPreg extends javax.swing.JFrame {
         Panelcampos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, java.awt.Color.lightGray));
 
         lbltema.setBackground(new java.awt.Color(197, 206, 213));
+        lbltema.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltema.setForeground(new java.awt.Color(0, 0, 0));
         lbltema.setText("Tema");
         lbltema.setAutoscrolls(true);
@@ -131,6 +132,7 @@ public class BorraPreg extends javax.swing.JFrame {
         });
 
         lblsubt.setBackground(new java.awt.Color(197, 206, 213));
+        lblsubt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblsubt.setForeground(new java.awt.Color(0, 0, 0));
         lblsubt.setText("Subtema");
         lblsubt.setAutoscrolls(true);
@@ -150,12 +152,14 @@ public class BorraPreg extends javax.swing.JFrame {
         });
 
         lblPreg.setBackground(new java.awt.Color(197, 206, 213));
+        lblPreg.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPreg.setForeground(new java.awt.Color(0, 0, 0));
         lblPreg.setText("Pregunta");
         lblPreg.setAutoscrolls(true);
         lblPreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblres1.setBackground(new java.awt.Color(197, 206, 213));
+        lblres1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblres1.setForeground(new java.awt.Color(0, 0, 0));
         lblres1.setText("Respuesta 1");
         lblres1.setAutoscrolls(true);
@@ -174,6 +178,7 @@ public class BorraPreg extends javax.swing.JFrame {
         });
 
         lblres2.setBackground(new java.awt.Color(197, 206, 213));
+        lblres2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblres2.setForeground(new java.awt.Color(0, 0, 0));
         lblres2.setText("Respuesta 2");
         lblres2.setAutoscrolls(true);
@@ -187,6 +192,7 @@ public class BorraPreg extends javax.swing.JFrame {
         });
 
         lblres3.setBackground(new java.awt.Color(197, 206, 213));
+        lblres3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblres3.setForeground(new java.awt.Color(0, 0, 0));
         lblres3.setText("Respuesta 3");
         lblres3.setAutoscrolls(true);
@@ -203,6 +209,7 @@ public class BorraPreg extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Esta es la pregunta que se va a eliminar");
 
+        cancelpanel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cancelpanel.setText("Cancelar");
         cancelpanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,6 +217,7 @@ public class BorraPreg extends javax.swing.JFrame {
             }
         });
 
+        Save.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Save.setText("Guardar");
         Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,6 +234,7 @@ public class BorraPreg extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(preg);
 
+        btnhecho.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnhecho.setText("Hecho");
         btnhecho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

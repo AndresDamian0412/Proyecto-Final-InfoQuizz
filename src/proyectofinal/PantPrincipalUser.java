@@ -65,7 +65,9 @@ public class PantPrincipalUser extends javax.swing.JFrame {
         msj1.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 18)); // NOI18N
         msj1.setText("Para comenzar, por favor presione en \"COMENZAR\"");
 
+        btnComenzar.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         btnComenzar.setText("COMENZAR");
+        btnComenzar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnComenzar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnComenzarMouseClicked(evt);

@@ -66,7 +66,7 @@ public class CuestionarioUser extends javax.swing.JFrame {
         btnRev.setVisible(false);
         setPregenArch();
         llenaArray();
-        JOptionPane.showMessageDialog(null, "**Si marcas dos casillas la respuesta\n se considerará erronea**");
+        JOptionPane.showMessageDialog(null, "**Si marca dos casillas la respuesta\n se considerará erronea**");
         
         
         

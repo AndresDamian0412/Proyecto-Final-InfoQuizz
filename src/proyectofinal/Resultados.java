@@ -332,7 +332,7 @@ public class Resultados extends javax.swing.JFrame {
     
     private static void retroalimentacion(){
         if(getPuntaje()>=0.00f && getPuntaje()<=59.99f){
-            txtRetro.setText("Necesitas mejorar :(");
+            txtRetro.setText("Necesita mejorar :(");
         }
         if(getPuntaje()>=60.00f && getPuntaje()<=69.99f){
             txtRetro.setText("Puntaje mínimo :/");

@@ -57,6 +57,7 @@ public class ConsultaUsers extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        muestraptsusers.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         muestraptsusers.setText("Mostrar");
         muestraptsusers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,10 +69,16 @@ public class ConsultaUsers extends javax.swing.JFrame {
         contenedorpts.setRows(5);
         jScrollPane2.setViewportView(contenedorpts);
 
+        back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         back.setText("Regresar");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
+            }
+        });
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
             }
         });
 
@@ -100,7 +107,7 @@ public class ConsultaUsers extends javax.swing.JFrame {
                 .addGroup(panelconsultallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(muestraptsusers)
                     .addComponent(back))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelconsultall, java.awt.BorderLayout.CENTER);
@@ -148,6 +155,10 @@ public class ConsultaUsers extends javax.swing.JFrame {
         p.setVisible(true); // hace visible el frame
         this.dispose(); // cierra el frame
     }//GEN-LAST:event_backMouseClicked
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backActionPerformed
 
     /**
      * @param args the command line arguments

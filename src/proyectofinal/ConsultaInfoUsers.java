@@ -57,6 +57,7 @@ public class ConsultaInfoUsers extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        muestrainfusers.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         muestrainfusers.setText("Mostrar");
         muestrainfusers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,6 +69,7 @@ public class ConsultaInfoUsers extends javax.swing.JFrame {
         contenedorinfo.setRows(5);
         jScrollPane2.setViewportView(contenedorinfo);
 
+        back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         back.setText("Regresar");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

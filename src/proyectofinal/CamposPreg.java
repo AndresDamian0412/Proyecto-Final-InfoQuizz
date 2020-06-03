@@ -79,6 +79,7 @@ public class CamposPreg extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, java.awt.Color.lightGray));
 
         lbltema.setBackground(new java.awt.Color(197, 206, 213));
+        lbltema.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbltema.setForeground(new java.awt.Color(0, 0, 0));
         lbltema.setText("Tema");
         lbltema.setAutoscrolls(true);
@@ -93,6 +94,7 @@ public class CamposPreg extends javax.swing.JFrame {
         });
 
         lblsubt.setBackground(new java.awt.Color(197, 206, 213));
+        lblsubt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblsubt.setForeground(new java.awt.Color(0, 0, 0));
         lblsubt.setText("Subtema");
         lblsubt.setAutoscrolls(true);
@@ -112,12 +114,14 @@ public class CamposPreg extends javax.swing.JFrame {
         });
 
         lblPreg.setBackground(new java.awt.Color(197, 206, 213));
+        lblPreg.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPreg.setForeground(new java.awt.Color(0, 0, 0));
         lblPreg.setText("Pregunta");
         lblPreg.setAutoscrolls(true);
         lblPreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblres1.setBackground(new java.awt.Color(197, 206, 213));
+        lblres1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblres1.setForeground(new java.awt.Color(0, 0, 0));
         lblres1.setText("Respuesta 1");
         lblres1.setAutoscrolls(true);
@@ -136,6 +140,7 @@ public class CamposPreg extends javax.swing.JFrame {
         });
 
         lblres2.setBackground(new java.awt.Color(197, 206, 213));
+        lblres2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblres2.setForeground(new java.awt.Color(0, 0, 0));
         lblres2.setText("Respuesta 2");
         lblres2.setAutoscrolls(true);
@@ -149,6 +154,7 @@ public class CamposPreg extends javax.swing.JFrame {
         });
 
         lblres3.setBackground(new java.awt.Color(197, 206, 213));
+        lblres3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblres3.setForeground(new java.awt.Color(0, 0, 0));
         lblres3.setText("Respuesta 3");
         lblres3.setAutoscrolls(true);
@@ -170,13 +176,20 @@ public class CamposPreg extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Marque únicamente la respuesta correcta*");
 
+        cancel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cancel.setText("Cancelar");
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelMouseClicked(evt);
             }
         });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
+        Save.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Save.setText("Guardar");
         Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +206,7 @@ public class CamposPreg extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(preg);
 
+        btnhecho.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnhecho.setText("Hecho");
         btnhecho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -321,7 +335,7 @@ public class CamposPreg extends javax.swing.JFrame {
             .addGroup(panelformLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -450,6 +464,10 @@ public class CamposPreg extends javax.swing.JFrame {
     private void subtemapregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtemapregActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_subtemapregActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelActionPerformed
 
     /**
      * @param args the command line arguments

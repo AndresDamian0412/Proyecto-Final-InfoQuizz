@@ -72,12 +72,12 @@ public class Altauser extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
         lblusername.setBackground(new java.awt.Color(255, 255, 255));
-        lblusername.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
+        lblusername.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         lblusername.setText("Nombre de usuario:");
         lblusername.setAutoscrolls(true);
         lblusername.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblpass1.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
+        lblpass1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         lblpass1.setText("Contraseña:");
         lblpass1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -86,6 +86,11 @@ public class Altauser extends javax.swing.JFrame {
         btncreauser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btncreauserMouseClicked(evt);
+            }
+        });
+        btncreauser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncreauserActionPerformed(evt);
             }
         });
 
@@ -178,7 +183,7 @@ public class Altauser extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,6 +253,10 @@ public class Altauser extends javax.swing.JFrame {
         this.dispose();
   // TODO add your handling code here:
     }//GEN-LAST:event_backMouseClicked
+
+    private void btncreauserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreauserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncreauserActionPerformed
 
     /**
      * @param args the command line arguments
